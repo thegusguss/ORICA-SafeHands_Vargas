@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\RolDatos.cs" />
+    <Compile Include="Datos\UsuarioDatos.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="FrmAlertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +130,9 @@
     <Compile Include="FrmSincronizacion.Designer.cs">
       <DependentUpon>FrmSincronizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Rol.cs" />
+    <Compile Include="Negocio\RolNegocio.cs" />
+    <Compile Include="Negocio\UsuarioNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAlertas.resx">
@@ -197,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Placa blanca con logo ORICA azul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentacion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

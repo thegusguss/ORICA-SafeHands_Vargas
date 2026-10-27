@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PROYECTO_ORICA_SAFEHANDS_VARGAS.Datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -129,17 +130,47 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
         private void btnRFID_Click(object sender, EventArgs e)
         {
-            if (cbxOperador.SelectedIndex == -1)
+            try
             {
-                MessageBox.Show("Seleccione un cargo para simular la credencial.",
-                    "Datos incompletos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                string rutaConfig =
+                    AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
 
-                cbxOperador.Focus();
-                return;
+                MessageBox.Show(
+                    rutaConfig,
+                    "Archivo de configuración utilizado"
+                );
+
+                if (Conexion.ProbarConexion())
+                {
+                    MessageBox.Show(
+                        "Conexión correcta con ORICA_SafeHandsDB",
+                        "ORICA SafeHands",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
 
-            MostrarIngreso();
+            //if (cbxOperador.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Seleccione un cargo para simular la credencial.",
+            //        "Datos incompletos", MessageBoxButtons.OK,
+            //        MessageBoxIcon.Warning);
+
+            //    cbxOperador.Focus();
+            //    return;
+            //}
+
+            //MostrarIngreso();
         }
     }
 }

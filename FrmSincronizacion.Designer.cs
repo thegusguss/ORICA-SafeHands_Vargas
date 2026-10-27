@@ -75,15 +75,15 @@
             this.lblFechaUltimaSync = new System.Windows.Forms.Label();
             this.lblTituloUltimaSync = new System.Windows.Forms.Label();
             this.pnlColaSincronizacion = new System.Windows.Forms.Panel();
+            this.btnSimularRedSQL = new System.Windows.Forms.Button();
             this.btnSincronizarAhora = new System.Windows.Forms.Button();
             this.dgvColaSincronizacion = new System.Windows.Forms.DataGridView();
-            this.lblTituloColaSincronizacion = new System.Windows.Forms.Label();
-            this.btnSimularRedSQL = new System.Windows.Forms.Button();
             this.colNumeroSync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTablaSync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdLocalSync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIntentosSync = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstadoSync = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTituloColaSincronizacion = new System.Windows.Forms.Label();
             this.flpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMarca.SuspendLayout();
@@ -664,6 +664,21 @@
             this.pnlColaSincronizacion.Size = new System.Drawing.Size(973, 543);
             this.pnlColaSincronizacion.TabIndex = 12;
             // 
+            // btnSimularRedSQL
+            // 
+            this.btnSimularRedSQL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSimularRedSQL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnSimularRedSQL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSimularRedSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimularRedSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimularRedSQL.ForeColor = System.Drawing.Color.White;
+            this.btnSimularRedSQL.Location = new System.Drawing.Point(622, 15);
+            this.btnSimularRedSQL.Name = "btnSimularRedSQL";
+            this.btnSimularRedSQL.Size = new System.Drawing.Size(155, 38);
+            this.btnSimularRedSQL.TabIndex = 14;
+            this.btnSimularRedSQL.Text = "Simular red SQL";
+            this.btnSimularRedSQL.UseVisualStyleBackColor = false;
+            // 
             // btnSincronizarAhora
             // 
             this.btnSincronizarAhora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -722,34 +737,8 @@
             this.dgvColaSincronizacion.RowHeadersVisible = false;
             this.dgvColaSincronizacion.RowTemplate.Height = 40;
             this.dgvColaSincronizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvColaSincronizacion.Size = new System.Drawing.Size(934, 294);
+            this.dgvColaSincronizacion.Size = new System.Drawing.Size(934, 449);
             this.dgvColaSincronizacion.TabIndex = 12;
-            // 
-            // lblTituloColaSincronizacion
-            // 
-            this.lblTituloColaSincronizacion.AutoSize = true;
-            this.lblTituloColaSincronizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloColaSincronizacion.ForeColor = System.Drawing.Color.White;
-            this.lblTituloColaSincronizacion.Location = new System.Drawing.Point(16, 24);
-            this.lblTituloColaSincronizacion.Name = "lblTituloColaSincronizacion";
-            this.lblTituloColaSincronizacion.Size = new System.Drawing.Size(181, 18);
-            this.lblTituloColaSincronizacion.TabIndex = 10;
-            this.lblTituloColaSincronizacion.Text = "Cola de sincronización";
-            // 
-            // btnSimularRedSQL
-            // 
-            this.btnSimularRedSQL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSimularRedSQL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnSimularRedSQL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSimularRedSQL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimularRedSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimularRedSQL.ForeColor = System.Drawing.Color.White;
-            this.btnSimularRedSQL.Location = new System.Drawing.Point(622, 15);
-            this.btnSimularRedSQL.Name = "btnSimularRedSQL";
-            this.btnSimularRedSQL.Size = new System.Drawing.Size(155, 38);
-            this.btnSimularRedSQL.TabIndex = 14;
-            this.btnSimularRedSQL.Text = "Simular red SQL";
-            this.btnSimularRedSQL.UseVisualStyleBackColor = false;
             // 
             // colNumeroSync
             // 
@@ -783,6 +772,17 @@
             this.colEstadoSync.HeaderText = "ESTADO";
             this.colEstadoSync.Name = "colEstadoSync";
             this.colEstadoSync.ReadOnly = true;
+            // 
+            // lblTituloColaSincronizacion
+            // 
+            this.lblTituloColaSincronizacion.AutoSize = true;
+            this.lblTituloColaSincronizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloColaSincronizacion.ForeColor = System.Drawing.Color.White;
+            this.lblTituloColaSincronizacion.Location = new System.Drawing.Point(16, 24);
+            this.lblTituloColaSincronizacion.Name = "lblTituloColaSincronizacion";
+            this.lblTituloColaSincronizacion.Size = new System.Drawing.Size(181, 18);
+            this.lblTituloColaSincronizacion.TabIndex = 10;
+            this.lblTituloColaSincronizacion.Text = "Cola de sincronización";
             // 
             // FrmSincronizacion
             // 
