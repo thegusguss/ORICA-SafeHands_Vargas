@@ -112,6 +112,12 @@
     <Compile Include="FrmDashboard.Designer.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOperacionVoz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperacionVoz.Designer.cs">
+      <DependentUpon>FrmOperacionVoz.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmOperadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOperacionVoz.resx">
+      <DependentUpon>FrmOperacionVoz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmOperadores.resx">
       <DependentUpon>FrmOperadores.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presentacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconmicrofono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ícono de micrófono violeta minimalista.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
