@@ -16,7 +16,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new FrmPrincipalOperador());
         }
     }
 }

@@ -28,157 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flpMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlMarca = new System.Windows.Forms.Panel();
-            this.lblNombreSistema = new System.Windows.Forms.Label();
-            this.lblModoSistema = new System.Windows.Forms.Label();
-            this.btnDashboard = new System.Windows.Forms.Button();
-            this.pnlAcceso = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlCabeceraVoz = new System.Windows.Forms.Panel();
             this.btnDetenerEquipo = new System.Windows.Forms.Button();
             this.lblModoOperacion = new System.Windows.Forms.Label();
             this.lblSubtituloOperacionVoz = new System.Windows.Forms.Label();
             this.lblTituloOperacionVoz = new System.Windows.Forms.Label();
             this.pnlSeleccionEquipo = new System.Windows.Forms.Panel();
+            this.lblConexionEquipoVoz = new System.Windows.Forms.Label();
+            this.cbxEquipoVoz = new System.Windows.Forms.ComboBox();
             this.lblEstadoEquipoVoz = new System.Windows.Forms.Label();
             this.lblTituloEstadoEquipo = new System.Windows.Forms.Label();
             this.lblPasoEquipo = new System.Windows.Forms.Label();
             this.pnlControlVoz = new System.Windows.Forms.Panel();
+            this.lblEjemploComandoVoz1 = new System.Windows.Forms.Label();
+            this.lnkComandosDisponibles = new System.Windows.Forms.LinkLabel();
+            this.lblEjemploComandoVoz = new System.Windows.Forms.Label();
+            this.btnPTTVoz = new System.Windows.Forms.Button();
             this.lblTituloEjemplosVoz = new System.Windows.Forms.Label();
             this.lblPasoHablar = new System.Windows.Forms.Label();
             this.pnlConfirmacionVoz = new System.Windows.Forms.Panel();
+            this.btnCancelarComando = new System.Windows.Forms.Button();
+            this.btnConfirmarComando = new System.Windows.Forms.Button();
+            this.lblEstadoComandoVoz = new System.Windows.Forms.Label();
+            this.lblComandoReconocido = new System.Windows.Forms.Label();
             this.lblEquipoConfirmacion = new System.Windows.Forms.Label();
             this.lblTituloComandoReconocido = new System.Windows.Forms.Label();
             this.lblPasoConfirmacion = new System.Windows.Forms.Label();
-            this.cbxEquipoVoz = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblUltimaAccionVoz = new System.Windows.Forms.Label();
+            this.lblTituloUltimaAccionVoz = new System.Windows.Forms.Label();
+            this.pnlMenuOperador = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblSeccionOperador = new System.Windows.Forms.Label();
+            this.btnInicioOperador = new System.Windows.Forms.Button();
+            this.btnControlVozOperador = new System.Windows.Forms.Button();
+            this.btnHistorialOperador = new System.Windows.Forms.Button();
+            this.pnlSesionOperador = new System.Windows.Forms.Panel();
+            this.lblNombreOperador = new System.Windows.Forms.Label();
+            this.lblRolOperador = new System.Windows.Forms.Label();
+            this.btnCerrarSesionOperador = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.picEquipoVoz = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblConexionEquipoVoz = new System.Windows.Forms.Label();
-            this.btnEventos = new System.Windows.Forms.Button();
-            this.btnPTTVoz = new System.Windows.Forms.Button();
-            this.lblEjemploComandoVoz = new System.Windows.Forms.Label();
-            this.lnkComandosDisponibles = new System.Windows.Forms.LinkLabel();
-            this.lblEjemploComandoVoz1 = new System.Windows.Forms.Label();
-            this.lblComandoReconocido = new System.Windows.Forms.Label();
-            this.lblEstadoComandoVoz = new System.Windows.Forms.Label();
-            this.btnConfirmarComando = new System.Windows.Forms.Button();
-            this.btnCancelarComando = new System.Windows.Forms.Button();
-            this.flpMenu.SuspendLayout();
-            this.pnlMarca.SuspendLayout();
-            this.pnlAcceso.SuspendLayout();
             this.pnlCabeceraVoz.SuspendLayout();
             this.pnlSeleccionEquipo.SuspendLayout();
             this.pnlControlVoz.SuspendLayout();
             this.pnlConfirmacionVoz.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pnlMenuOperador.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.pnlSesionOperador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // flpMenu
-            // 
-            this.flpMenu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.flpMenu.AutoScroll = true;
-            this.flpMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.flpMenu.Controls.Add(this.pictureBox1);
-            this.flpMenu.Controls.Add(this.pnlMarca);
-            this.flpMenu.Controls.Add(this.btnDashboard);
-            this.flpMenu.Controls.Add(this.btnEventos);
-            this.flpMenu.Controls.Add(this.pnlAcceso);
-            this.flpMenu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.flpMenu.Location = new System.Drawing.Point(3, 4);
-            this.flpMenu.Name = "flpMenu";
-            this.flpMenu.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
-            this.flpMenu.Size = new System.Drawing.Size(230, 880);
-            this.flpMenu.TabIndex = 9;
-            this.flpMenu.WrapContents = false;
-            // 
-            // pnlMarca
-            // 
-            this.pnlMarca.Controls.Add(this.lblNombreSistema);
-            this.pnlMarca.Controls.Add(this.lblModoSistema);
-            this.pnlMarca.ForeColor = System.Drawing.Color.White;
-            this.pnlMarca.Location = new System.Drawing.Point(13, 99);
-            this.pnlMarca.Name = "pnlMarca";
-            this.pnlMarca.Size = new System.Drawing.Size(200, 63);
-            this.pnlMarca.TabIndex = 16;
-            // 
-            // lblNombreSistema
-            // 
-            this.lblNombreSistema.AutoSize = true;
-            this.lblNombreSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreSistema.ForeColor = System.Drawing.Color.White;
-            this.lblNombreSistema.Location = new System.Drawing.Point(51, 0);
-            this.lblNombreSistema.Name = "lblNombreSistema";
-            this.lblNombreSistema.Size = new System.Drawing.Size(99, 20);
-            this.lblNombreSistema.TabIndex = 14;
-            this.lblNombreSistema.Text = "SafeHands";
-            this.lblNombreSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblModoSistema
-            // 
-            this.lblModoSistema.AutoSize = true;
-            this.lblModoSistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModoSistema.ForeColor = System.Drawing.Color.Silver;
-            this.lblModoSistema.Location = new System.Drawing.Point(33, 37);
-            this.lblModoSistema.Name = "lblModoSistema";
-            this.lblModoSistema.Size = new System.Drawing.Size(134, 13);
-            this.lblModoSistema.TabIndex = 16;
-            this.lblModoSistema.Text = "PROTOTIPO OFFLINE";
-            this.lblModoSistema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDashboard.FlatAppearance.BorderSize = 0;
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.ForeColor = System.Drawing.Color.White;
-            this.btnDashboard.Location = new System.Drawing.Point(13, 168);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(200, 42);
-            this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            // 
-            // pnlAcceso
-            // 
-            this.pnlAcceso.Controls.Add(this.label1);
-            this.pnlAcceso.Controls.Add(this.button1);
-            this.pnlAcceso.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlAcceso.Location = new System.Drawing.Point(13, 264);
-            this.pnlAcceso.Name = "pnlAcceso";
-            this.pnlAcceso.Size = new System.Drawing.Size(200, 100);
-            this.pnlAcceso.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Operador";
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Cerrar sesión";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // pnlCabeceraVoz
             // 
@@ -259,12 +161,35 @@
             this.pnlSeleccionEquipo.Size = new System.Drawing.Size(297, 495);
             this.pnlSeleccionEquipo.TabIndex = 17;
             // 
+            // lblConexionEquipoVoz
+            // 
+            this.lblConexionEquipoVoz.AutoSize = true;
+            this.lblConexionEquipoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConexionEquipoVoz.ForeColor = System.Drawing.Color.Silver;
+            this.lblConexionEquipoVoz.Location = new System.Drawing.Point(34, 417);
+            this.lblConexionEquipoVoz.Name = "lblConexionEquipoVoz";
+            this.lblConexionEquipoVoz.Size = new System.Drawing.Size(137, 16);
+            this.lblConexionEquipoVoz.TabIndex = 24;
+            this.lblConexionEquipoVoz.Text = "Selecciona un equipo";
+            // 
+            // cbxEquipoVoz
+            // 
+            this.cbxEquipoVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
+            this.cbxEquipoVoz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEquipoVoz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxEquipoVoz.ForeColor = System.Drawing.Color.White;
+            this.cbxEquipoVoz.FormattingEnabled = true;
+            this.cbxEquipoVoz.Location = new System.Drawing.Point(36, 55);
+            this.cbxEquipoVoz.Name = "cbxEquipoVoz";
+            this.cbxEquipoVoz.Size = new System.Drawing.Size(221, 24);
+            this.cbxEquipoVoz.TabIndex = 22;
+            // 
             // lblEstadoEquipoVoz
             // 
             this.lblEstadoEquipoVoz.AutoSize = true;
             this.lblEstadoEquipoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstadoEquipoVoz.ForeColor = System.Drawing.Color.White;
-            this.lblEstadoEquipoVoz.Location = new System.Drawing.Point(41, 362);
+            this.lblEstadoEquipoVoz.Location = new System.Drawing.Point(30, 366);
             this.lblEstadoEquipoVoz.Name = "lblEstadoEquipoVoz";
             this.lblEstadoEquipoVoz.Size = new System.Drawing.Size(198, 31);
             this.lblEstadoEquipoVoz.TabIndex = 11;
@@ -309,6 +234,63 @@
             this.pnlControlVoz.Size = new System.Drawing.Size(356, 495);
             this.pnlControlVoz.TabIndex = 18;
             // 
+            // lblEjemploComandoVoz1
+            // 
+            this.lblEjemploComandoVoz1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEjemploComandoVoz1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
+            this.lblEjemploComandoVoz1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblEjemploComandoVoz1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEjemploComandoVoz1.ForeColor = System.Drawing.Color.Silver;
+            this.lblEjemploComandoVoz1.Location = new System.Drawing.Point(19, 291);
+            this.lblEjemploComandoVoz1.Name = "lblEjemploComandoVoz1";
+            this.lblEjemploComandoVoz1.Size = new System.Drawing.Size(144, 32);
+            this.lblEjemploComandoVoz1.TabIndex = 22;
+            this.lblEjemploComandoVoz1.Text = "“Encender Micrófono”";
+            this.lblEjemploComandoVoz1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lnkComandosDisponibles
+            // 
+            this.lnkComandosDisponibles.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkComandosDisponibles.AutoSize = true;
+            this.lnkComandosDisponibles.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(145)))), ((int)(((byte)(255)))));
+            this.lnkComandosDisponibles.Location = new System.Drawing.Point(109, 353);
+            this.lnkComandosDisponibles.Name = "lnkComandosDisponibles";
+            this.lnkComandosDisponibles.Size = new System.Drawing.Size(130, 13);
+            this.lnkComandosDisponibles.TabIndex = 21;
+            this.lnkComandosDisponibles.TabStop = true;
+            this.lnkComandosDisponibles.Text = "Ver comandos disponibles";
+            this.lnkComandosDisponibles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkComandosDisponibles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkComandosDisponibles_LinkClicked);
+            // 
+            // lblEjemploComandoVoz
+            // 
+            this.lblEjemploComandoVoz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEjemploComandoVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
+            this.lblEjemploComandoVoz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblEjemploComandoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEjemploComandoVoz.ForeColor = System.Drawing.Color.Silver;
+            this.lblEjemploComandoVoz.Location = new System.Drawing.Point(187, 291);
+            this.lblEjemploComandoVoz.Name = "lblEjemploComandoVoz";
+            this.lblEjemploComandoVoz.Size = new System.Drawing.Size(144, 32);
+            this.lblEjemploComandoVoz.TabIndex = 7;
+            this.lblEjemploComandoVoz.Text = "“Consultar estado”";
+            this.lblEjemploComandoVoz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnPTTVoz
+            // 
+            this.btnPTTVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(97)))), ((int)(((byte)(220)))));
+            this.btnPTTVoz.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPTTVoz.FlatAppearance.BorderSize = 0;
+            this.btnPTTVoz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPTTVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPTTVoz.ForeColor = System.Drawing.Color.Black;
+            this.btnPTTVoz.Location = new System.Drawing.Point(73, 68);
+            this.btnPTTVoz.Name = "btnPTTVoz";
+            this.btnPTTVoz.Size = new System.Drawing.Size(220, 150);
+            this.btnPTTVoz.TabIndex = 20;
+            this.btnPTTVoz.Text = "Mantén para hablar";
+            this.btnPTTVoz.UseVisualStyleBackColor = false;
+            // 
             // lblTituloEjemplosVoz
             // 
             this.lblTituloEjemplosVoz.AutoSize = true;
@@ -349,6 +331,61 @@
             this.pnlConfirmacionVoz.Size = new System.Drawing.Size(297, 495);
             this.pnlConfirmacionVoz.TabIndex = 19;
             // 
+            // btnCancelarComando
+            // 
+            this.btnCancelarComando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarComando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnCancelarComando.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarComando.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarComando.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarComando.Location = new System.Drawing.Point(19, 291);
+            this.btnCancelarComando.Name = "btnCancelarComando";
+            this.btnCancelarComando.Size = new System.Drawing.Size(238, 38);
+            this.btnCancelarComando.TabIndex = 28;
+            this.btnCancelarComando.Text = "Cancelar";
+            this.btnCancelarComando.UseVisualStyleBackColor = false;
+            // 
+            // btnConfirmarComando
+            // 
+            this.btnConfirmarComando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmarComando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnConfirmarComando.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmarComando.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmarComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarComando.ForeColor = System.Drawing.Color.White;
+            this.btnConfirmarComando.Location = new System.Drawing.Point(20, 237);
+            this.btnConfirmarComando.Name = "btnConfirmarComando";
+            this.btnConfirmarComando.Size = new System.Drawing.Size(238, 38);
+            this.btnConfirmarComando.TabIndex = 27;
+            this.btnConfirmarComando.Text = "Confirmar y enviar";
+            this.btnConfirmarComando.UseVisualStyleBackColor = false;
+            // 
+            // lblEstadoComandoVoz
+            // 
+            this.lblEstadoComandoVoz.AutoSize = true;
+            this.lblEstadoComandoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoComandoVoz.ForeColor = System.Drawing.Color.Silver;
+            this.lblEstadoComandoVoz.Location = new System.Drawing.Point(17, 212);
+            this.lblEstadoComandoVoz.Name = "lblEstadoComandoVoz";
+            this.lblEstadoComandoVoz.Size = new System.Drawing.Size(132, 16);
+            this.lblEstadoComandoVoz.TabIndex = 12;
+            this.lblEstadoComandoVoz.Text = "Sin acción pendiente";
+            // 
+            // lblComandoReconocido
+            // 
+            this.lblComandoReconocido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblComandoReconocido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
+            this.lblComandoReconocido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblComandoReconocido.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComandoReconocido.ForeColor = System.Drawing.Color.Silver;
+            this.lblComandoReconocido.Location = new System.Drawing.Point(20, 86);
+            this.lblComandoReconocido.Name = "lblComandoReconocido";
+            this.lblComandoReconocido.Size = new System.Drawing.Size(256, 72);
+            this.lblComandoReconocido.TabIndex = 7;
+            this.lblComandoReconocido.Text = "Esperando comando…";
+            this.lblComandoReconocido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblEquipoConfirmacion
             // 
             this.lblEquipoConfirmacion.AutoSize = true;
@@ -382,21 +419,194 @@
             this.lblPasoConfirmacion.TabIndex = 10;
             this.lblPasoConfirmacion.Text = "3. Revisa y confirma";
             // 
-            // cbxEquipoVoz
+            // panel1
             // 
-            this.cbxEquipoVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
-            this.cbxEquipoVoz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxEquipoVoz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxEquipoVoz.ForeColor = System.Drawing.Color.White;
-            this.cbxEquipoVoz.FormattingEnabled = true;
-            this.cbxEquipoVoz.Items.AddRange(new object[] {
-            "Ejecutado ",
-            "Rechazado",
-            "Cancelado"});
-            this.cbxEquipoVoz.Location = new System.Drawing.Point(36, 55);
-            this.cbxEquipoVoz.Name = "cbxEquipoVoz";
-            this.cbxEquipoVoz.Size = new System.Drawing.Size(221, 24);
-            this.cbxEquipoVoz.TabIndex = 22;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.panel1.Controls.Add(this.lblUltimaAccionVoz);
+            this.panel1.Controls.Add(this.lblTituloUltimaAccionVoz);
+            this.panel1.Location = new System.Drawing.Point(254, 617);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 129);
+            this.panel1.TabIndex = 11;
+            // 
+            // lblUltimaAccionVoz
+            // 
+            this.lblUltimaAccionVoz.AutoSize = true;
+            this.lblUltimaAccionVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUltimaAccionVoz.ForeColor = System.Drawing.Color.Silver;
+            this.lblUltimaAccionVoz.Location = new System.Drawing.Point(17, 59);
+            this.lblUltimaAccionVoz.Name = "lblUltimaAccionVoz";
+            this.lblUltimaAccionVoz.Size = new System.Drawing.Size(196, 15);
+            this.lblUltimaAccionVoz.TabIndex = 2;
+            this.lblUltimaAccionVoz.Text = "Todavía no se realizaron acciones.";
+            // 
+            // lblTituloUltimaAccionVoz
+            // 
+            this.lblTituloUltimaAccionVoz.AutoSize = true;
+            this.lblTituloUltimaAccionVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloUltimaAccionVoz.ForeColor = System.Drawing.Color.White;
+            this.lblTituloUltimaAccionVoz.Location = new System.Drawing.Point(17, 23);
+            this.lblTituloUltimaAccionVoz.Name = "lblTituloUltimaAccionVoz";
+            this.lblTituloUltimaAccionVoz.Size = new System.Drawing.Size(111, 18);
+            this.lblTituloUltimaAccionVoz.TabIndex = 1;
+            this.lblTituloUltimaAccionVoz.Text = "Última acción";
+            // 
+            // pnlMenuOperador
+            // 
+            this.pnlMenuOperador.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnlMenuOperador.AutoScroll = true;
+            this.pnlMenuOperador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.pnlMenuOperador.Controls.Add(this.pictureBox2);
+            this.pnlMenuOperador.Controls.Add(this.panel2);
+            this.pnlMenuOperador.Controls.Add(this.btnInicioOperador);
+            this.pnlMenuOperador.Controls.Add(this.btnControlVozOperador);
+            this.pnlMenuOperador.Controls.Add(this.btnHistorialOperador);
+            this.pnlMenuOperador.Controls.Add(this.pnlSesionOperador);
+            this.pnlMenuOperador.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.pnlMenuOperador.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pnlMenuOperador.Location = new System.Drawing.Point(1, 1);
+            this.pnlMenuOperador.Name = "pnlMenuOperador";
+            this.pnlMenuOperador.Padding = new System.Windows.Forms.Padding(10, 20, 0, 0);
+            this.pnlMenuOperador.Size = new System.Drawing.Size(230, 880);
+            this.pnlMenuOperador.TabIndex = 20;
+            this.pnlMenuOperador.WrapContents = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblSeccionOperador);
+            this.panel2.ForeColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(13, 99);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 63);
+            this.panel2.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(51, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "SafeHands";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSeccionOperador
+            // 
+            this.lblSeccionOperador.AutoSize = true;
+            this.lblSeccionOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeccionOperador.ForeColor = System.Drawing.Color.Silver;
+            this.lblSeccionOperador.Location = new System.Drawing.Point(21, 35);
+            this.lblSeccionOperador.Name = "lblSeccionOperador";
+            this.lblSeccionOperador.Size = new System.Drawing.Size(161, 13);
+            this.lblSeccionOperador.TabIndex = 16;
+            this.lblSeccionOperador.Text = "ESPACIO DEL OPERADOR";
+            this.lblSeccionOperador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnInicioOperador
+            // 
+            this.btnInicioOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInicioOperador.FlatAppearance.BorderSize = 0;
+            this.btnInicioOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInicioOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicioOperador.ForeColor = System.Drawing.Color.White;
+            this.btnInicioOperador.Location = new System.Drawing.Point(13, 168);
+            this.btnInicioOperador.Name = "btnInicioOperador";
+            this.btnInicioOperador.Size = new System.Drawing.Size(200, 42);
+            this.btnInicioOperador.TabIndex = 0;
+            this.btnInicioOperador.Text = "Inicio";
+            this.btnInicioOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInicioOperador.UseVisualStyleBackColor = true;
+            // 
+            // btnControlVozOperador
+            // 
+            this.btnControlVozOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControlVozOperador.FlatAppearance.BorderSize = 0;
+            this.btnControlVozOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControlVozOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnControlVozOperador.ForeColor = System.Drawing.Color.White;
+            this.btnControlVozOperador.Location = new System.Drawing.Point(13, 216);
+            this.btnControlVozOperador.Name = "btnControlVozOperador";
+            this.btnControlVozOperador.Size = new System.Drawing.Size(200, 42);
+            this.btnControlVozOperador.TabIndex = 19;
+            this.btnControlVozOperador.Text = "Control por voz";
+            this.btnControlVozOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnControlVozOperador.UseVisualStyleBackColor = true;
+            // 
+            // btnHistorialOperador
+            // 
+            this.btnHistorialOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistorialOperador.FlatAppearance.BorderSize = 0;
+            this.btnHistorialOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorialOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorialOperador.ForeColor = System.Drawing.Color.White;
+            this.btnHistorialOperador.Location = new System.Drawing.Point(13, 264);
+            this.btnHistorialOperador.Name = "btnHistorialOperador";
+            this.btnHistorialOperador.Size = new System.Drawing.Size(200, 42);
+            this.btnHistorialOperador.TabIndex = 4;
+            this.btnHistorialOperador.Text = "Mi historial";
+            this.btnHistorialOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHistorialOperador.UseVisualStyleBackColor = true;
+            // 
+            // pnlSesionOperador
+            // 
+            this.pnlSesionOperador.Controls.Add(this.lblNombreOperador);
+            this.pnlSesionOperador.Controls.Add(this.lblRolOperador);
+            this.pnlSesionOperador.Controls.Add(this.btnCerrarSesionOperador);
+            this.pnlSesionOperador.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSesionOperador.Location = new System.Drawing.Point(13, 312);
+            this.pnlSesionOperador.Name = "pnlSesionOperador";
+            this.pnlSesionOperador.Size = new System.Drawing.Size(200, 122);
+            this.pnlSesionOperador.TabIndex = 18;
+            // 
+            // lblNombreOperador
+            // 
+            this.lblNombreOperador.AutoSize = true;
+            this.lblNombreOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreOperador.ForeColor = System.Drawing.Color.White;
+            this.lblNombreOperador.Location = new System.Drawing.Point(12, 15);
+            this.lblNombreOperador.Name = "lblNombreOperador";
+            this.lblNombreOperador.Size = new System.Drawing.Size(144, 17);
+            this.lblNombreOperador.TabIndex = 22;
+            this.lblNombreOperador.Text = "Sin sesión iniciada";
+            // 
+            // lblRolOperador
+            // 
+            this.lblRolOperador.AutoSize = true;
+            this.lblRolOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRolOperador.ForeColor = System.Drawing.Color.White;
+            this.lblRolOperador.Location = new System.Drawing.Point(12, 48);
+            this.lblRolOperador.Name = "lblRolOperador";
+            this.lblRolOperador.Size = new System.Drawing.Size(65, 16);
+            this.lblRolOperador.TabIndex = 21;
+            this.lblRolOperador.Text = "Operador";
+            // 
+            // btnCerrarSesionOperador
+            // 
+            this.btnCerrarSesionOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesionOperador.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesionOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesionOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesionOperador.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesionOperador.Location = new System.Drawing.Point(3, 74);
+            this.btnCerrarSesionOperador.Name = "btnCerrarSesionOperador";
+            this.btnCerrarSesionOperador.Size = new System.Drawing.Size(194, 40);
+            this.btnCerrarSesionOperador.TabIndex = 20;
+            this.btnCerrarSesionOperador.Text = "Cerrar sesión";
+            this.btnCerrarSesionOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesionOperador.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Placa_blanca_con_logo_ORICA_azul;
+            this.pictureBox2.Location = new System.Drawing.Point(13, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
             // 
             // picEquipoVoz
             // 
@@ -408,154 +618,6 @@
             this.picEquipoVoz.TabIndex = 23;
             this.picEquipoVoz.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Placa_blanca_con_logo_ORICA_azul;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblConexionEquipoVoz
-            // 
-            this.lblConexionEquipoVoz.AutoSize = true;
-            this.lblConexionEquipoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConexionEquipoVoz.ForeColor = System.Drawing.Color.Silver;
-            this.lblConexionEquipoVoz.Location = new System.Drawing.Point(34, 417);
-            this.lblConexionEquipoVoz.Name = "lblConexionEquipoVoz";
-            this.lblConexionEquipoVoz.Size = new System.Drawing.Size(137, 16);
-            this.lblConexionEquipoVoz.TabIndex = 24;
-            this.lblConexionEquipoVoz.Text = "Selecciona un equipo";
-            // 
-            // btnEventos
-            // 
-            this.btnEventos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEventos.FlatAppearance.BorderSize = 0;
-            this.btnEventos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEventos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEventos.ForeColor = System.Drawing.Color.White;
-            this.btnEventos.Location = new System.Drawing.Point(13, 216);
-            this.btnEventos.Name = "btnEventos";
-            this.btnEventos.Size = new System.Drawing.Size(200, 42);
-            this.btnEventos.TabIndex = 4;
-            this.btnEventos.Text = "Eventos / Auditoría";
-            this.btnEventos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEventos.UseVisualStyleBackColor = true;
-            // 
-            // btnPTTVoz
-            // 
-            this.btnPTTVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(97)))), ((int)(((byte)(220)))));
-            this.btnPTTVoz.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPTTVoz.Enabled = false;
-            this.btnPTTVoz.FlatAppearance.BorderSize = 0;
-            this.btnPTTVoz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPTTVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPTTVoz.ForeColor = System.Drawing.Color.Black;
-            this.btnPTTVoz.Location = new System.Drawing.Point(73, 68);
-            this.btnPTTVoz.Name = "btnPTTVoz";
-            this.btnPTTVoz.Size = new System.Drawing.Size(220, 150);
-            this.btnPTTVoz.TabIndex = 20;
-            this.btnPTTVoz.Text = "Mantén para hablar";
-            this.btnPTTVoz.UseVisualStyleBackColor = false;
-            // 
-            // lblEjemploComandoVoz
-            // 
-            this.lblEjemploComandoVoz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEjemploComandoVoz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
-            this.lblEjemploComandoVoz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblEjemploComandoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEjemploComandoVoz.ForeColor = System.Drawing.Color.Silver;
-            this.lblEjemploComandoVoz.Location = new System.Drawing.Point(187, 291);
-            this.lblEjemploComandoVoz.Name = "lblEjemploComandoVoz";
-            this.lblEjemploComandoVoz.Size = new System.Drawing.Size(144, 32);
-            this.lblEjemploComandoVoz.TabIndex = 7;
-            this.lblEjemploComandoVoz.Text = "“Consultar estado”";
-            this.lblEjemploComandoVoz.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lnkComandosDisponibles
-            // 
-            this.lnkComandosDisponibles.ActiveLinkColor = System.Drawing.Color.White;
-            this.lnkComandosDisponibles.AutoSize = true;
-            this.lnkComandosDisponibles.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(145)))), ((int)(((byte)(255)))));
-            this.lnkComandosDisponibles.Location = new System.Drawing.Point(109, 353);
-            this.lnkComandosDisponibles.Name = "lnkComandosDisponibles";
-            this.lnkComandosDisponibles.Size = new System.Drawing.Size(130, 13);
-            this.lnkComandosDisponibles.TabIndex = 21;
-            this.lnkComandosDisponibles.TabStop = true;
-            this.lnkComandosDisponibles.Text = "Ver comandos disponibles";
-            this.lnkComandosDisponibles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblEjemploComandoVoz1
-            // 
-            this.lblEjemploComandoVoz1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEjemploComandoVoz1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
-            this.lblEjemploComandoVoz1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblEjemploComandoVoz1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEjemploComandoVoz1.ForeColor = System.Drawing.Color.Silver;
-            this.lblEjemploComandoVoz1.Location = new System.Drawing.Point(19, 291);
-            this.lblEjemploComandoVoz1.Name = "lblEjemploComandoVoz1";
-            this.lblEjemploComandoVoz1.Size = new System.Drawing.Size(144, 32);
-            this.lblEjemploComandoVoz1.TabIndex = 22;
-            this.lblEjemploComandoVoz1.Text = "“Encender Micrófono”";
-            this.lblEjemploComandoVoz1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblComandoReconocido
-            // 
-            this.lblComandoReconocido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblComandoReconocido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
-            this.lblComandoReconocido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblComandoReconocido.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComandoReconocido.ForeColor = System.Drawing.Color.Silver;
-            this.lblComandoReconocido.Location = new System.Drawing.Point(20, 86);
-            this.lblComandoReconocido.Name = "lblComandoReconocido";
-            this.lblComandoReconocido.Size = new System.Drawing.Size(256, 72);
-            this.lblComandoReconocido.TabIndex = 7;
-            this.lblComandoReconocido.Text = "Esperando comando…";
-            this.lblComandoReconocido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblEstadoComandoVoz
-            // 
-            this.lblEstadoComandoVoz.AutoSize = true;
-            this.lblEstadoComandoVoz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstadoComandoVoz.ForeColor = System.Drawing.Color.Silver;
-            this.lblEstadoComandoVoz.Location = new System.Drawing.Point(17, 212);
-            this.lblEstadoComandoVoz.Name = "lblEstadoComandoVoz";
-            this.lblEstadoComandoVoz.Size = new System.Drawing.Size(132, 16);
-            this.lblEstadoComandoVoz.TabIndex = 12;
-            this.lblEstadoComandoVoz.Text = "Sin acción pendiente";
-            // 
-            // btnConfirmarComando
-            // 
-            this.btnConfirmarComando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmarComando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnConfirmarComando.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfirmarComando.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmarComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarComando.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmarComando.Location = new System.Drawing.Point(20, 237);
-            this.btnConfirmarComando.Name = "btnConfirmarComando";
-            this.btnConfirmarComando.Size = new System.Drawing.Size(238, 38);
-            this.btnConfirmarComando.TabIndex = 27;
-            this.btnConfirmarComando.Text = "Confirmar y enviar";
-            this.btnConfirmarComando.UseVisualStyleBackColor = false;
-            // 
-            // btnCancelarComando
-            // 
-            this.btnCancelarComando.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelarComando.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnCancelarComando.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelarComando.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarComando.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarComando.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarComando.Location = new System.Drawing.Point(19, 291);
-            this.btnCancelarComando.Name = "btnCancelarComando";
-            this.btnCancelarComando.Size = new System.Drawing.Size(238, 38);
-            this.btnCancelarComando.TabIndex = 28;
-            this.btnCancelarComando.Text = "Cancelar";
-            this.btnCancelarComando.UseVisualStyleBackColor = false;
-            // 
             // FrmOperacionVoz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,19 +625,15 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(1252, 885);
+            this.Controls.Add(this.pnlMenuOperador);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlConfirmacionVoz);
             this.Controls.Add(this.pnlSeleccionEquipo);
             this.Controls.Add(this.pnlControlVoz);
             this.Controls.Add(this.pnlCabeceraVoz);
-            this.Controls.Add(this.flpMenu);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "FrmOperacionVoz";
             this.Text = "Control por voz";
-            this.flpMenu.ResumeLayout(false);
-            this.pnlMarca.ResumeLayout(false);
-            this.pnlMarca.PerformLayout();
-            this.pnlAcceso.ResumeLayout(false);
-            this.pnlAcceso.PerformLayout();
             this.pnlCabeceraVoz.ResumeLayout(false);
             this.pnlCabeceraVoz.PerformLayout();
             this.pnlSeleccionEquipo.ResumeLayout(false);
@@ -584,23 +642,20 @@
             this.pnlControlVoz.PerformLayout();
             this.pnlConfirmacionVoz.ResumeLayout(false);
             this.pnlConfirmacionVoz.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.pnlMenuOperador.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.pnlSesionOperador.ResumeLayout(false);
+            this.pnlSesionOperador.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flpMenu;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel pnlMarca;
-        private System.Windows.Forms.Label lblNombreSistema;
-        private System.Windows.Forms.Label lblModoSistema;
-        private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.Panel pnlAcceso;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlCabeceraVoz;
         private System.Windows.Forms.Button btnDetenerEquipo;
         private System.Windows.Forms.Label lblModoOperacion;
@@ -620,7 +675,6 @@
         private System.Windows.Forms.PictureBox picEquipoVoz;
         private System.Windows.Forms.ComboBox cbxEquipoVoz;
         private System.Windows.Forms.Label lblConexionEquipoVoz;
-        private System.Windows.Forms.Button btnEventos;
         private System.Windows.Forms.Button btnPTTVoz;
         private System.Windows.Forms.Label lblEjemploComandoVoz1;
         private System.Windows.Forms.LinkLabel lnkComandosDisponibles;
@@ -629,5 +683,20 @@
         private System.Windows.Forms.Label lblEstadoComandoVoz;
         private System.Windows.Forms.Button btnConfirmarComando;
         private System.Windows.Forms.Button btnCancelarComando;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblUltimaAccionVoz;
+        private System.Windows.Forms.Label lblTituloUltimaAccionVoz;
+        private System.Windows.Forms.FlowLayoutPanel pnlMenuOperador;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSeccionOperador;
+        private System.Windows.Forms.Button btnInicioOperador;
+        private System.Windows.Forms.Button btnControlVozOperador;
+        private System.Windows.Forms.Button btnHistorialOperador;
+        private System.Windows.Forms.Panel pnlSesionOperador;
+        private System.Windows.Forms.Label lblNombreOperador;
+        private System.Windows.Forms.Label lblRolOperador;
+        private System.Windows.Forms.Button btnCerrarSesionOperador;
     }
 }

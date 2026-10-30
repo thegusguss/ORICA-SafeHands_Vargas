@@ -48,10 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComandoDisponible.cs" />
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\RolDatos.cs" />
     <Compile Include="Datos\UsuarioDatos.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="EstiloMenuOperador.cs" />
     <Compile Include="FrmAlertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +65,12 @@
     </Compile>
     <Compile Include="FrmComandos.Designer.cs">
       <DependentUpon>FrmComandos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmComandosDisponibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmComandosDisponibles.Designer.cs">
+      <DependentUpon>FrmComandosDisponibles.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -112,6 +120,12 @@
     <Compile Include="FrmDashboard.Designer.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMiHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMiHistorial.Designer.cs">
+      <DependentUpon>FrmMiHistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmOperacionVoz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +137,12 @@
     </Compile>
     <Compile Include="FrmOperadores.Designer.cs">
       <DependentUpon>FrmOperadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipalOperador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipalOperador.Designer.cs">
+      <DependentUpon>FrmPrincipalOperador.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmReportes.cs">
       <SubType>Form</SubType>
@@ -146,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmComandos.resx">
       <DependentUpon>FrmComandos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmComandosDisponibles.resx">
+      <DependentUpon>FrmComandosDisponibles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConfiguracion.resx">
       <DependentUpon>FrmConfiguracion.cs</DependentUpon>
@@ -171,11 +194,17 @@
     <EmbeddedResource Include="FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMiHistorial.resx">
+      <DependentUpon>FrmMiHistorial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmOperacionVoz.resx">
       <DependentUpon>FrmOperacionVoz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOperadores.resx">
       <DependentUpon>FrmOperadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipalOperador.resx">
+      <DependentUpon>FrmPrincipalOperador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReportes.resx">
       <DependentUpon>FrmReportes.cs</DependentUpon>
