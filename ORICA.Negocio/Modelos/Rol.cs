@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace PROYECTO_ORICA_SAFEHANDS_VARGAS.Entidades
+namespace ORICA.Negocio.Modelos
 {
     public class Rol
     {
@@ -13,6 +9,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS.Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public DateTime? FechaRegistro { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

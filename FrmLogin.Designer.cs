@@ -236,12 +236,6 @@
             this.cbxOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxOperador.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.cbxOperador.FormattingEnabled = true;
-            this.cbxOperador.Items.AddRange(new object[] {
-            "Supervisor",
-            "Administrador",
-            "Técnico de mantenimiento",
-            "Jefe de planta",
-            "Encargado de seguridad"});
             this.cbxOperador.Location = new System.Drawing.Point(564, 283);
             this.cbxOperador.Name = "cbxOperador";
             this.cbxOperador.Size = new System.Drawing.Size(259, 21);

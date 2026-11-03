@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -48,10 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datos\Conexion.cs" />
-    <Compile Include="Datos\RolDatos.cs" />
-    <Compile Include="Datos\UsuarioDatos.cs" />
-    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="FrmAlertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,9 +126,6 @@
     <Compile Include="FrmSincronizacion.Designer.cs">
       <DependentUpon>FrmSincronizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Rol.cs" />
-    <Compile Include="Negocio\RolNegocio.cs" />
-    <Compile Include="Negocio\UsuarioNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAlertas.resx">
@@ -207,7 +200,10 @@
     <None Include="Resources\Placa blanca con logo ORICA azul.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Presentacion\" />
+    <ProjectReference Include="ORICA.Negocio\ORICA.Negocio.csproj">
+      <Project>{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}</Project>
+      <Name>ORICA.Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

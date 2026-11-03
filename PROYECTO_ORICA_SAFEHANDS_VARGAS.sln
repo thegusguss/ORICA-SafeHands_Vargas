@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.37614.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROYECTO_ORICA_SAFEHANDS_VARGAS", "PROYECTO_ORICA_SAFEHANDS_VARGAS.csproj", "{D148C257-C73F-47DC-8F4A-36957DFAC655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORICA.Datos", "ORICA.Datos\ORICA.Datos.csproj", "{5A1C2E3F-1B4D-4E6A-9C7B-2D8E0F1A3B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORICA.Negocio", "ORICA.Negocio\ORICA.Negocio.csproj", "{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D148C257-C73F-47DC-8F4A-36957DFAC655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D148C257-C73F-47DC-8F4A-36957DFAC655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D148C257-C73F-47DC-8F4A-36957DFAC655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1C2E3F-1B4D-4E6A-9C7B-2D8E0F1A3B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1C2E3F-1B4D-4E6A-9C7B-2D8E0F1A3B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1C2E3F-1B4D-4E6A-9C7B-2D8E0F1A3B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1C2E3F-1B4D-4E6A-9C7B-2D8E0F1A3B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B3D4F5A-2C6E-4F8B-8D9C-3E0F1A2B4C52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

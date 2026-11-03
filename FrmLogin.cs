@@ -1,4 +1,5 @@
-﻿using PROYECTO_ORICA_SAFEHANDS_VARGAS.Datos;
+﻿using ORICA.Negocio;
+using ORICA.Negocio.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,13 +16,41 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
     {
         private bool moviendo = false;
         private Point puntoInicial;
+        private readonly AutenticacionNegocio _autenticacion = new AutenticacionNegocio();
 
         public frmLogin()
         {
             InitializeComponent();
-            cbxOperador.SelectedIndex = -1;
-            txtPIN.Clear();
+            cbxOperador.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtPIN.MaxLength = 4;
             this.AcceptButton = btnIngresar;
+            this.Load += (s, e) => CargarOperadores();
+        }
+
+        private void CargarOperadores()
+        {
+            try
+            {
+                List<Usuario> operadores = _autenticacion.ListarOperadores();
+
+                cbxOperador.DataSource = operadores;
+                cbxOperador.DisplayMember = "Etiqueta";
+                cbxOperador.ValueMember = "IdUsuario";
+                cbxOperador.SelectedIndex = -1;
+
+                if (operadores.Count == 0)
+                {
+                    MessageBox.Show("No hay operadores activos con credencial PIN en la base de datos.",
+                        "ORICA SafeHands", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cargar la lista de operadores.\n" + ex.Message,
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            txtPIN.Clear();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -62,7 +91,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             if (cbxOperador.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione su cargo.", "Datos incompletos",
+                MessageBox.Show("Seleccione un operador.", "Datos incompletos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 cbxOperador.Focus();
@@ -103,9 +132,15 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 }
             }
 
-            if (pin != "1234")
+            Usuario operador = (Usuario)cbxOperador.SelectedItem;
+
+            Cursor = Cursors.WaitCursor;
+            Resultado r = _autenticacion.IngresarConPin(operador, pin);
+            Cursor = Cursors.Default;
+
+            if (!r.Exito)
             {
-                MessageBox.Show("El PIN es incorrecto.", "Acceso denegado",
+                MessageBox.Show(r.Mensaje, "Acceso denegado",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 txtPIN.Clear();
@@ -113,20 +148,27 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 return;
             }
 
-            MostrarIngreso();
-
+            MostrarIngreso(r.Mensaje);
         }
 
-        private void MostrarIngreso()
-            {
-            string cargo = cbxOperador.SelectedItem.ToString();
-
-            MessageBox.Show("Bienvenido.\nCargo: " + cargo,
+        private void MostrarIngreso(string mensaje)
+        {
+            MessageBox.Show(mensaje + "\nCargo: " + Sesion.UsuarioActual.RolNombre,
                 "Inicio de sesión exitoso",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             txtPIN.Clear();
-            }
+
+            frmPrincipal principal = new frmPrincipal();
+            principal.FormClosed += (s, e) =>
+            {
+                _autenticacion.CerrarSesion();
+                this.Close();
+            };
+
+            this.Hide();
+            principal.Show();
+        }
 
         private void btnRFID_Click(object sender, EventArgs e)
         {
@@ -140,15 +182,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     "Archivo de configuración utilizado"
                 );
 
-                if (Conexion.ProbarConexion())
-                {
-                    MessageBox.Show(
-                        "Conexión correcta con ORICA_SafeHandsDB",
-                        "ORICA SafeHands",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-                }
+                Resultado r = SistemaNegocio.ProbarConexion();
+                MessageBox.Show(r.Mensaje, "ORICA SafeHands", MessageBoxButtons.OK,
+                    r.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
