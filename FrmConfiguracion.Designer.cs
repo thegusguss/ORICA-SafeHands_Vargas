@@ -57,53 +57,53 @@
             this.lblSubtituloConfiguracion = new System.Windows.Forms.Label();
             this.lblTituloConfiguracion = new System.Windows.Forms.Label();
             this.pnlConfiguracionVoz = new System.Windows.Forms.Panel();
+            this.chkFeedbackVoz = new System.Windows.Forms.CheckBox();
+            this.chkPTTObligatorio = new System.Windows.Forms.CheckBox();
+            this.chkGramaticaCerrada = new System.Windows.Forms.CheckBox();
+            this.nudTimeoutConfirmacion = new System.Windows.Forms.NumericUpDown();
+            this.trkUmbralConfianza = new System.Windows.Forms.TrackBar();
+            this.lblTimeoutConfirmacion = new System.Windows.Forms.Label();
+            this.lblUmbralConfianza = new System.Windows.Forms.Label();
             this.lblTituloConfiguracionVoz = new System.Windows.Forms.Label();
             this.pnlConfiguracionEnlace = new System.Windows.Forms.Panel();
-            this.lblTituloConfiguracionEnlace = new System.Windows.Forms.Label();
-            this.pnlConfiguracionPersistencia = new System.Windows.Forms.Panel();
-            this.lblTituloConfiguracionPersistencia = new System.Windows.Forms.Label();
-            this.pnlConfiguracionSeguridad = new System.Windows.Forms.Panel();
-            this.lblTituloConfiguracionSeguridad = new System.Windows.Forms.Label();
-            this.lblUmbralConfianza = new System.Windows.Forms.Label();
-            this.lblTimeoutConfirmacion = new System.Windows.Forms.Label();
-            this.trkUmbralConfianza = new System.Windows.Forms.TrackBar();
-            this.nudTimeoutConfirmacion = new System.Windows.Forms.NumericUpDown();
-            this.chkGramaticaCerrada = new System.Windows.Forms.CheckBox();
-            this.chkPTTObligatorio = new System.Windows.Forms.CheckBox();
-            this.chkFeedbackVoz = new System.Windows.Forms.CheckBox();
-            this.lblPuertoESP32 = new System.Windows.Forms.Label();
-            this.lblMaxHeartbeatPerdidos = new System.Windows.Forms.Label();
-            this.lblIntervaloHeartbeat = new System.Windows.Forms.Label();
-            this.lblBaudRate = new System.Windows.Forms.Label();
-            this.cbxPuertoESP32 = new System.Windows.Forms.ComboBox();
-            this.cbxBaudRate = new System.Windows.Forms.ComboBox();
-            this.nudIntervaloHeartbeat = new System.Windows.Forms.NumericUpDown();
-            this.nudMaxHeartbeatPerdidos = new System.Windows.Forms.NumericUpDown();
+            this.btnSimularEnlace = new System.Windows.Forms.Button();
             this.chkValidarSecuencia = new System.Windows.Forms.CheckBox();
             this.chkCRCObligatorio = new System.Windows.Forms.CheckBox();
-            this.btnSimularEnlace = new System.Windows.Forms.Button();
-            this.btnSimularRedSQLConfig = new System.Windows.Forms.Button();
+            this.nudMaxHeartbeatPerdidos = new System.Windows.Forms.NumericUpDown();
+            this.nudIntervaloHeartbeat = new System.Windows.Forms.NumericUpDown();
+            this.cbxBaudRate = new System.Windows.Forms.ComboBox();
+            this.cbxPuertoESP32 = new System.Windows.Forms.ComboBox();
+            this.lblBaudRate = new System.Windows.Forms.Label();
+            this.lblIntervaloHeartbeat = new System.Windows.Forms.Label();
+            this.lblMaxHeartbeatPerdidos = new System.Windows.Forms.Label();
+            this.lblPuertoESP32 = new System.Windows.Forms.Label();
+            this.lblTituloConfiguracionEnlace = new System.Windows.Forms.Label();
+            this.pnlConfiguracionPersistencia = new System.Windows.Forms.Panel();
             this.chkSincronizarSQLServer = new System.Windows.Forms.CheckBox();
             this.chkModoOfflineFirst = new System.Windows.Forms.CheckBox();
-            this.lblModoSeguridad = new System.Windows.Forms.Label();
+            this.btnSimularRedSQLConfig = new System.Windows.Forms.Button();
+            this.lblTituloConfiguracionPersistencia = new System.Windows.Forms.Label();
+            this.pnlConfiguracionSeguridad = new System.Windows.Forms.Panel();
+            this.btnGuardarConfiguracion = new System.Windows.Forms.Button();
+            this.chkRearmeExplicito = new System.Windows.Forms.CheckBox();
             this.chkWatchdogESP32 = new System.Windows.Forms.CheckBox();
             this.chkEstadoSeguroError = new System.Windows.Forms.CheckBox();
             this.chkParadaPrioritaria = new System.Windows.Forms.CheckBox();
-            this.chkRearmeExplicito = new System.Windows.Forms.CheckBox();
-            this.btnGuardarConfiguracion = new System.Windows.Forms.Button();
+            this.lblModoSeguridad = new System.Windows.Forms.Label();
+            this.lblTituloConfiguracionSeguridad = new System.Windows.Forms.Label();
             this.flpMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMarca.SuspendLayout();
             this.pnlAcceso.SuspendLayout();
             this.pnlCabeceraConfiguracion.SuspendLayout();
             this.pnlConfiguracionVoz.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTimeoutConfirmacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkUmbralConfianza)).BeginInit();
             this.pnlConfiguracionEnlace.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxHeartbeatPerdidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIntervaloHeartbeat)).BeginInit();
             this.pnlConfiguracionPersistencia.SuspendLayout();
             this.pnlConfiguracionSeguridad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trkUmbralConfianza)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTimeoutConfirmacion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIntervaloHeartbeat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMaxHeartbeatPerdidos)).BeginInit();
             this.SuspendLayout();
             // 
             // flpMenu
@@ -505,6 +505,87 @@
             this.pnlConfiguracionVoz.Size = new System.Drawing.Size(481, 324);
             this.pnlConfiguracionVoz.TabIndex = 10;
             // 
+            // chkFeedbackVoz
+            // 
+            this.chkFeedbackVoz.AutoSize = true;
+            this.chkFeedbackVoz.BackColor = System.Drawing.Color.Transparent;
+            this.chkFeedbackVoz.ForeColor = System.Drawing.Color.White;
+            this.chkFeedbackVoz.Location = new System.Drawing.Point(24, 282);
+            this.chkFeedbackVoz.Name = "chkFeedbackVoz";
+            this.chkFeedbackVoz.Size = new System.Drawing.Size(149, 17);
+            this.chkFeedbackVoz.TabIndex = 16;
+            this.chkFeedbackVoz.Text = "Retroalimentación por voz";
+            this.chkFeedbackVoz.UseVisualStyleBackColor = false;
+            // 
+            // chkPTTObligatorio
+            // 
+            this.chkPTTObligatorio.AutoSize = true;
+            this.chkPTTObligatorio.BackColor = System.Drawing.Color.Transparent;
+            this.chkPTTObligatorio.ForeColor = System.Drawing.Color.White;
+            this.chkPTTObligatorio.Location = new System.Drawing.Point(24, 248);
+            this.chkPTTObligatorio.Name = "chkPTTObligatorio";
+            this.chkPTTObligatorio.Size = new System.Drawing.Size(188, 17);
+            this.chkPTTObligatorio.TabIndex = 15;
+            this.chkPTTObligatorio.Text = "PTT obligatorio: pulsar para hablar";
+            this.chkPTTObligatorio.UseVisualStyleBackColor = false;
+            // 
+            // chkGramaticaCerrada
+            // 
+            this.chkGramaticaCerrada.AutoSize = true;
+            this.chkGramaticaCerrada.BackColor = System.Drawing.Color.Transparent;
+            this.chkGramaticaCerrada.ForeColor = System.Drawing.Color.White;
+            this.chkGramaticaCerrada.Location = new System.Drawing.Point(24, 211);
+            this.chkGramaticaCerrada.Name = "chkGramaticaCerrada";
+            this.chkGramaticaCerrada.Size = new System.Drawing.Size(226, 17);
+            this.chkGramaticaCerrada.TabIndex = 14;
+            this.chkGramaticaCerrada.Text = "Gramática cerrada: solo frases autorizadas";
+            this.chkGramaticaCerrada.UseVisualStyleBackColor = false;
+            // 
+            // nudTimeoutConfirmacion
+            // 
+            this.nudTimeoutConfirmacion.Location = new System.Drawing.Point(20, 164);
+            this.nudTimeoutConfirmacion.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nudTimeoutConfirmacion.Name = "nudTimeoutConfirmacion";
+            this.nudTimeoutConfirmacion.Size = new System.Drawing.Size(436, 20);
+            this.nudTimeoutConfirmacion.TabIndex = 13;
+            // 
+            // trkUmbralConfianza
+            // 
+            this.trkUmbralConfianza.Location = new System.Drawing.Point(20, 84);
+            this.trkUmbralConfianza.Maximum = 100;
+            this.trkUmbralConfianza.Name = "trkUmbralConfianza";
+            this.trkUmbralConfianza.Size = new System.Drawing.Size(436, 45);
+            this.trkUmbralConfianza.TabIndex = 12;
+            this.trkUmbralConfianza.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trkUmbralConfianza.Value = 73;
+            this.trkUmbralConfianza.ValueChanged += new System.EventHandler(this.trkUmbralConfianza_ValueChanged);
+            // 
+            // lblTimeoutConfirmacion
+            // 
+            this.lblTimeoutConfirmacion.AutoSize = true;
+            this.lblTimeoutConfirmacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeoutConfirmacion.ForeColor = System.Drawing.Color.Silver;
+            this.lblTimeoutConfirmacion.Location = new System.Drawing.Point(17, 130);
+            this.lblTimeoutConfirmacion.Name = "lblTimeoutConfirmacion";
+            this.lblTimeoutConfirmacion.Size = new System.Drawing.Size(208, 15);
+            this.lblTimeoutConfirmacion.TabIndex = 11;
+            this.lblTimeoutConfirmacion.Text = "Timeout de confirmación (segundos)";
+            // 
+            // lblUmbralConfianza
+            // 
+            this.lblUmbralConfianza.AutoSize = true;
+            this.lblUmbralConfianza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUmbralConfianza.ForeColor = System.Drawing.Color.Silver;
+            this.lblUmbralConfianza.Location = new System.Drawing.Point(17, 55);
+            this.lblUmbralConfianza.Name = "lblUmbralConfianza";
+            this.lblUmbralConfianza.Size = new System.Drawing.Size(134, 15);
+            this.lblUmbralConfianza.TabIndex = 7;
+            this.lblUmbralConfianza.Text = "Umbral de confianza: —";
+            // 
             // lblTituloConfiguracionVoz
             // 
             this.lblTituloConfiguracionVoz.AutoSize = true;
@@ -539,6 +620,172 @@
             this.pnlConfiguracionEnlace.Size = new System.Drawing.Size(481, 324);
             this.pnlConfiguracionEnlace.TabIndex = 11;
             // 
+            // btnSimularEnlace
+            // 
+            this.btnSimularEnlace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSimularEnlace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnSimularEnlace.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSimularEnlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimularEnlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimularEnlace.ForeColor = System.Drawing.Color.White;
+            this.btnSimularEnlace.Location = new System.Drawing.Point(19, 270);
+            this.btnSimularEnlace.Name = "btnSimularEnlace";
+            this.btnSimularEnlace.Size = new System.Drawing.Size(440, 38);
+            this.btnSimularEnlace.TabIndex = 26;
+            this.btnSimularEnlace.Text = "Actualizar";
+            this.btnSimularEnlace.UseVisualStyleBackColor = false;
+            // 
+            // chkValidarSecuencia
+            // 
+            this.chkValidarSecuencia.AutoSize = true;
+            this.chkValidarSecuencia.BackColor = System.Drawing.Color.Transparent;
+            this.chkValidarSecuencia.ForeColor = System.Drawing.Color.White;
+            this.chkValidarSecuencia.Location = new System.Drawing.Point(22, 234);
+            this.chkValidarSecuencia.Name = "chkValidarSecuencia";
+            this.chkValidarSecuencia.Size = new System.Drawing.Size(172, 17);
+            this.chkValidarSecuencia.TabIndex = 25;
+            this.chkValidarSecuencia.Text = "Validar secuencia de mensajes";
+            this.chkValidarSecuencia.UseVisualStyleBackColor = false;
+            // 
+            // chkCRCObligatorio
+            // 
+            this.chkCRCObligatorio.AutoSize = true;
+            this.chkCRCObligatorio.BackColor = System.Drawing.Color.Transparent;
+            this.chkCRCObligatorio.ForeColor = System.Drawing.Color.White;
+            this.chkCRCObligatorio.Location = new System.Drawing.Point(22, 211);
+            this.chkCRCObligatorio.Name = "chkCRCObligatorio";
+            this.chkCRCObligatorio.Size = new System.Drawing.Size(99, 17);
+            this.chkCRCObligatorio.TabIndex = 24;
+            this.chkCRCObligatorio.Text = "CRC obligatorio";
+            this.chkCRCObligatorio.UseVisualStyleBackColor = false;
+            // 
+            // nudMaxHeartbeatPerdidos
+            // 
+            this.nudMaxHeartbeatPerdidos.Location = new System.Drawing.Point(249, 164);
+            this.nudMaxHeartbeatPerdidos.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudMaxHeartbeatPerdidos.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMaxHeartbeatPerdidos.Name = "nudMaxHeartbeatPerdidos";
+            this.nudMaxHeartbeatPerdidos.Size = new System.Drawing.Size(204, 20);
+            this.nudMaxHeartbeatPerdidos.TabIndex = 23;
+            this.nudMaxHeartbeatPerdidos.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudIntervaloHeartbeat
+            // 
+            this.nudIntervaloHeartbeat.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudIntervaloHeartbeat.Location = new System.Drawing.Point(22, 164);
+            this.nudIntervaloHeartbeat.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudIntervaloHeartbeat.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.nudIntervaloHeartbeat.Name = "nudIntervaloHeartbeat";
+            this.nudIntervaloHeartbeat.Size = new System.Drawing.Size(205, 20);
+            this.nudIntervaloHeartbeat.TabIndex = 17;
+            this.nudIntervaloHeartbeat.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // cbxBaudRate
+            // 
+            this.cbxBaudRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
+            this.cbxBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxBaudRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxBaudRate.ForeColor = System.Drawing.Color.White;
+            this.cbxBaudRate.FormattingEnabled = true;
+            this.cbxBaudRate.Items.AddRange(new object[] {
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.cbxBaudRate.Location = new System.Drawing.Point(249, 84);
+            this.cbxBaudRate.Name = "cbxBaudRate";
+            this.cbxBaudRate.Size = new System.Drawing.Size(204, 21);
+            this.cbxBaudRate.TabIndex = 22;
+            // 
+            // cbxPuertoESP32
+            // 
+            this.cbxPuertoESP32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
+            this.cbxPuertoESP32.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxPuertoESP32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxPuertoESP32.ForeColor = System.Drawing.Color.White;
+            this.cbxPuertoESP32.FormattingEnabled = true;
+            this.cbxPuertoESP32.Items.AddRange(new object[] {
+            "Ejecutado ",
+            "Rechazado",
+            "Cancelado"});
+            this.cbxPuertoESP32.Location = new System.Drawing.Point(22, 84);
+            this.cbxPuertoESP32.Name = "cbxPuertoESP32";
+            this.cbxPuertoESP32.Size = new System.Drawing.Size(205, 21);
+            this.cbxPuertoESP32.TabIndex = 21;
+            // 
+            // lblBaudRate
+            // 
+            this.lblBaudRate.AutoSize = true;
+            this.lblBaudRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaudRate.ForeColor = System.Drawing.Color.Silver;
+            this.lblBaudRate.Location = new System.Drawing.Point(246, 55);
+            this.lblBaudRate.Name = "lblBaudRate";
+            this.lblBaudRate.Size = new System.Drawing.Size(60, 15);
+            this.lblBaudRate.TabIndex = 20;
+            this.lblBaudRate.Text = "Baud rate";
+            // 
+            // lblIntervaloHeartbeat
+            // 
+            this.lblIntervaloHeartbeat.AutoSize = true;
+            this.lblIntervaloHeartbeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntervaloHeartbeat.ForeColor = System.Drawing.Color.Silver;
+            this.lblIntervaloHeartbeat.Location = new System.Drawing.Point(19, 130);
+            this.lblIntervaloHeartbeat.Name = "lblIntervaloHeartbeat";
+            this.lblIntervaloHeartbeat.Size = new System.Drawing.Size(89, 15);
+            this.lblIntervaloHeartbeat.TabIndex = 19;
+            this.lblIntervaloHeartbeat.Text = "Heartbeat (ms)";
+            // 
+            // lblMaxHeartbeatPerdidos
+            // 
+            this.lblMaxHeartbeatPerdidos.AutoSize = true;
+            this.lblMaxHeartbeatPerdidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaxHeartbeatPerdidos.ForeColor = System.Drawing.Color.Silver;
+            this.lblMaxHeartbeatPerdidos.Location = new System.Drawing.Point(246, 130);
+            this.lblMaxHeartbeatPerdidos.Name = "lblMaxHeartbeatPerdidos";
+            this.lblMaxHeartbeatPerdidos.Size = new System.Drawing.Size(140, 15);
+            this.lblMaxHeartbeatPerdidos.TabIndex = 18;
+            this.lblMaxHeartbeatPerdidos.Text = "Máx. heartbeat perdidos";
+            // 
+            // lblPuertoESP32
+            // 
+            this.lblPuertoESP32.AutoSize = true;
+            this.lblPuertoESP32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPuertoESP32.ForeColor = System.Drawing.Color.Silver;
+            this.lblPuertoESP32.Location = new System.Drawing.Point(19, 55);
+            this.lblPuertoESP32.Name = "lblPuertoESP32";
+            this.lblPuertoESP32.Size = new System.Drawing.Size(43, 15);
+            this.lblPuertoESP32.TabIndex = 17;
+            this.lblPuertoESP32.Text = "Puerto";
+            // 
             // lblTituloConfiguracionEnlace
             // 
             this.lblTituloConfiguracionEnlace.AutoSize = true;
@@ -564,6 +811,45 @@
             this.pnlConfiguracionPersistencia.Name = "pnlConfiguracionPersistencia";
             this.pnlConfiguracionPersistencia.Size = new System.Drawing.Size(481, 299);
             this.pnlConfiguracionPersistencia.TabIndex = 11;
+            // 
+            // chkSincronizarSQLServer
+            // 
+            this.chkSincronizarSQLServer.AutoSize = true;
+            this.chkSincronizarSQLServer.BackColor = System.Drawing.Color.Transparent;
+            this.chkSincronizarSQLServer.ForeColor = System.Drawing.Color.White;
+            this.chkSincronizarSQLServer.Location = new System.Drawing.Point(19, 99);
+            this.chkSincronizarSQLServer.Name = "chkSincronizarSQLServer";
+            this.chkSincronizarSQLServer.Size = new System.Drawing.Size(272, 17);
+            this.chkSincronizarSQLServer.TabIndex = 18;
+            this.chkSincronizarSQLServer.Text = "Sincronizar con SQL Server cuando exista conexión";
+            this.chkSincronizarSQLServer.UseVisualStyleBackColor = false;
+            // 
+            // chkModoOfflineFirst
+            // 
+            this.chkModoOfflineFirst.AutoSize = true;
+            this.chkModoOfflineFirst.BackColor = System.Drawing.Color.Transparent;
+            this.chkModoOfflineFirst.ForeColor = System.Drawing.Color.White;
+            this.chkModoOfflineFirst.Location = new System.Drawing.Point(19, 62);
+            this.chkModoOfflineFirst.Name = "chkModoOfflineFirst";
+            this.chkModoOfflineFirst.Size = new System.Drawing.Size(176, 17);
+            this.chkModoOfflineFirst.TabIndex = 17;
+            this.chkModoOfflineFirst.Text = "Guardar primero en SQLite local";
+            this.chkModoOfflineFirst.UseVisualStyleBackColor = false;
+            // 
+            // btnSimularRedSQLConfig
+            // 
+            this.btnSimularRedSQLConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSimularRedSQLConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnSimularRedSQLConfig.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSimularRedSQLConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSimularRedSQLConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimularRedSQLConfig.ForeColor = System.Drawing.Color.White;
+            this.btnSimularRedSQLConfig.Location = new System.Drawing.Point(19, 161);
+            this.btnSimularRedSQLConfig.Name = "btnSimularRedSQLConfig";
+            this.btnSimularRedSQLConfig.Size = new System.Drawing.Size(442, 38);
+            this.btnSimularRedSQLConfig.TabIndex = 27;
+            this.btnSimularRedSQLConfig.Text = "Simular red SQL Server";
+            this.btnSimularRedSQLConfig.UseVisualStyleBackColor = false;
             // 
             // lblTituloConfiguracionPersistencia
             // 
@@ -594,313 +880,32 @@
             this.pnlConfiguracionSeguridad.Size = new System.Drawing.Size(481, 299);
             this.pnlConfiguracionSeguridad.TabIndex = 11;
             // 
-            // lblTituloConfiguracionSeguridad
+            // btnGuardarConfiguracion
             // 
-            this.lblTituloConfiguracionSeguridad.AutoSize = true;
-            this.lblTituloConfiguracionSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloConfiguracionSeguridad.ForeColor = System.Drawing.Color.White;
-            this.lblTituloConfiguracionSeguridad.Location = new System.Drawing.Point(17, 24);
-            this.lblTituloConfiguracionSeguridad.Name = "lblTituloConfiguracionSeguridad";
-            this.lblTituloConfiguracionSeguridad.Size = new System.Drawing.Size(183, 18);
-            this.lblTituloConfiguracionSeguridad.TabIndex = 10;
-            this.lblTituloConfiguracionSeguridad.Text = "Seguridad del prototipo";
+            this.btnGuardarConfiguracion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.btnGuardarConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardarConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarConfiguracion.ForeColor = System.Drawing.Color.White;
+            this.btnGuardarConfiguracion.Location = new System.Drawing.Point(23, 237);
+            this.btnGuardarConfiguracion.Name = "btnGuardarConfiguracion";
+            this.btnGuardarConfiguracion.Size = new System.Drawing.Size(437, 38);
+            this.btnGuardarConfiguracion.TabIndex = 28;
+            this.btnGuardarConfiguracion.Text = "Guardar configuración";
+            this.btnGuardarConfiguracion.UseVisualStyleBackColor = false;
             // 
-            // lblUmbralConfianza
+            // chkRearmeExplicito
             // 
-            this.lblUmbralConfianza.AutoSize = true;
-            this.lblUmbralConfianza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUmbralConfianza.ForeColor = System.Drawing.Color.Silver;
-            this.lblUmbralConfianza.Location = new System.Drawing.Point(17, 55);
-            this.lblUmbralConfianza.Name = "lblUmbralConfianza";
-            this.lblUmbralConfianza.Size = new System.Drawing.Size(134, 15);
-            this.lblUmbralConfianza.TabIndex = 7;
-            this.lblUmbralConfianza.Text = "Umbral de confianza: —";
-            // 
-            // lblTimeoutConfirmacion
-            // 
-            this.lblTimeoutConfirmacion.AutoSize = true;
-            this.lblTimeoutConfirmacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeoutConfirmacion.ForeColor = System.Drawing.Color.Silver;
-            this.lblTimeoutConfirmacion.Location = new System.Drawing.Point(17, 130);
-            this.lblTimeoutConfirmacion.Name = "lblTimeoutConfirmacion";
-            this.lblTimeoutConfirmacion.Size = new System.Drawing.Size(208, 15);
-            this.lblTimeoutConfirmacion.TabIndex = 11;
-            this.lblTimeoutConfirmacion.Text = "Timeout de confirmación (segundos)";
-            // 
-            // trkUmbralConfianza
-            // 
-            this.trkUmbralConfianza.Location = new System.Drawing.Point(20, 84);
-            this.trkUmbralConfianza.Maximum = 100;
-            this.trkUmbralConfianza.Name = "trkUmbralConfianza";
-            this.trkUmbralConfianza.Size = new System.Drawing.Size(436, 45);
-            this.trkUmbralConfianza.TabIndex = 12;
-            this.trkUmbralConfianza.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trkUmbralConfianza.Value = 73;
-            this.trkUmbralConfianza.ValueChanged += new System.EventHandler(this.trkUmbralConfianza_ValueChanged);
-            // 
-            // nudTimeoutConfirmacion
-            // 
-            this.nudTimeoutConfirmacion.Location = new System.Drawing.Point(20, 164);
-            this.nudTimeoutConfirmacion.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.nudTimeoutConfirmacion.Name = "nudTimeoutConfirmacion";
-            this.nudTimeoutConfirmacion.Size = new System.Drawing.Size(436, 20);
-            this.nudTimeoutConfirmacion.TabIndex = 13;
-            // 
-            // chkGramaticaCerrada
-            // 
-            this.chkGramaticaCerrada.AutoSize = true;
-            this.chkGramaticaCerrada.BackColor = System.Drawing.Color.Transparent;
-            this.chkGramaticaCerrada.ForeColor = System.Drawing.Color.White;
-            this.chkGramaticaCerrada.Location = new System.Drawing.Point(24, 211);
-            this.chkGramaticaCerrada.Name = "chkGramaticaCerrada";
-            this.chkGramaticaCerrada.Size = new System.Drawing.Size(226, 17);
-            this.chkGramaticaCerrada.TabIndex = 14;
-            this.chkGramaticaCerrada.Text = "Gramática cerrada: solo frases autorizadas";
-            this.chkGramaticaCerrada.UseVisualStyleBackColor = false;
-            // 
-            // chkPTTObligatorio
-            // 
-            this.chkPTTObligatorio.AutoSize = true;
-            this.chkPTTObligatorio.BackColor = System.Drawing.Color.Transparent;
-            this.chkPTTObligatorio.ForeColor = System.Drawing.Color.White;
-            this.chkPTTObligatorio.Location = new System.Drawing.Point(24, 248);
-            this.chkPTTObligatorio.Name = "chkPTTObligatorio";
-            this.chkPTTObligatorio.Size = new System.Drawing.Size(188, 17);
-            this.chkPTTObligatorio.TabIndex = 15;
-            this.chkPTTObligatorio.Text = "PTT obligatorio: pulsar para hablar";
-            this.chkPTTObligatorio.UseVisualStyleBackColor = false;
-            // 
-            // chkFeedbackVoz
-            // 
-            this.chkFeedbackVoz.AutoSize = true;
-            this.chkFeedbackVoz.BackColor = System.Drawing.Color.Transparent;
-            this.chkFeedbackVoz.ForeColor = System.Drawing.Color.White;
-            this.chkFeedbackVoz.Location = new System.Drawing.Point(24, 282);
-            this.chkFeedbackVoz.Name = "chkFeedbackVoz";
-            this.chkFeedbackVoz.Size = new System.Drawing.Size(149, 17);
-            this.chkFeedbackVoz.TabIndex = 16;
-            this.chkFeedbackVoz.Text = "Retroalimentación por voz";
-            this.chkFeedbackVoz.UseVisualStyleBackColor = false;
-            // 
-            // lblPuertoESP32
-            // 
-            this.lblPuertoESP32.AutoSize = true;
-            this.lblPuertoESP32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPuertoESP32.ForeColor = System.Drawing.Color.Silver;
-            this.lblPuertoESP32.Location = new System.Drawing.Point(19, 55);
-            this.lblPuertoESP32.Name = "lblPuertoESP32";
-            this.lblPuertoESP32.Size = new System.Drawing.Size(43, 15);
-            this.lblPuertoESP32.TabIndex = 17;
-            this.lblPuertoESP32.Text = "Puerto";
-            // 
-            // lblMaxHeartbeatPerdidos
-            // 
-            this.lblMaxHeartbeatPerdidos.AutoSize = true;
-            this.lblMaxHeartbeatPerdidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxHeartbeatPerdidos.ForeColor = System.Drawing.Color.Silver;
-            this.lblMaxHeartbeatPerdidos.Location = new System.Drawing.Point(246, 130);
-            this.lblMaxHeartbeatPerdidos.Name = "lblMaxHeartbeatPerdidos";
-            this.lblMaxHeartbeatPerdidos.Size = new System.Drawing.Size(140, 15);
-            this.lblMaxHeartbeatPerdidos.TabIndex = 18;
-            this.lblMaxHeartbeatPerdidos.Text = "Máx. heartbeat perdidos";
-            // 
-            // lblIntervaloHeartbeat
-            // 
-            this.lblIntervaloHeartbeat.AutoSize = true;
-            this.lblIntervaloHeartbeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntervaloHeartbeat.ForeColor = System.Drawing.Color.Silver;
-            this.lblIntervaloHeartbeat.Location = new System.Drawing.Point(19, 130);
-            this.lblIntervaloHeartbeat.Name = "lblIntervaloHeartbeat";
-            this.lblIntervaloHeartbeat.Size = new System.Drawing.Size(89, 15);
-            this.lblIntervaloHeartbeat.TabIndex = 19;
-            this.lblIntervaloHeartbeat.Text = "Heartbeat (ms)";
-            // 
-            // lblBaudRate
-            // 
-            this.lblBaudRate.AutoSize = true;
-            this.lblBaudRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaudRate.ForeColor = System.Drawing.Color.Silver;
-            this.lblBaudRate.Location = new System.Drawing.Point(246, 55);
-            this.lblBaudRate.Name = "lblBaudRate";
-            this.lblBaudRate.Size = new System.Drawing.Size(60, 15);
-            this.lblBaudRate.TabIndex = 20;
-            this.lblBaudRate.Text = "Baud rate";
-            // 
-            // cbxPuertoESP32
-            // 
-            this.cbxPuertoESP32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
-            this.cbxPuertoESP32.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPuertoESP32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxPuertoESP32.ForeColor = System.Drawing.Color.White;
-            this.cbxPuertoESP32.FormattingEnabled = true;
-            this.cbxPuertoESP32.Items.AddRange(new object[] {
-            "Ejecutado ",
-            "Rechazado",
-            "Cancelado"});
-            this.cbxPuertoESP32.Location = new System.Drawing.Point(22, 84);
-            this.cbxPuertoESP32.Name = "cbxPuertoESP32";
-            this.cbxPuertoESP32.Size = new System.Drawing.Size(205, 21);
-            this.cbxPuertoESP32.TabIndex = 21;
-            // 
-            // cbxBaudRate
-            // 
-            this.cbxBaudRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
-            this.cbxBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxBaudRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxBaudRate.ForeColor = System.Drawing.Color.White;
-            this.cbxBaudRate.FormattingEnabled = true;
-            this.cbxBaudRate.Items.AddRange(new object[] {
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.cbxBaudRate.Location = new System.Drawing.Point(249, 84);
-            this.cbxBaudRate.Name = "cbxBaudRate";
-            this.cbxBaudRate.Size = new System.Drawing.Size(204, 21);
-            this.cbxBaudRate.TabIndex = 22;
-            // 
-            // nudIntervaloHeartbeat
-            // 
-            this.nudIntervaloHeartbeat.Increment = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nudIntervaloHeartbeat.Location = new System.Drawing.Point(22, 164);
-            this.nudIntervaloHeartbeat.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudIntervaloHeartbeat.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nudIntervaloHeartbeat.Name = "nudIntervaloHeartbeat";
-            this.nudIntervaloHeartbeat.Size = new System.Drawing.Size(205, 20);
-            this.nudIntervaloHeartbeat.TabIndex = 17;
-            this.nudIntervaloHeartbeat.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // nudMaxHeartbeatPerdidos
-            // 
-            this.nudMaxHeartbeatPerdidos.Location = new System.Drawing.Point(249, 164);
-            this.nudMaxHeartbeatPerdidos.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudMaxHeartbeatPerdidos.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudMaxHeartbeatPerdidos.Name = "nudMaxHeartbeatPerdidos";
-            this.nudMaxHeartbeatPerdidos.Size = new System.Drawing.Size(204, 20);
-            this.nudMaxHeartbeatPerdidos.TabIndex = 23;
-            this.nudMaxHeartbeatPerdidos.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // chkValidarSecuencia
-            // 
-            this.chkValidarSecuencia.AutoSize = true;
-            this.chkValidarSecuencia.BackColor = System.Drawing.Color.Transparent;
-            this.chkValidarSecuencia.ForeColor = System.Drawing.Color.White;
-            this.chkValidarSecuencia.Location = new System.Drawing.Point(22, 234);
-            this.chkValidarSecuencia.Name = "chkValidarSecuencia";
-            this.chkValidarSecuencia.Size = new System.Drawing.Size(172, 17);
-            this.chkValidarSecuencia.TabIndex = 25;
-            this.chkValidarSecuencia.Text = "Validar secuencia de mensajes";
-            this.chkValidarSecuencia.UseVisualStyleBackColor = false;
-            // 
-            // chkCRCObligatorio
-            // 
-            this.chkCRCObligatorio.AutoSize = true;
-            this.chkCRCObligatorio.BackColor = System.Drawing.Color.Transparent;
-            this.chkCRCObligatorio.ForeColor = System.Drawing.Color.White;
-            this.chkCRCObligatorio.Location = new System.Drawing.Point(22, 211);
-            this.chkCRCObligatorio.Name = "chkCRCObligatorio";
-            this.chkCRCObligatorio.Size = new System.Drawing.Size(99, 17);
-            this.chkCRCObligatorio.TabIndex = 24;
-            this.chkCRCObligatorio.Text = "CRC obligatorio";
-            this.chkCRCObligatorio.UseVisualStyleBackColor = false;
-            // 
-            // btnSimularEnlace
-            // 
-            this.btnSimularEnlace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSimularEnlace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnSimularEnlace.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSimularEnlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimularEnlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimularEnlace.ForeColor = System.Drawing.Color.White;
-            this.btnSimularEnlace.Location = new System.Drawing.Point(19, 270);
-            this.btnSimularEnlace.Name = "btnSimularEnlace";
-            this.btnSimularEnlace.Size = new System.Drawing.Size(440, 38);
-            this.btnSimularEnlace.TabIndex = 26;
-            this.btnSimularEnlace.Text = "Actualizar";
-            this.btnSimularEnlace.UseVisualStyleBackColor = false;
-            // 
-            // btnSimularRedSQLConfig
-            // 
-            this.btnSimularRedSQLConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSimularRedSQLConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnSimularRedSQLConfig.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSimularRedSQLConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSimularRedSQLConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimularRedSQLConfig.ForeColor = System.Drawing.Color.White;
-            this.btnSimularRedSQLConfig.Location = new System.Drawing.Point(19, 161);
-            this.btnSimularRedSQLConfig.Name = "btnSimularRedSQLConfig";
-            this.btnSimularRedSQLConfig.Size = new System.Drawing.Size(442, 38);
-            this.btnSimularRedSQLConfig.TabIndex = 27;
-            this.btnSimularRedSQLConfig.Text = "Simular red SQL Server";
-            this.btnSimularRedSQLConfig.UseVisualStyleBackColor = false;
-            // 
-            // chkSincronizarSQLServer
-            // 
-            this.chkSincronizarSQLServer.AutoSize = true;
-            this.chkSincronizarSQLServer.BackColor = System.Drawing.Color.Transparent;
-            this.chkSincronizarSQLServer.ForeColor = System.Drawing.Color.White;
-            this.chkSincronizarSQLServer.Location = new System.Drawing.Point(19, 99);
-            this.chkSincronizarSQLServer.Name = "chkSincronizarSQLServer";
-            this.chkSincronizarSQLServer.Size = new System.Drawing.Size(272, 17);
-            this.chkSincronizarSQLServer.TabIndex = 18;
-            this.chkSincronizarSQLServer.Text = "Sincronizar con SQL Server cuando exista conexión";
-            this.chkSincronizarSQLServer.UseVisualStyleBackColor = false;
-            // 
-            // chkModoOfflineFirst
-            // 
-            this.chkModoOfflineFirst.AutoSize = true;
-            this.chkModoOfflineFirst.BackColor = System.Drawing.Color.Transparent;
-            this.chkModoOfflineFirst.ForeColor = System.Drawing.Color.White;
-            this.chkModoOfflineFirst.Location = new System.Drawing.Point(19, 62);
-            this.chkModoOfflineFirst.Name = "chkModoOfflineFirst";
-            this.chkModoOfflineFirst.Size = new System.Drawing.Size(176, 17);
-            this.chkModoOfflineFirst.TabIndex = 17;
-            this.chkModoOfflineFirst.Text = "Guardar primero en SQLite local";
-            this.chkModoOfflineFirst.UseVisualStyleBackColor = false;
-            // 
-            // lblModoSeguridad
-            // 
-            this.lblModoSeguridad.AutoSize = true;
-            this.lblModoSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModoSeguridad.ForeColor = System.Drawing.Color.Silver;
-            this.lblModoSeguridad.Location = new System.Drawing.Point(20, 61);
-            this.lblModoSeguridad.Name = "lblModoSeguridad";
-            this.lblModoSeguridad.Size = new System.Drawing.Size(117, 15);
-            this.lblModoSeguridad.TabIndex = 27;
-            this.lblModoSeguridad.Text = "Modo demostración";
+            this.chkRearmeExplicito.AutoSize = true;
+            this.chkRearmeExplicito.BackColor = System.Drawing.Color.Transparent;
+            this.chkRearmeExplicito.ForeColor = System.Drawing.Color.White;
+            this.chkRearmeExplicito.Location = new System.Drawing.Point(23, 196);
+            this.chkRearmeExplicito.Name = "chkRearmeExplicito";
+            this.chkRearmeExplicito.Size = new System.Drawing.Size(187, 17);
+            this.chkRearmeExplicito.TabIndex = 31;
+            this.chkRearmeExplicito.Text = "Rearme mediante acción explícita";
+            this.chkRearmeExplicito.UseVisualStyleBackColor = false;
             // 
             // chkWatchdogESP32
             // 
@@ -938,32 +943,27 @@
             this.chkParadaPrioritaria.Text = "Parada prioritaria";
             this.chkParadaPrioritaria.UseVisualStyleBackColor = false;
             // 
-            // chkRearmeExplicito
+            // lblModoSeguridad
             // 
-            this.chkRearmeExplicito.AutoSize = true;
-            this.chkRearmeExplicito.BackColor = System.Drawing.Color.Transparent;
-            this.chkRearmeExplicito.ForeColor = System.Drawing.Color.White;
-            this.chkRearmeExplicito.Location = new System.Drawing.Point(23, 196);
-            this.chkRearmeExplicito.Name = "chkRearmeExplicito";
-            this.chkRearmeExplicito.Size = new System.Drawing.Size(187, 17);
-            this.chkRearmeExplicito.TabIndex = 31;
-            this.chkRearmeExplicito.Text = "Rearme mediante acción explícita";
-            this.chkRearmeExplicito.UseVisualStyleBackColor = false;
+            this.lblModoSeguridad.AutoSize = true;
+            this.lblModoSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModoSeguridad.ForeColor = System.Drawing.Color.Silver;
+            this.lblModoSeguridad.Location = new System.Drawing.Point(20, 61);
+            this.lblModoSeguridad.Name = "lblModoSeguridad";
+            this.lblModoSeguridad.Size = new System.Drawing.Size(117, 15);
+            this.lblModoSeguridad.TabIndex = 27;
+            this.lblModoSeguridad.Text = "Modo demostración";
             // 
-            // btnGuardarConfiguracion
+            // lblTituloConfiguracionSeguridad
             // 
-            this.btnGuardarConfiguracion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardarConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
-            this.btnGuardarConfiguracion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardarConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarConfiguracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarConfiguracion.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarConfiguracion.Location = new System.Drawing.Point(23, 237);
-            this.btnGuardarConfiguracion.Name = "btnGuardarConfiguracion";
-            this.btnGuardarConfiguracion.Size = new System.Drawing.Size(437, 38);
-            this.btnGuardarConfiguracion.TabIndex = 28;
-            this.btnGuardarConfiguracion.Text = "Guardar configuración";
-            this.btnGuardarConfiguracion.UseVisualStyleBackColor = false;
+            this.lblTituloConfiguracionSeguridad.AutoSize = true;
+            this.lblTituloConfiguracionSeguridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloConfiguracionSeguridad.ForeColor = System.Drawing.Color.White;
+            this.lblTituloConfiguracionSeguridad.Location = new System.Drawing.Point(17, 24);
+            this.lblTituloConfiguracionSeguridad.Name = "lblTituloConfiguracionSeguridad";
+            this.lblTituloConfiguracionSeguridad.Size = new System.Drawing.Size(183, 18);
+            this.lblTituloConfiguracionSeguridad.TabIndex = 10;
+            this.lblTituloConfiguracionSeguridad.Text = "Seguridad del prototipo";
             // 
             // FrmConfiguracion
             // 
@@ -990,16 +990,16 @@
             this.pnlCabeceraConfiguracion.PerformLayout();
             this.pnlConfiguracionVoz.ResumeLayout(false);
             this.pnlConfiguracionVoz.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTimeoutConfirmacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trkUmbralConfianza)).EndInit();
             this.pnlConfiguracionEnlace.ResumeLayout(false);
             this.pnlConfiguracionEnlace.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxHeartbeatPerdidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIntervaloHeartbeat)).EndInit();
             this.pnlConfiguracionPersistencia.ResumeLayout(false);
             this.pnlConfiguracionPersistencia.PerformLayout();
             this.pnlConfiguracionSeguridad.ResumeLayout(false);
             this.pnlConfiguracionSeguridad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trkUmbralConfianza)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTimeoutConfirmacion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIntervaloHeartbeat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMaxHeartbeatPerdidos)).EndInit();
             this.ResumeLayout(false);
 
         }

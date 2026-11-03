@@ -15,7 +15,7 @@ namespace ORICA.Datos
         public DataTable ListarUsuariosConPin()
         {
             const string sql = @"
-SELECT u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos, u.IdRol, r.Nombre AS RolNombre, u.Estado
+SELECT u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos, u.IdRol, r.Codigo AS RolCodigo, r.Nombre AS RolNombre, u.Estado
 FROM dbo.Usuario u
 INNER JOIN dbo.Rol r ON r.IdRol = u.IdRol
 WHERE u.Estado = 1

@@ -13,6 +13,7 @@ namespace ORICA.Negocio.Modelos
         public string Correo { get; set; }
         public int IdRol { get; set; }
         public string RolNombre { get; set; }
+        public string RolCodigo { get; set; }
         public bool Estado { get; set; }
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaModificacion { get; set; }

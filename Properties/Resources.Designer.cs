@@ -73,6 +73,26 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmicrofono {
+            get {
+                object obj = ResourceManager.GetObject("iconmicrofono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ícono_de_micrófono_violeta_minimalista {
+            get {
+                object obj = ResourceManager.GetObject("Ícono de micrófono violeta minimalista", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_OS_blanco_sobre_fondo_transparente__1_ {
             get {
                 object obj = ResourceManager.GetObject("Logo OS blanco sobre fondo transparente (1)", resourceCulture);

@@ -159,11 +159,25 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             txtPIN.Clear();
 
-            frmPrincipal principal = new frmPrincipal();
+            // El rol Operador trabaja en su propio espacio; el resto entra al panel administrativo.
+            Form principal = Sesion.UsuarioActual.RolCodigo == "OPE"
+                ? (Form)new FrmPrincipalOperador()
+                : new frmPrincipal();
+
             principal.FormClosed += (s, e) =>
             {
                 _autenticacion.CerrarSesion();
-                this.Close();
+
+                FrmPrincipalOperador operador = principal as FrmPrincipalOperador;
+                if (operador != null && operador.CerrarSesionSolicitada)
+                {
+                    CargarOperadores();
+                    this.Show();
+                }
+                else
+                {
+                    this.Close();
+                }
             };
 
             this.Hide();

@@ -34,6 +34,7 @@ namespace ORICA.Negocio
                     Nombres = Lectura.Texto(r, "Nombres"),
                     Apellidos = Lectura.Texto(r, "Apellidos"),
                     IdRol = Lectura.Entero(r, "IdRol"),
+                    RolCodigo = Lectura.Texto(r, "RolCodigo"),
                     RolNombre = Lectura.Texto(r, "RolNombre"),
                     Estado = Lectura.Booleano(r, "Estado")
                 });
