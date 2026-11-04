@@ -8,11 +8,11 @@ namespace ORICA.Datos
     /// Helper interno de ADO.NET. Evita repetir el mismo bloque using/open
     /// en cada clase Datos. Solo visible dentro de ORICA.Datos.
     /// </summary>
-    internal static class BaseDatos
+    internal static class clsBaseDatos
     {
-        public static DataTable Consultar(string sql, params SqlParameter[] parametros)
+        public static DataTable mtdConsultar(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = Conexion.Crear())
+            using (SqlConnection cn = clsConexion.mtdCrearConexion())
             using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
                 if (parametros != null) cmd.Parameters.AddRange(parametros);
@@ -26,9 +26,9 @@ namespace ORICA.Datos
             }
         }
 
-        public static object Escalar(string sql, params SqlParameter[] parametros)
+        public static object mtdConsultarValor(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = Conexion.Crear())
+            using (SqlConnection cn = clsConexion.mtdCrearConexion())
             using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
                 if (parametros != null) cmd.Parameters.AddRange(parametros);
@@ -38,9 +38,9 @@ namespace ORICA.Datos
         }
 
         /// <summary>Devuelve el número de filas afectadas.</summary>
-        public static int Ejecutar(string sql, params SqlParameter[] parametros)
+        public static int mtdEjecutarComando(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = Conexion.Crear())
+            using (SqlConnection cn = clsConexion.mtdCrearConexion())
             using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
                 if (parametros != null) cmd.Parameters.AddRange(parametros);
@@ -50,7 +50,7 @@ namespace ORICA.Datos
         }
 
         /// <summary>Convierte texto vacío o null en DBNull para columnas opcionales.</summary>
-        public static object TextoONulo(string valor)
+        public static object mtdTextoParaSql(string valor)
         {
             return string.IsNullOrWhiteSpace(valor) ? (object)DBNull.Value : valor;
         }

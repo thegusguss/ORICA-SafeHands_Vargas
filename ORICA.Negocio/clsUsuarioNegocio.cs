@@ -8,7 +8,7 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    public class UsuarioNegocio
+    public class clsUsuarioNegocio
     {
         // Ajustar a las longitudes reales de la tabla dbo.Usuario
         private const int MaxCodigo = 15;
@@ -21,51 +21,51 @@ namespace ORICA.Negocio
         private static readonly Regex RegexCorreo =
             new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
 
-        private readonly UsuarioDatos _datos = new UsuarioDatos();
-        private readonly RolNegocio _rolNegocio = new RolNegocio();
+        private readonly clsUsuarioDatos _datos = new clsUsuarioDatos();
+        private readonly clsRolNegocio _rolNegocio = new clsRolNegocio();
 
         // ================= CONSULTAS =================
 
-        public List<Usuario> Listar()
+        public List<Usuario> mtdListarUsuarios()
         {
-            return MapearLista(_datos.Listar());
+            return mtdLeerUsuarios(_datos.mtdListarUsuarios());
         }
 
-        public List<Usuario> Buscar(string texto)
+        public List<Usuario> mtdBuscarUsuarios(string texto)
         {
             texto = (texto ?? string.Empty).Trim();
-            return texto.Length == 0 ? Listar() : MapearLista(_datos.Buscar(texto));
+            return texto.Length == 0 ? mtdListarUsuarios() : mtdLeerUsuarios(_datos.mtdBuscarUsuarios(texto));
         }
 
-        public Usuario ObtenerPorId(int idUsuario)
+        public Usuario mtdObtenerPorId(int idUsuario)
         {
             if (idUsuario <= 0) return null;
-            DataTable dt = _datos.ObtenerPorId(idUsuario);
-            return dt.Rows.Count == 0 ? null : Mapear(dt.Rows[0]);
+            DataTable dt = _datos.mtdObtenerPorId(idUsuario);
+            return dt.Rows.Count == 0 ? null : mtdLeerUsuario(dt.Rows[0]);
         }
 
         // ================= ESCRITURA =================
 
-        public Resultado Registrar(Usuario u)
+        public Resultado mtdRegistrar(Usuario u)
         {
             try
             {
                 if (u == null) return Resultado.Error("No se recibieron datos del usuario.");
 
-                Normalizar(u);
-                string error = Validar(u, null);
+                mtdNormalizarUsuario(u);
+                string error = mtdValidarUsuario(u, null);
                 if (error != null) return Resultado.Error(error);
 
-                int id = _datos.Registrar(u.Codigo, u.Nombres, u.Apellidos, u.Documento,
+                int id = _datos.mtdRegistrar(u.Codigo, u.Nombres, u.Apellidos, u.Documento,
                                           u.Telefono, u.Correo, u.IdRol, true);
 
                 return Resultado.Ok($"Usuario {u.Codigo} registrado correctamente.", id);
             }
-            catch (SqlException ex) { return Resultado.Error(TraducirError(ex)); }
+            catch (SqlException ex) { return Resultado.Error(mtdTraducirError(ex)); }
             catch (Exception ex) { return Resultado.Error("Error inesperado: " + ex.Message); }
         }
 
-        public Resultado Modificar(Usuario u)
+        public Resultado mtdModificar(Usuario u)
         {
             try
             {
@@ -75,11 +75,11 @@ namespace ORICA.Negocio
                 if (u.RowVersion == null)
                     return Resultado.Error("No se pudo verificar la versión del registro. Actualice la lista e intente nuevamente.");
 
-                Normalizar(u);
-                string error = Validar(u, u.IdUsuario);
+                mtdNormalizarUsuario(u);
+                string error = mtdValidarUsuario(u, u.IdUsuario);
                 if (error != null) return Resultado.Error(error);
 
-                int filas = _datos.Modificar(u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos,
+                int filas = _datos.mtdModificar(u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos,
                                              u.Documento, u.Telefono, u.Correo, u.IdRol, u.RowVersion);
 
                 if (filas == 0)
@@ -87,40 +87,40 @@ namespace ORICA.Negocio
 
                 return Resultado.Ok($"Usuario {u.Codigo} modificado correctamente.", u.IdUsuario);
             }
-            catch (SqlException ex) { return Resultado.Error(TraducirError(ex)); }
+            catch (SqlException ex) { return Resultado.Error(mtdTraducirError(ex)); }
             catch (Exception ex) { return Resultado.Error("Error inesperado: " + ex.Message); }
         }
 
-        public Resultado CambiarEstado(int idUsuario, bool activo)
+        public Resultado mtdCambiarEstado(int idUsuario, bool activo)
         {
             try
             {
                 if (idUsuario <= 0) return Resultado.Error("Seleccione un usuario válido.");
 
-                int filas = _datos.CambiarEstado(idUsuario, activo);
+                int filas = _datos.mtdCambiarEstado(idUsuario, activo);
                 if (filas == 0) return Resultado.Error("El usuario ya no existe.");
 
                 return Resultado.Ok(activo ? "Usuario activado correctamente." : "Usuario suspendido correctamente.", idUsuario);
             }
-            catch (SqlException ex) { return Resultado.Error(TraducirError(ex)); }
+            catch (SqlException ex) { return Resultado.Error(mtdTraducirError(ex)); }
             catch (Exception ex) { return Resultado.Error("Error inesperado: " + ex.Message); }
         }
 
         // ================= REGLAS =================
 
-        private static void Normalizar(Usuario u)
+        private static void mtdNormalizarUsuario(Usuario u)
         {
             u.Codigo = (u.Codigo ?? string.Empty).Trim().ToUpperInvariant();
             u.Nombres = (u.Nombres ?? string.Empty).Trim();
             u.Apellidos = (u.Apellidos ?? string.Empty).Trim();
-            u.Documento = VacioANulo(u.Documento);
-            u.Telefono = VacioANulo(u.Telefono);
-            u.Correo = VacioANulo(u.Correo);
+            u.Documento = mtdVacioANulo(u.Documento);
+            u.Telefono = mtdVacioANulo(u.Telefono);
+            u.Correo = mtdVacioANulo(u.Correo);
             if (u.Correo != null) u.Correo = u.Correo.ToLowerInvariant();
         }
 
         /// <summary>Devuelve null si todo es válido, o el mensaje del primer error.</summary>
-        private string Validar(Usuario u, int? idExcluir)
+        private string mtdValidarUsuario(Usuario u, int? idExcluir)
         {
             // Obligatorios
             if (u.Codigo.Length == 0) return "El código es obligatorio.";
@@ -140,20 +140,20 @@ namespace ORICA.Negocio
 
             // Rol
             if (u.IdRol <= 0) return "Seleccione un rol.";
-            if (!_rolNegocio.EsRolValido(u.IdRol)) return "El rol seleccionado no es válido o está inactivo.";
+            if (!_rolNegocio.mtdEsRolValido(u.IdRol)) return "El rol seleccionado no es válido o está inactivo.";
 
             // Duplicados
-            if (_datos.ExisteCodigo(u.Codigo, idExcluir))
+            if (_datos.mtdExisteCodigo(u.Codigo, idExcluir))
                 return $"El código {u.Codigo} ya se encuentra registrado.";
-            if (u.Documento != null && _datos.ExisteDocumento(u.Documento, idExcluir))
+            if (u.Documento != null && _datos.mtdExisteDocumento(u.Documento, idExcluir))
                 return $"El documento {u.Documento} ya se encuentra registrado.";
-            if (u.Correo != null && _datos.ExisteCorreo(u.Correo, idExcluir))
+            if (u.Correo != null && _datos.mtdExisteCorreo(u.Correo, idExcluir))
                 return $"El correo {u.Correo} ya se encuentra registrado.";
 
             return null;
         }
 
-        private static string TraducirError(SqlException ex)
+        private static string mtdTraducirError(SqlException ex)
         {
             switch (ex.Number)
             {
@@ -169,38 +169,38 @@ namespace ORICA.Negocio
             }
         }
 
-        private static string VacioANulo(string valor)
+        private static string mtdVacioANulo(string valor)
         {
             return string.IsNullOrWhiteSpace(valor) ? null : valor.Trim();
         }
 
         // ================= MAPEO =================
 
-        private static List<Usuario> MapearLista(DataTable dt)
+        private static List<Usuario> mtdLeerUsuarios(DataTable dt)
         {
             List<Usuario> lista = new List<Usuario>();
-            foreach (DataRow r in dt.Rows) lista.Add(Mapear(r));
+            foreach (DataRow r in dt.Rows) lista.Add(mtdLeerUsuario(r));
             return lista;
         }
 
-        private static Usuario Mapear(DataRow r)
+        private static Usuario mtdLeerUsuario(DataRow r)
         {
             return new Usuario
             {
-                IdUsuario = Lectura.Entero(r, "IdUsuario"),
-                Codigo = Lectura.Texto(r, "Codigo"),
-                Nombres = Lectura.Texto(r, "Nombres"),
-                Apellidos = Lectura.Texto(r, "Apellidos"),
-                Documento = Lectura.Texto(r, "Documento"),
-                Telefono = Lectura.Texto(r, "Telefono"),
-                Correo = Lectura.Texto(r, "Correo"),
-                IdRol = Lectura.Entero(r, "IdRol"),
-                RolNombre = Lectura.Texto(r, "RolNombre"),
-                Estado = Lectura.Booleano(r, "Estado"),
-                FechaRegistro = Lectura.Fecha(r, "FechaRegistro"),
-                FechaModificacion = Lectura.Fecha(r, "FechaModificacion"),
-                UltimoAcceso = Lectura.Fecha(r, "UltimoAcceso"),
-                RowVersion = Lectura.Bytes(r, "RowVersion")
+                IdUsuario = clsLectura.mtdLeerEntero(r, "IdUsuario"),
+                Codigo = clsLectura.mtdLeerTexto(r, "Codigo"),
+                Nombres = clsLectura.mtdLeerTexto(r, "Nombres"),
+                Apellidos = clsLectura.mtdLeerTexto(r, "Apellidos"),
+                Documento = clsLectura.mtdLeerTexto(r, "Documento"),
+                Telefono = clsLectura.mtdLeerTexto(r, "Telefono"),
+                Correo = clsLectura.mtdLeerTexto(r, "Correo"),
+                IdRol = clsLectura.mtdLeerEntero(r, "IdRol"),
+                RolNombre = clsLectura.mtdLeerTexto(r, "RolNombre"),
+                Estado = clsLectura.mtdLeerBooleano(r, "Estado"),
+                FechaRegistro = clsLectura.mtdLeerFecha(r, "FechaRegistro"),
+                FechaModificacion = clsLectura.mtdLeerFecha(r, "FechaModificacion"),
+                UltimoAcceso = clsLectura.mtdLeerFecha(r, "UltimoAcceso"),
+                RowVersion = clsLectura.mtdLeerBytes(r, "RowVersion")
             };
         }
     }

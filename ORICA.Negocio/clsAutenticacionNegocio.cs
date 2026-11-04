@@ -10,33 +10,33 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    public class AutenticacionNegocio
+    public class clsAutenticacionNegocio
     {
         private const int LongitudPin = 4;
         private const int MaxIntentosFallidos = 5;
         private const string MetodoPin = "PIN";
 
-        private readonly AutenticacionDatos _datos = new AutenticacionDatos();
+        private readonly clsAutenticacionDatos _datos = new clsAutenticacionDatos();
 
         // ================= CONSULTAS =================
 
-        /// <summary>Operadores que pueden iniciar sesión con PIN.</summary>
-        public List<Usuario> ListarOperadores()
+        //Operadores que pueden iniciar sesión con PIN.
+        public List<Usuario> mtdListarOperadores()
         {
             List<Usuario> lista = new List<Usuario>();
 
-            foreach (DataRow r in _datos.ListarUsuariosConPin().Rows)
+            foreach (DataRow r in _datos.mtdListarUsuariosConPin().Rows)
             {
                 lista.Add(new Usuario
                 {
-                    IdUsuario = Lectura.Entero(r, "IdUsuario"),
-                    Codigo = Lectura.Texto(r, "Codigo"),
-                    Nombres = Lectura.Texto(r, "Nombres"),
-                    Apellidos = Lectura.Texto(r, "Apellidos"),
-                    IdRol = Lectura.Entero(r, "IdRol"),
-                    RolCodigo = Lectura.Texto(r, "RolCodigo"),
-                    RolNombre = Lectura.Texto(r, "RolNombre"),
-                    Estado = Lectura.Booleano(r, "Estado")
+                    IdUsuario = clsLectura.mtdLeerEntero(r, "IdUsuario"),
+                    Codigo = clsLectura.mtdLeerTexto(r, "Codigo"),
+                    Nombres = clsLectura.mtdLeerTexto(r, "Nombres"),
+                    Apellidos = clsLectura.mtdLeerTexto(r, "Apellidos"),
+                    IdRol = clsLectura.mtdLeerEntero(r, "IdRol"),
+                    RolCodigo = clsLectura.mtdLeerTexto(r, "RolCodigo"),
+                    RolNombre = clsLectura.mtdLeerTexto(r, "RolNombre"),
+                    Estado = clsLectura.mtdLeerBooleano(r, "Estado")
                 });
             }
 
@@ -45,7 +45,7 @@ namespace ORICA.Negocio
 
         // ================= INICIO / CIERRE DE SESIÓN =================
 
-        public Resultado IngresarConPin(Usuario usuario, string pin)
+        public Resultado mtdIniciarSesionConPin(Usuario usuario, string pin)
         {
             try
             {
@@ -53,26 +53,27 @@ namespace ORICA.Negocio
                     return Resultado.Error("Seleccione un operador.");
 
                 pin = (pin ?? string.Empty).Trim();
-                if (pin.Length == 0) return Resultado.Error("Ingrese su PIN.");
-                if (pin.Length != LongitudPin || !pin.All(char.IsDigit))
-                    return Resultado.Error($"El PIN debe tener {LongitudPin} números.");
+                string errorPin = mtdValidarPin(pin);
+                if (errorPin != null)
+                    return Resultado.Error(errorPin);
 
-                DataTable dt = _datos.ObtenerCredencialPin(usuario.IdUsuario);
-                if (dt.Rows.Count == 0)
+                DataTable credenciales = _datos.mtdObtenerCredencialPin(usuario.IdUsuario);
+                if (credenciales.Rows.Count == 0)
                     return Resultado.Error("El operador no tiene una credencial PIN activa.");
 
-                DataRow c = dt.Rows[0];
-                int idCredencial = Lectura.Entero(c, "IdCredencial");
+                DataRow credencial = credenciales.Rows[0];
+                int idCredencial = clsLectura.mtdLeerEntero(credencial, "IdCredencial");
+                int intentosFallidos = clsLectura.mtdLeerEntero(credencial, "IntentosFallidos");
 
-                if (Lectura.Entero(c, "IntentosFallidos") >= MaxIntentosFallidos)
+                if (intentosFallidos >= MaxIntentosFallidos)
                     return Resultado.Error("La credencial está bloqueada por intentos fallidos. Contacte al administrador.");
 
-                byte[] hashGuardado = Lectura.Bytes(c, "HashCredencial");
-                byte[] salt = Lectura.Bytes(c, "Salt");
+                byte[] hashGuardado = clsLectura.mtdLeerBytes(credencial, "HashCredencial");
+                byte[] salt = clsLectura.mtdLeerBytes(credencial, "Salt");
 
-                if (!PinCoincide(pin, salt, hashGuardado))
+                if (!mtdPinCoincide(pin, salt, hashGuardado))
                 {
-                    int intentos = _datos.RegistrarIntentoFallido(idCredencial);
+                    int intentos = _datos.mtdRegistrarIntentoFallido(idCredencial);
                     int restantes = MaxIntentosFallidos - intentos;
 
                     return restantes > 0
@@ -80,7 +81,7 @@ namespace ORICA.Negocio
                         : Resultado.Error("El PIN es incorrecto. La credencial quedó bloqueada.");
                 }
 
-                Guid idSesion = _datos.RegistrarAccesoExitoso(idCredencial, usuario.IdUsuario,
+                Guid idSesion = _datos.mtdRegistrarAccesoExitoso(idCredencial, usuario.IdUsuario,
                                                               MetodoPin, Environment.MachineName);
                 Sesion.Iniciar(usuario, idSesion);
 
@@ -90,11 +91,11 @@ namespace ORICA.Negocio
             catch (Exception ex) { return Resultado.Error("Error inesperado: " + ex.Message); }
         }
 
-        public void CerrarSesion()
+        public void mtdCerrarSesion()
         {
             try
             {
-                if (Sesion.IdSesion != Guid.Empty) _datos.CerrarSesion(Sesion.IdSesion);
+                if (Sesion.IdSesion != Guid.Empty) _datos.mtdCerrarSesion(Sesion.IdSesion);
             }
             catch (Exception)
             {
@@ -108,11 +109,22 @@ namespace ORICA.Negocio
 
         // ================= REGLAS =================
 
+        private static string mtdValidarPin(string pin)
+        {
+            if (pin.Length == 0)
+                return "Ingrese su PIN.";
+
+            if (pin.Length != LongitudPin || !pin.All(char.IsDigit))
+                return $"El PIN debe tener {LongitudPin} números.";
+
+            return null;
+        }
+
         /// <summary>
         /// Mismo cálculo que HASHBYTES('SHA2_256', ...) en SQL Server sobre un VARCHAR.
         /// Si la credencial tiene Salt, se antepone al PIN antes de calcular el hash.
         /// </summary>
-        private static bool PinCoincide(string pin, byte[] salt, byte[] hashGuardado)
+        private static bool mtdPinCoincide(string pin, byte[] salt, byte[] hashGuardado)
         {
             if (hashGuardado == null) return false;
 

@@ -38,11 +38,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutenticacionDatos.cs" />
-    <Compile Include="BaseDatos.cs" />
-    <Compile Include="Conexion.cs" />
-    <Compile Include="RolDatos.cs" />
-    <Compile Include="UsuarioDatos.cs" />
+    <Compile Include="clsAutenticacionDatos.cs" />
+    <Compile Include="clsBaseDatos.cs" />
+    <Compile Include="clsConexion.cs" />
+    <Compile Include="clsRolDatos.cs" />
+    <Compile Include="clsUsuarioDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

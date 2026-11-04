@@ -7,13 +7,13 @@ namespace ORICA.Negocio
     /// Operaciones generales del sistema que la Presentación necesita
     /// sin referenciar ORICA.Datos directamente.
     /// </summary>
-    public static class SistemaNegocio
+    public static class clsSistemaNegocio
     {
-        public static Resultado ProbarConexion()
+        public static Resultado mtdProbarConexion()
         {
             try
             {
-                Conexion.Probar();
+                clsConexion.mtdProbarConexion();
                 return Resultado.Ok("Conexión correcta con ORICA_SafeHandsDB");
             }
             catch (Exception ex)

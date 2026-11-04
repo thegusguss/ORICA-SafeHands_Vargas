@@ -1,22 +1,17 @@
-﻿using ORICA.Negocio;
+using ORICA.Negocio;
 using ORICA.Negocio.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
     public partial class frmLogin : Form
     {
-        private bool moviendo = false;
+        private bool moviendo;
         private Point puntoInicial;
-        private readonly AutenticacionNegocio _autenticacion = new AutenticacionNegocio();
+        private readonly clsAutenticacionNegocio autenticacion = new clsAutenticacionNegocio();
 
         public frmLogin()
         {
@@ -24,14 +19,19 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             cbxOperador.DropDownStyle = ComboBoxStyle.DropDownList;
             txtPIN.MaxLength = 4;
             this.AcceptButton = btnIngresar;
-            this.Load += (s, e) => CargarOperadores();
+            this.Load += frmLogin_Load;
         }
 
-        private void CargarOperadores()
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            mtdCargarOperadores();
+        }
+
+        private void mtdCargarOperadores()
         {
             try
             {
-                List<Usuario> operadores = _autenticacion.ListarOperadores();
+                List<Usuario> operadores = autenticacion.mtdListarOperadores();
 
                 cbxOperador.DataSource = operadores;
                 cbxOperador.DisplayMember = "Etiqueta";
@@ -89,13 +89,44 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            if (!mtdValidarIngreso())
+                return;
+
+            Usuario operador = (Usuario)cbxOperador.SelectedItem;
+
+            Cursor = Cursors.WaitCursor;
+            Resultado resultado;
+            try
+            {
+                resultado = autenticacion.mtdIniciarSesionConPin(operador, txtPIN.Text);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+
+            if (!resultado.Exito)
+            {
+                MessageBox.Show(resultado.Mensaje, "Acceso denegado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                txtPIN.Clear();
+                txtPIN.Focus();
+                return;
+            }
+
+            mtdMostrarIngreso(resultado.Mensaje);
+        }
+
+        private bool mtdValidarIngreso()
+        {
             if (cbxOperador.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione un operador.", "Datos incompletos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 cbxOperador.Focus();
-                return;
+                return false;
             }
 
             string pin = txtPIN.Text;
@@ -106,7 +137,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 txtPIN.Focus();
-                return;
+                return false;
             }
 
             if (pin.Length != 4)
@@ -115,7 +146,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 txtPIN.Focus();
-                return;
+                return false;
             }
 
             foreach (char caracter in pin)
@@ -128,30 +159,14 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
                     txtPIN.SelectAll();
                     txtPIN.Focus();
-                    return;
+                    return false;
                 }
             }
 
-            Usuario operador = (Usuario)cbxOperador.SelectedItem;
-
-            Cursor = Cursors.WaitCursor;
-            Resultado r = _autenticacion.IngresarConPin(operador, pin);
-            Cursor = Cursors.Default;
-
-            if (!r.Exito)
-            {
-                MessageBox.Show(r.Mensaje, "Acceso denegado",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                txtPIN.Clear();
-                txtPIN.Focus();
-                return;
-            }
-
-            MostrarIngreso(r.Mensaje);
+            return true;
         }
 
-        private void MostrarIngreso(string mensaje)
+        private void mtdMostrarIngreso(string mensaje)
         {
             MessageBox.Show(mensaje + "\nCargo: " + Sesion.UsuarioActual.RolNombre,
                 "Inicio de sesión exitoso",
@@ -159,29 +174,31 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             txtPIN.Clear();
 
-            // El rol Operador trabaja en su propio espacio; el resto entra al panel administrativo.
-            Form principal = Sesion.UsuarioActual.RolCodigo == "OPE"
-                ? (Form)new FrmPrincipalOperador()
-                : new frmPrincipal();
+            Form principal;
+            if (Sesion.UsuarioActual.RolCodigo == "OPE")
+                principal = new FrmPrincipalOperador();
+            else
+                principal = new frmPrincipal();
 
-            principal.FormClosed += (s, e) =>
-            {
-                _autenticacion.CerrarSesion();
-
-                FrmPrincipalOperador operador = principal as FrmPrincipalOperador;
-                if (operador != null && operador.CerrarSesionSolicitada)
-                {
-                    CargarOperadores();
-                    this.Show();
-                }
-                else
-                {
-                    this.Close();
-                }
-            };
-
+            principal.FormClosed += principal_FormClosed;
             this.Hide();
             principal.Show();
+        }
+
+        private void principal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            autenticacion.mtdCerrarSesion();
+
+            FrmPrincipalOperador operador = sender as FrmPrincipalOperador;
+            if (operador != null && operador.CerrarSesionSolicitada)
+            {
+                mtdCargarOperadores();
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void btnRFID_Click(object sender, EventArgs e)
@@ -196,9 +213,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     "Archivo de configuración utilizado"
                 );
 
-                Resultado r = SistemaNegocio.ProbarConexion();
-                MessageBox.Show(r.Mensaje, "ORICA SafeHands", MessageBoxButtons.OK,
-                    r.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+                Resultado resultado = clsSistemaNegocio.mtdProbarConexion();
+                MessageBox.Show(resultado.Mensaje, "ORICA SafeHands", MessageBoxButtons.OK,
+                    resultado.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -210,17 +227,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 );
             }
 
-            //if (cbxOperador.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show("Seleccione un cargo para simular la credencial.",
-            //        "Datos incompletos", MessageBoxButtons.OK,
-            //        MessageBoxIcon.Warning);
-
-            //    cbxOperador.Focus();
-            //    return;
-            //}
-
-            //MostrarIngreso();
         }
     }
 }

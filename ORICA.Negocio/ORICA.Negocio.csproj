@@ -37,15 +37,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutenticacionNegocio.cs" />
-    <Compile Include="Lectura.cs" />
+    <Compile Include="clsAutenticacionNegocio.cs" />
+    <Compile Include="clsLectura.cs" />
     <Compile Include="Modelos\Rol.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Resultado.cs" />
-    <Compile Include="RolNegocio.cs" />
+    <Compile Include="clsRolNegocio.cs" />
     <Compile Include="Sesion.cs" />
-    <Compile Include="SistemaNegocio.cs" />
-    <Compile Include="UsuarioNegocio.cs" />
+    <Compile Include="clsSistemaNegocio.cs" />
+    <Compile Include="clsUsuarioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
