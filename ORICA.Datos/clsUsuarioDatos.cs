@@ -13,7 +13,12 @@ namespace ORICA.Datos
         private const string SelectUsuarios = @"
 SELECT u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos, u.Documento, u.Telefono, u.Correo,
        u.IdRol, r.Nombre AS RolNombre, u.Estado, u.FechaRegistro, u.FechaModificacion,
-       u.UltimoAcceso, u.RowVersion
+       u.UltimoAcceso, u.RowVersion,
+       -- Tipos de credencial activos del usuario, por ejemplo 'PIN, RFID' (NULL si no tiene).
+       (SELECT STRING_AGG(tc.Codigo, ', ')
+        FROM dbo.Credencial c
+        INNER JOIN dbo.TipoCredencial tc ON tc.IdTipoCredencial = c.IdTipoCredencial
+        WHERE c.IdUsuario = u.IdUsuario AND c.Estado = 1) AS Credenciales
 FROM dbo.Usuario u
 INNER JOIN dbo.Rol r ON r.IdRol = u.IdRol";
 

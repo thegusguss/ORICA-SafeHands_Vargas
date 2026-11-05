@@ -200,7 +200,8 @@ namespace ORICA.Negocio
                 FechaRegistro = clsLectura.mtdLeerFecha(r, "FechaRegistro"),
                 FechaModificacion = clsLectura.mtdLeerFecha(r, "FechaModificacion"),
                 UltimoAcceso = clsLectura.mtdLeerFecha(r, "UltimoAcceso"),
-                RowVersion = clsLectura.mtdLeerBytes(r, "RowVersion")
+                RowVersion = clsLectura.mtdLeerBytes(r, "RowVersion"),
+                Credenciales = clsLectura.mtdLeerTexto(r, "Credenciales")
             };
         }
     }

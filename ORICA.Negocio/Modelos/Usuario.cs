@@ -19,6 +19,7 @@ namespace ORICA.Negocio.Modelos
         public DateTime? FechaModificacion { get; set; }
         public DateTime? UltimoAcceso { get; set; }
         public byte[] RowVersion { get; set; }
+        public string Credenciales { get; set; }   // ej. "PIN, RFID"; null si no tiene ninguna
 
         // Propiedades auxiliares para la interfaz
         public string NombreCompleto

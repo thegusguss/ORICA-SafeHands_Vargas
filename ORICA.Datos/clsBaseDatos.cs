@@ -45,10 +45,8 @@ namespace ORICA.Datos
             }
         }
 
-        /// <summary>
         /// Crea un parámetro SQL. Si el valor es null o un texto vacío,
         /// se envía NULL a la base de datos.
-        /// </summary>
         public static SqlParameter mtdParametro(string nombre, object valor)
         {
             bool vacio = valor == null || (valor is string texto && string.IsNullOrWhiteSpace(texto));

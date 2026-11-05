@@ -129,6 +129,12 @@
     <Compile Include="FrmOperacionVoz.Designer.cs">
       <DependentUpon>FrmOperacionVoz.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOperadorEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperadorEditar.Designer.cs">
+      <DependentUpon>FrmOperadorEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmOperadores.cs">
       <SubType>Form</SubType>
     </Compile>
