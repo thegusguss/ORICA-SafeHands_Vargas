@@ -14,16 +14,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public FrmCredencialRegistrar()
         {
             InitializeComponent();
-
-            AcceptButton = btnGuardar;
-            CancelButton = btnCancelar;
-
-            Load += (s, e) => CargarListas();
-            cbxTipo.SelectedIndexChanged += (s, e) => AjustarCampos();
-            btnGuardar.Click += btnGuardar_Click;
         }
 
-        private void CargarListas()
+        private void FrmCredencialRegistrar_Load(object sender, EventArgs e)
         {
             try
             {
@@ -42,6 +35,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            AjustarCampos();
+        }
+
+        private void cbxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
             AjustarCampos();
         }
 

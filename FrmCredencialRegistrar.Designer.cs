@@ -77,6 +77,7 @@
             this.cbxTipo.ForeColor = System.Drawing.Color.White;
             this.cbxTipo.Location = new System.Drawing.Point(24, 134);
             this.cbxTipo.Name = "cbxTipo";
+            this.cbxTipo.SelectedIndexChanged += new System.EventHandler(this.cbxTipo_SelectedIndexChanged);
             this.cbxTipo.Size = new System.Drawing.Size(352, 24);
             this.cbxTipo.TabIndex = 2;
             //
@@ -146,6 +147,7 @@
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(206, 296);
             this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             this.btnGuardar.Size = new System.Drawing.Size(170, 38);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
@@ -172,6 +174,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCredencialRegistrar";
+            this.AcceptButton = this.btnGuardar;
+            this.CancelButton = this.btnCancelar;
+            this.Load += new System.EventHandler(this.FrmCredencialRegistrar_Load);
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Credencial";

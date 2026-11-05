@@ -18,15 +18,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             InitializeComponent();
             usuarioOriginal = usuario;
-
-            AcceptButton = btnGuardar;
-            CancelButton = btnCancelar;
-            btnGuardar.Click += btnGuardar_Click;
-            Load += (s, e) => CargarDatos();
         }
 
         // Llena los roles y, si es edición, los datos del operador.
-        private void CargarDatos()
+        private void FrmOperadorEditar_Load(object sender, EventArgs e)
         {
             CargarRoles();
 

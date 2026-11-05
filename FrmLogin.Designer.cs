@@ -238,6 +238,7 @@
             this.cbxOperador.FormattingEnabled = true;
             this.cbxOperador.Location = new System.Drawing.Point(564, 283);
             this.cbxOperador.Name = "cbxOperador";
+            this.cbxOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOperador.Size = new System.Drawing.Size(259, 21);
             this.cbxOperador.TabIndex = 9;
             // 
@@ -259,6 +260,7 @@
             this.txtPIN.ForeColor = System.Drawing.Color.White;
             this.txtPIN.Location = new System.Drawing.Point(564, 385);
             this.txtPIN.Name = "txtPIN";
+            this.txtPIN.MaxLength = 4;
             this.txtPIN.Size = new System.Drawing.Size(259, 20);
             this.txtPIN.TabIndex = 11;
             this.txtPIN.UseSystemPasswordChar = true;
@@ -340,6 +342,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
+            this.AcceptButton = this.btnIngresar;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ORICA SafeHands — Inicio de sesión";
             this.pnlBarraSuperior.ResumeLayout(false);

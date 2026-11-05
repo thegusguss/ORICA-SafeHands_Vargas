@@ -4,45 +4,47 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>Ventana principal del administrador: menú a la izquierda y pantallas a la derecha.</summary>
+    // Ventana principal del administrador: menú a la izquierda y pantallas a la derecha.
+    // Los clics de los botones se conectan en el diseñador (FrmDashboard.Designer.cs).
     public partial class frmPrincipal : Form
     {
-        private Form formularioActivo;  // pantalla que se está mostrando ahora
-        private Panel pnlVista;          // panel donde se muestran las pantallas
+        private Form formularioActivo;  // pantalla que se está mostrando ahora en pnlVista
 
         public frmPrincipal()
         {
             InitializeComponent();
 
-            pnlVista = new Panel();
-            pnlVista.Dock = DockStyle.Fill;
-            pnlVista.BackColor = Color.FromArgb(14, 19, 26);
-            pnlVista.Visible = false;
-            pnlContenido.Controls.Add(pnlVista);
-
+            // Los íconos se dibujan por código porque son imágenes hechas con una fuente.
             ColocarIcono(btnDashboard, "⌂");
-            btnDashboard.Click += (s, e) => MostrarDashboard();
-
-            // Cada botón del menú: su ícono y la pantalla que abre.
-            ConfigurarBoton(btnDiagnostico, "⚒", () => new FrmDiagnostico());
-            ConfigurarBoton(btnAlertas, "⚠", () => new FrmAlertas());
-            ConfigurarBoton(btnCriticidad, "◆", () => new FrmCriticidad());
-            ConfigurarBoton(btnEventos, "☷", () => new FrmEventos());
-            ConfigurarBoton(btnOperadores, "♟", () => new FrmOperadores());
-            ConfigurarBoton(btnCredenciales, "▣", () => new Credenciales());
-            ConfigurarBoton(btnEquipos, "▤", () => new FrmEquipos());
-            ConfigurarBoton(btnComandos, "▶", () => new FrmComandos());
-            ConfigurarBoton(btnSincronizacion, "↻", () => new FrmSincronizacion());
-            ConfigurarBoton(btnReportes, "▥", () => new FrmReportes());
-            ConfigurarBoton(btnConfiguracion, "⚙", () => new FrmConfiguracion());
+            ColocarIcono(btnDiagnostico, "⚒");
+            ColocarIcono(btnAlertas, "⚠");
+            ColocarIcono(btnCriticidad, "◆");
+            ColocarIcono(btnEventos, "☷");
+            ColocarIcono(btnOperadores, "♟");
+            ColocarIcono(btnCredenciales, "▣");
+            ColocarIcono(btnEquipos, "▤");
+            ColocarIcono(btnComandos, "▶");
+            ColocarIcono(btnSincronizacion, "↻");
+            ColocarIcono(btnReportes, "▥");
+            ColocarIcono(btnConfiguracion, "⚙");
         }
 
-        // crearPantalla se ejecuta en cada clic, así siempre se abre una pantalla nueva.
-        private void ConfigurarBoton(Button boton, string icono, Func<Form> crearPantalla)
-        {
-            ColocarIcono(boton, icono);
-            boton.Click += (s, e) => AbrirFormulario(crearPantalla());
-        }
+        // ---------------- Botones del menú ----------------
+
+        private void btnDashboard_Click(object sender, EventArgs e) { MostrarDashboard(); }
+        private void btnDiagnostico_Click(object sender, EventArgs e) { AbrirFormulario(new FrmDiagnostico()); }
+        private void btnAlertas_Click(object sender, EventArgs e) { AbrirFormulario(new FrmAlertas()); }
+        private void btnCriticidad_Click(object sender, EventArgs e) { AbrirFormulario(new FrmCriticidad()); }
+        private void btnEventos_Click(object sender, EventArgs e) { AbrirFormulario(new FrmEventos()); }
+        private void btnOperadores_Click(object sender, EventArgs e) { AbrirFormulario(new FrmOperadores()); }
+        private void btnCredenciales_Click(object sender, EventArgs e) { AbrirFormulario(new Credenciales()); }
+        private void btnEquipos_Click(object sender, EventArgs e) { AbrirFormulario(new FrmEquipos()); }
+        private void btnComandos_Click(object sender, EventArgs e) { AbrirFormulario(new FrmComandos()); }
+        private void btnSincronizacion_Click(object sender, EventArgs e) { AbrirFormulario(new FrmSincronizacion()); }
+        private void btnReportes_Click(object sender, EventArgs e) { AbrirFormulario(new FrmReportes()); }
+        private void btnConfiguracion_Click(object sender, EventArgs e) { AbrirFormulario(new FrmConfiguracion()); }
+
+        // ---------------- Pantallas ----------------
 
         private void AbrirFormulario(Form formulario)
         {

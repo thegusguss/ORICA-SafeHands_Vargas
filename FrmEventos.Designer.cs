@@ -509,6 +509,8 @@
             // 
             this.dgvCriticidad.AllowUserToAddRows = false;
             this.dgvCriticidad.AllowUserToDeleteRows = false;
+            this.dgvCriticidad.AllowUserToResizeColumns = false;
+            this.dgvCriticidad.AllowUserToResizeRows = false;
             this.dgvCriticidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -558,6 +560,7 @@
             this.colFechaHoraEvento.FillWeight = 130F;
             this.colFechaHoraEvento.HeaderText = "FECHA / HORA";
             this.colFechaHoraEvento.Name = "colFechaHoraEvento";
+            this.colFechaHoraEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colFechaHoraEvento.ReadOnly = true;
             // 
             // colOperadorEvento
@@ -565,6 +568,7 @@
             this.colOperadorEvento.FillWeight = 85F;
             this.colOperadorEvento.HeaderText = "OPERADOR";
             this.colOperadorEvento.Name = "colOperadorEvento";
+            this.colOperadorEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colOperadorEvento.ReadOnly = true;
             // 
             // colDetalleEvento
@@ -572,6 +576,7 @@
             this.colDetalleEvento.FillWeight = 220F;
             this.colDetalleEvento.HeaderText = "EVENTO";
             this.colDetalleEvento.Name = "colDetalleEvento";
+            this.colDetalleEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colDetalleEvento.ReadOnly = true;
             // 
             // colConfianzaEvento
@@ -579,6 +584,7 @@
             this.colConfianzaEvento.FillWeight = 80F;
             this.colConfianzaEvento.HeaderText = "CONFIANZA";
             this.colConfianzaEvento.Name = "colConfianzaEvento";
+            this.colConfianzaEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colConfianzaEvento.ReadOnly = true;
             // 
             // colCriticidadEvento
@@ -586,6 +592,7 @@
             this.colCriticidadEvento.FillWeight = 85F;
             this.colCriticidadEvento.HeaderText = "CRITICIDAD";
             this.colCriticidadEvento.Name = "colCriticidadEvento";
+            this.colCriticidadEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCriticidadEvento.ReadOnly = true;
             // 
             // colResultadoEvento
@@ -594,8 +601,9 @@
             this.colResultadoEvento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colResultadoEvento.HeaderText = "RESULTADO";
             this.colResultadoEvento.Name = "colResultadoEvento";
+            this.colResultadoEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colResultadoEvento.ReadOnly = true;
-            this.colResultadoEvento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colResultadoEvento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colResultadoEvento.UseColumnTextForButtonValue = true;
             // 
             // colSincronizacionEvento
@@ -603,6 +611,7 @@
             this.colSincronizacionEvento.FillWeight = 70F;
             this.colSincronizacionEvento.HeaderText = "SYNC";
             this.colSincronizacionEvento.Name = "colSincronizacionEvento";
+            this.colSincronizacionEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colSincronizacionEvento.ReadOnly = true;
             // 
             // lblTituloRegistroEventos

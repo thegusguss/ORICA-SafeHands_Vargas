@@ -482,6 +482,8 @@
             // 
             this.dgvComandos.AllowUserToAddRows = false;
             this.dgvComandos.AllowUserToDeleteRows = false;
+            this.dgvComandos.AllowUserToResizeColumns = false;
+            this.dgvComandos.AllowUserToResizeRows = false;
             this.dgvComandos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -532,6 +534,7 @@
             this.colFraseComando.FillWeight = 148.1134F;
             this.colFraseComando.HeaderText = "FRASE AUTORIZADA";
             this.colFraseComando.Name = "colFraseComando";
+            this.colFraseComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colFraseComando.ReadOnly = true;
             // 
             // colCriticidadComando
@@ -539,6 +542,7 @@
             this.colCriticidadComando.FillWeight = 63.47716F;
             this.colCriticidadComando.HeaderText = "CRITICIDAD";
             this.colCriticidadComando.Name = "colCriticidadComando";
+            this.colCriticidadComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCriticidadComando.ReadOnly = true;
             // 
             // colConfianzaMinimaComando
@@ -546,6 +550,7 @@
             this.colConfianzaMinimaComando.FillWeight = 70.53017F;
             this.colConfianzaMinimaComando.HeaderText = "CONFIANZA MÍN.";
             this.colConfianzaMinimaComando.Name = "colConfianzaMinimaComando";
+            this.colConfianzaMinimaComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colConfianzaMinimaComando.ReadOnly = true;
             // 
             // colPTTComando
@@ -553,6 +558,7 @@
             this.colPTTComando.FillWeight = 35.26509F;
             this.colPTTComando.HeaderText = "PTT";
             this.colPTTComando.Name = "colPTTComando";
+            this.colPTTComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colPTTComando.ReadOnly = true;
             // 
             // colConfirmacionesComando
@@ -560,6 +566,7 @@
             this.colConfirmacionesComando.FillWeight = 77.58319F;
             this.colConfirmacionesComando.HeaderText = "CONFIRMACIONES";
             this.colConfirmacionesComando.Name = "colConfirmacionesComando";
+            this.colConfirmacionesComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colConfirmacionesComando.ReadOnly = true;
             // 
             // colEstadoComando
@@ -568,7 +575,7 @@
             this.colEstadoComando.HeaderText = "ESTADO";
             this.colEstadoComando.Name = "colEstadoComando";
             this.colEstadoComando.ReadOnly = true;
-            this.colEstadoComando.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEstadoComando.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colEstadoComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colEditarComando
@@ -577,14 +584,15 @@
             this.colEditarComando.HeaderText = "EDITAR";
             this.colEditarComando.Name = "colEditarComando";
             this.colEditarComando.ReadOnly = true;
-            this.colEditarComando.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEditarComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colEditarComando.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colEditarComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colCambiarEstadoComando
             // 
             this.colCambiarEstadoComando.FillWeight = 312.1827F;
             this.colCambiarEstadoComando.HeaderText = "ESTADO";
             this.colCambiarEstadoComando.Name = "colCambiarEstadoComando";
+            this.colCambiarEstadoComando.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCambiarEstadoComando.ReadOnly = true;
             // 
             // lblCatalogoComandos

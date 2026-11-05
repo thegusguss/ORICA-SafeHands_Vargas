@@ -93,6 +93,7 @@
             this.txtBuscarComando.ForeColor = System.Drawing.Color.White;
             this.txtBuscarComando.Location = new System.Drawing.Point(34, 171);
             this.txtBuscarComando.Name = "txtBuscarComando";
+            this.txtBuscarComando.TextChanged += new System.EventHandler(this.txtBuscarComando_TextChanged);
             this.txtBuscarComando.Size = new System.Drawing.Size(534, 20);
             this.txtBuscarComando.TabIndex = 35;
             // 
@@ -127,6 +128,8 @@
             this.btnEntendidoComandos.ForeColor = System.Drawing.Color.White;
             this.btnEntendidoComandos.Location = new System.Drawing.Point(434, 622);
             this.btnEntendidoComandos.Name = "btnEntendidoComandos";
+            this.btnEntendidoComandos.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEntendidoComandos.Click += new System.EventHandler(this.btnEntendidoComandos_Click);
             this.btnEntendidoComandos.Size = new System.Drawing.Size(134, 38);
             this.btnEntendidoComandos.TabIndex = 40;
             this.btnEntendidoComandos.Text = "Entendido";
@@ -149,6 +152,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmComandosDisponibles";
+            this.CancelButton = this.btnEntendidoComandos;
             this.Text = "Comandos disponibles";
             this.ResumeLayout(false);
             this.PerformLayout();

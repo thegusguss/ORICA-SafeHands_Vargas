@@ -482,6 +482,7 @@
             this.txtBuscarOperador.ForeColor = System.Drawing.Color.White;
             this.txtBuscarOperador.Location = new System.Drawing.Point(544, 23);
             this.txtBuscarOperador.Name = "txtBuscarOperador";
+            this.txtBuscarOperador.TextChanged += new System.EventHandler(this.txtBuscarOperador_TextChanged);
             this.txtBuscarOperador.Size = new System.Drawing.Size(230, 20);
             this.txtBuscarOperador.TabIndex = 15;
             // 
@@ -495,6 +496,7 @@
             this.btnNuevoOperador.ForeColor = System.Drawing.Color.White;
             this.btnNuevoOperador.Location = new System.Drawing.Point(798, 15);
             this.btnNuevoOperador.Name = "btnNuevoOperador";
+            this.btnNuevoOperador.Click += new System.EventHandler(this.btnNuevoOperador_Click);
             this.btnNuevoOperador.Size = new System.Drawing.Size(155, 38);
             this.btnNuevoOperador.TabIndex = 13;
             this.btnNuevoOperador.Text = "+ Nuevo operador";
@@ -504,6 +506,8 @@
             // 
             this.dgvOperadores.AllowUserToAddRows = false;
             this.dgvOperadores.AllowUserToDeleteRows = false;
+            this.dgvOperadores.AllowUserToResizeColumns = false;
+            this.dgvOperadores.AllowUserToResizeRows = false;
             this.dgvOperadores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -541,6 +545,7 @@
             this.dgvOperadores.Location = new System.Drawing.Point(19, 68);
             this.dgvOperadores.MultiSelect = false;
             this.dgvOperadores.Name = "dgvOperadores";
+            this.dgvOperadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOperadores_CellContentClick);
             this.dgvOperadores.ReadOnly = true;
             this.dgvOperadores.RowHeadersVisible = false;
             this.dgvOperadores.RowTemplate.Height = 45;
@@ -553,6 +558,7 @@
             this.colCodigoOperador.FillWeight = 80F;
             this.colCodigoOperador.HeaderText = "CÓDIGO";
             this.colCodigoOperador.Name = "colCodigoOperador";
+            this.colCodigoOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCodigoOperador.ReadOnly = true;
             // 
             // colNombreOperador
@@ -560,6 +566,7 @@
             this.colNombreOperador.FillWeight = 150F;
             this.colNombreOperador.HeaderText = "OPERADOR";
             this.colNombreOperador.Name = "colNombreOperador";
+            this.colNombreOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNombreOperador.ReadOnly = true;
             // 
             // colRolOperador
@@ -567,6 +574,7 @@
             this.colRolOperador.FillWeight = 110F;
             this.colRolOperador.HeaderText = "ROL";
             this.colRolOperador.Name = "colRolOperador";
+            this.colRolOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colRolOperador.ReadOnly = true;
             // 
             // colCredencialOperador
@@ -574,6 +582,7 @@
             this.colCredencialOperador.FillWeight = 140F;
             this.colCredencialOperador.HeaderText = "CREDENCIAL";
             this.colCredencialOperador.Name = "colCredencialOperador";
+            this.colCredencialOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCredencialOperador.ReadOnly = true;
             // 
             // colEstadoOperador
@@ -581,6 +590,7 @@
             this.colEstadoOperador.FillWeight = 85F;
             this.colEstadoOperador.HeaderText = "ESTADO";
             this.colEstadoOperador.Name = "colEstadoOperador";
+            this.colEstadoOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEstadoOperador.ReadOnly = true;
             // 
             // colEditarOperador
@@ -589,8 +599,10 @@
             this.colEditarOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colEditarOperador.HeaderText = "EDITAR";
             this.colEditarOperador.Name = "colEditarOperador";
+            this.colEditarOperador.Text = "Editar";
+            this.colEditarOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEditarOperador.ReadOnly = true;
-            this.colEditarOperador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditarOperador.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colEditarOperador.UseColumnTextForButtonValue = true;
             // 
             // colCambiarEstadoOperador
@@ -599,8 +611,8 @@
             this.colCambiarEstadoOperador.HeaderText = "ESTADO";
             this.colCambiarEstadoOperador.Name = "colCambiarEstadoOperador";
             this.colCambiarEstadoOperador.ReadOnly = true;
-            this.colCambiarEstadoOperador.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCambiarEstadoOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colCambiarEstadoOperador.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colCambiarEstadoOperador.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lblGestionOperadores
             // 
@@ -624,6 +636,7 @@
             this.Controls.Add(this.flpMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmOperadores";
+            this.Load += new System.EventHandler(this.FrmOperadores_Load);
             this.Text = "Operadores";
             this.flpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

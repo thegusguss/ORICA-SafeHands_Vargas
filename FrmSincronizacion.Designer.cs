@@ -698,6 +698,8 @@
             // 
             this.dgvColaSincronizacion.AllowUserToAddRows = false;
             this.dgvColaSincronizacion.AllowUserToDeleteRows = false;
+            this.dgvColaSincronizacion.AllowUserToResizeColumns = false;
+            this.dgvColaSincronizacion.AllowUserToResizeRows = false;
             this.dgvColaSincronizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -745,6 +747,7 @@
             this.colNumeroSync.FillWeight = 40F;
             this.colNumeroSync.HeaderText = "#";
             this.colNumeroSync.Name = "colNumeroSync";
+            this.colNumeroSync.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNumeroSync.ReadOnly = true;
             // 
             // colTablaSync
@@ -752,12 +755,14 @@
             this.colTablaSync.FillWeight = 140F;
             this.colTablaSync.HeaderText = "TABLA";
             this.colTablaSync.Name = "colTablaSync";
+            this.colTablaSync.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTablaSync.ReadOnly = true;
             // 
             // colIdLocalSync
             // 
             this.colIdLocalSync.HeaderText = "ID LOCAL";
             this.colIdLocalSync.Name = "colIdLocalSync";
+            this.colIdLocalSync.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIdLocalSync.ReadOnly = true;
             // 
             // colIntentosSync
@@ -765,12 +770,14 @@
             this.colIntentosSync.FillWeight = 75F;
             this.colIntentosSync.HeaderText = "INTENTOS";
             this.colIntentosSync.Name = "colIntentosSync";
+            this.colIntentosSync.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIntentosSync.ReadOnly = true;
             // 
             // colEstadoSync
             // 
             this.colEstadoSync.HeaderText = "ESTADO";
             this.colEstadoSync.Name = "colEstadoSync";
+            this.colEstadoSync.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEstadoSync.ReadOnly = true;
             // 
             // lblTituloColaSincronizacion

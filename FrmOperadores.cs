@@ -6,7 +6,8 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>Lista de operadores: buscar, crear, editar y suspender/activar.</summary>
+    // Lista de operadores: buscar, crear, editar y suspender/activar.
+    // Los eventos se conectan en el diseñador (FrmOperadores.Designer.cs).
     public partial class FrmOperadores : Form
     {
         private readonly clsUsuarioNegocio usuarioNegocio = new clsUsuarioNegocio();
@@ -14,13 +15,35 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public FrmOperadores()
         {
             InitializeComponent();
+        }
 
-            colEditarOperador.Text = "Editar";  // texto fijo del botón de esa columna
+        private void FrmOperadores_Load(object sender, EventArgs e)
+        {
+            CargarOperadores();
+        }
 
-            Load += (s, e) => CargarOperadores();
-            txtBuscarOperador.TextChanged += (s, e) => CargarOperadores();
-            btnNuevoOperador.Click += (s, e) => AbrirEditor(null);
-            dgvOperadores.CellContentClick += dgvOperadores_CellContentClick;
+        // Cada letra que se escribe en el buscador vuelve a filtrar la lista.
+        private void txtBuscarOperador_TextChanged(object sender, EventArgs e)
+        {
+            CargarOperadores();
+        }
+
+        private void btnNuevoOperador_Click(object sender, EventArgs e)
+        {
+            AbrirEditor(null);
+        }
+
+        // Clic en un botón de la tabla: "Editar" o "Suspender/Activar".
+        private void dgvOperadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;  // clic en el encabezado
+
+            Usuario usuario = (Usuario)dgvOperadores.Rows[e.RowIndex].Tag;
+
+            if (e.ColumnIndex == colEditarOperador.Index)
+                AbrirEditor(usuario);
+            else if (e.ColumnIndex == colCambiarEstadoOperador.Index)
+                CambiarEstado(usuario);
         }
 
         // Llena la tabla. Si hay texto en el buscador, solo muestra los que coinciden.
@@ -48,7 +71,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     u.RolNombre,
                     u.Credenciales ?? "Sin credencial",
                     u.EstadoTexto,
-                    null,                                  // botón "Editar" (texto fijo)
+                    null,                                  // botón "Editar" (texto fijo en el diseñador)
                     u.Estado ? "Suspender" : "Activar");   // botón de estado
 
                 // Se guarda el usuario completo en la fila para usarlo al hacer clic.
@@ -56,19 +79,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             }
 
             dgvOperadores.ClearSelection();
-        }
-
-        // Clic en un botón de la tabla: "Editar" o "Suspender/Activar".
-        private void dgvOperadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;  // clic en el encabezado
-
-            Usuario usuario = (Usuario)dgvOperadores.Rows[e.RowIndex].Tag;
-
-            if (e.ColumnIndex == colEditarOperador.Index)
-                AbrirEditor(usuario);
-            else if (e.ColumnIndex == colCambiarEstadoOperador.Index)
-                CambiarEstado(usuario);
         }
 
         // usuario = null → crear uno nuevo; si no, editar el que llega.
@@ -102,16 +112,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             if (respuesta != DialogResult.Yes) return;
 
             Resultado resultado = usuarioNegocio.mtdCambiarEstado(usuario.IdUsuario, activar);
-            MostrarResultado(resultado);
+            MessageBox.Show(resultado.Mensaje, "Operadores", MessageBoxButtons.OK,
+                resultado.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
             if (resultado.Exito)
                 CargarOperadores();
-        }
-
-        private static void MostrarResultado(Resultado resultado)
-        {
-            MessageBox.Show(resultado.Mensaje, "Operadores", MessageBoxButtons.OK,
-                resultado.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
         }
     }
 }

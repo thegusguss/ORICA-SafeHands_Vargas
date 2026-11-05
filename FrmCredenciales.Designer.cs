@@ -471,6 +471,7 @@
             this.btnRegistrarCredencial.ForeColor = System.Drawing.Color.White;
             this.btnRegistrarCredencial.Location = new System.Drawing.Point(798, 15);
             this.btnRegistrarCredencial.Name = "btnRegistrarCredencial";
+            this.btnRegistrarCredencial.Click += new System.EventHandler(this.btnRegistrarCredencial_Click);
             this.btnRegistrarCredencial.Size = new System.Drawing.Size(155, 38);
             this.btnRegistrarCredencial.TabIndex = 13;
             this.btnRegistrarCredencial.Text = "+ Registrar credencial";
@@ -480,6 +481,8 @@
             // 
             this.dgvCredenciales.AllowUserToAddRows = false;
             this.dgvCredenciales.AllowUserToDeleteRows = false;
+            this.dgvCredenciales.AllowUserToResizeColumns = false;
+            this.dgvCredenciales.AllowUserToResizeRows = false;
             this.dgvCredenciales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -517,6 +520,7 @@
             this.dgvCredenciales.Location = new System.Drawing.Point(19, 68);
             this.dgvCredenciales.MultiSelect = false;
             this.dgvCredenciales.Name = "dgvCredenciales";
+            this.dgvCredenciales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCredenciales_CellContentClick);
             this.dgvCredenciales.ReadOnly = true;
             this.dgvCredenciales.RowHeadersVisible = false;
             this.dgvCredenciales.RowTemplate.Height = 45;
@@ -529,6 +533,7 @@
             this.colIdCredencial.FillWeight = 75F;
             this.colIdCredencial.HeaderText = "ID";
             this.colIdCredencial.Name = "colIdCredencial";
+            this.colIdCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIdCredencial.ReadOnly = true;
             // 
             // colOperadorCredencial
@@ -536,6 +541,7 @@
             this.colOperadorCredencial.FillWeight = 95F;
             this.colOperadorCredencial.HeaderText = "OPERADOR";
             this.colOperadorCredencial.Name = "colOperadorCredencial";
+            this.colOperadorCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colOperadorCredencial.ReadOnly = true;
             // 
             // colTipoCredencial
@@ -543,6 +549,7 @@
             this.colTipoCredencial.FillWeight = 70F;
             this.colTipoCredencial.HeaderText = "TIPO";
             this.colTipoCredencial.Name = "colTipoCredencial";
+            this.colTipoCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTipoCredencial.ReadOnly = true;
             // 
             // colReferenciaCredencial
@@ -550,6 +557,7 @@
             this.colReferenciaCredencial.FillWeight = 160F;
             this.colReferenciaCredencial.HeaderText = "UID / REFERENCIA";
             this.colReferenciaCredencial.Name = "colReferenciaCredencial";
+            this.colReferenciaCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colReferenciaCredencial.ReadOnly = true;
             // 
             // colFechaCredencial
@@ -557,6 +565,7 @@
             this.colFechaCredencial.FillWeight = 95F;
             this.colFechaCredencial.HeaderText = "FECHA";
             this.colFechaCredencial.Name = "colFechaCredencial";
+            this.colFechaCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colFechaCredencial.ReadOnly = true;
             // 
             // colEstadoCredencial
@@ -565,7 +574,7 @@
             this.colEstadoCredencial.HeaderText = "ESTADO";
             this.colEstadoCredencial.Name = "colEstadoCredencial";
             this.colEstadoCredencial.ReadOnly = true;
-            this.colEstadoCredencial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEstadoCredencial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colEstadoCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colCambiarEstadoCredencial
@@ -574,8 +583,8 @@
             this.colCambiarEstadoCredencial.HeaderText = "ACCIÓN";
             this.colCambiarEstadoCredencial.Name = "colCambiarEstadoCredencial";
             this.colCambiarEstadoCredencial.ReadOnly = true;
-            this.colCambiarEstadoCredencial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCambiarEstadoCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colCambiarEstadoCredencial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colCambiarEstadoCredencial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lblGestionCredenciales
             // 
@@ -608,6 +617,7 @@
             this.Controls.Add(this.pnlCabeceraCredenciales);
             this.Controls.Add(this.flpMenu);
             this.Name = "Credenciales";
+            this.Load += new System.EventHandler(this.Credenciales_Load);
             this.Text = "FrmCredenciales";
             this.flpMenu.ResumeLayout(false);
             this.pnlMarca.ResumeLayout(false);

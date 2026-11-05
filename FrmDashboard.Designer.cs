@@ -52,6 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlContenido = new System.Windows.Forms.Panel();
+            this.pnlVista = new System.Windows.Forms.Panel();
             this.pnlSimulacion = new System.Windows.Forms.Panel();
             this.pnlSimParada = new System.Windows.Forms.Panel();
             this.lblEstadoParada = new System.Windows.Forms.Label();
@@ -241,6 +242,7 @@
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Location = new System.Drawing.Point(13, 168);
             this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             this.btnDashboard.Size = new System.Drawing.Size(200, 42);
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
@@ -256,6 +258,7 @@
             this.btnDiagnostico.ForeColor = System.Drawing.Color.White;
             this.btnDiagnostico.Location = new System.Drawing.Point(13, 216);
             this.btnDiagnostico.Name = "btnDiagnostico";
+            this.btnDiagnostico.Click += new System.EventHandler(this.btnDiagnostico_Click);
             this.btnDiagnostico.Size = new System.Drawing.Size(200, 42);
             this.btnDiagnostico.TabIndex = 1;
             this.btnDiagnostico.Text = "Diagnóstico";
@@ -271,6 +274,7 @@
             this.btnAlertas.ForeColor = System.Drawing.Color.White;
             this.btnAlertas.Location = new System.Drawing.Point(13, 264);
             this.btnAlertas.Name = "btnAlertas";
+            this.btnAlertas.Click += new System.EventHandler(this.btnAlertas_Click);
             this.btnAlertas.Size = new System.Drawing.Size(200, 42);
             this.btnAlertas.TabIndex = 2;
             this.btnAlertas.Text = "Alertas";
@@ -286,6 +290,7 @@
             this.btnCriticidad.ForeColor = System.Drawing.Color.White;
             this.btnCriticidad.Location = new System.Drawing.Point(13, 312);
             this.btnCriticidad.Name = "btnCriticidad";
+            this.btnCriticidad.Click += new System.EventHandler(this.btnCriticidad_Click);
             this.btnCriticidad.Size = new System.Drawing.Size(200, 42);
             this.btnCriticidad.TabIndex = 3;
             this.btnCriticidad.Text = "Criticidad";
@@ -301,6 +306,7 @@
             this.btnEventos.ForeColor = System.Drawing.Color.White;
             this.btnEventos.Location = new System.Drawing.Point(13, 360);
             this.btnEventos.Name = "btnEventos";
+            this.btnEventos.Click += new System.EventHandler(this.btnEventos_Click);
             this.btnEventos.Size = new System.Drawing.Size(200, 42);
             this.btnEventos.TabIndex = 4;
             this.btnEventos.Text = "Eventos / Auditoría";
@@ -316,6 +322,7 @@
             this.btnOperadores.ForeColor = System.Drawing.Color.White;
             this.btnOperadores.Location = new System.Drawing.Point(13, 408);
             this.btnOperadores.Name = "btnOperadores";
+            this.btnOperadores.Click += new System.EventHandler(this.btnOperadores_Click);
             this.btnOperadores.Size = new System.Drawing.Size(200, 42);
             this.btnOperadores.TabIndex = 5;
             this.btnOperadores.Text = "Operadores";
@@ -331,6 +338,7 @@
             this.btnCredenciales.ForeColor = System.Drawing.Color.White;
             this.btnCredenciales.Location = new System.Drawing.Point(13, 456);
             this.btnCredenciales.Name = "btnCredenciales";
+            this.btnCredenciales.Click += new System.EventHandler(this.btnCredenciales_Click);
             this.btnCredenciales.Size = new System.Drawing.Size(200, 42);
             this.btnCredenciales.TabIndex = 6;
             this.btnCredenciales.Text = "Credenciales";
@@ -346,6 +354,7 @@
             this.btnEquipos.ForeColor = System.Drawing.Color.White;
             this.btnEquipos.Location = new System.Drawing.Point(13, 504);
             this.btnEquipos.Name = "btnEquipos";
+            this.btnEquipos.Click += new System.EventHandler(this.btnEquipos_Click);
             this.btnEquipos.Size = new System.Drawing.Size(200, 42);
             this.btnEquipos.TabIndex = 7;
             this.btnEquipos.Text = "Equipos";
@@ -361,6 +370,7 @@
             this.btnComandos.ForeColor = System.Drawing.Color.White;
             this.btnComandos.Location = new System.Drawing.Point(13, 552);
             this.btnComandos.Name = "btnComandos";
+            this.btnComandos.Click += new System.EventHandler(this.btnComandos_Click);
             this.btnComandos.Size = new System.Drawing.Size(200, 42);
             this.btnComandos.TabIndex = 8;
             this.btnComandos.Text = "Comandos";
@@ -376,6 +386,7 @@
             this.btnSincronizacion.ForeColor = System.Drawing.Color.White;
             this.btnSincronizacion.Location = new System.Drawing.Point(13, 600);
             this.btnSincronizacion.Name = "btnSincronizacion";
+            this.btnSincronizacion.Click += new System.EventHandler(this.btnSincronizacion_Click);
             this.btnSincronizacion.Size = new System.Drawing.Size(200, 42);
             this.btnSincronizacion.TabIndex = 9;
             this.btnSincronizacion.Text = "Sincronización";
@@ -391,6 +402,7 @@
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Location = new System.Drawing.Point(13, 648);
             this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             this.btnReportes.Size = new System.Drawing.Size(200, 42);
             this.btnReportes.TabIndex = 10;
             this.btnReportes.Text = "Reportes";
@@ -406,6 +418,7 @@
             this.btnConfiguracion.ForeColor = System.Drawing.Color.White;
             this.btnConfiguracion.Location = new System.Drawing.Point(13, 696);
             this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
             this.btnConfiguracion.Size = new System.Drawing.Size(200, 42);
             this.btnConfiguracion.TabIndex = 11;
             this.btnConfiguracion.Text = "Configuración";
@@ -448,6 +461,14 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // pnlVista
+            // 
+            this.pnlVista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
+            this.pnlVista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlVista.Name = "pnlVista";
+            this.pnlVista.TabIndex = 99;
+            this.pnlVista.Visible = false;
+            // 
             // pnlContenido
             // 
             this.pnlContenido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -467,6 +488,7 @@
             this.pnlContenido.Controls.Add(this.pnlSesion);
             this.pnlContenido.Controls.Add(this.pnlBienvenida);
             this.pnlContenido.Controls.Add(this.pnlUsuario);
+            this.pnlContenido.Controls.Add(this.pnlVista);
             this.pnlContenido.Location = new System.Drawing.Point(236, 0);
             this.pnlContenido.Name = "pnlContenido";
             this.pnlContenido.Padding = new System.Windows.Forms.Padding(20);
@@ -720,6 +742,8 @@
             // 
             this.dgvActividadReciente.AllowUserToAddRows = false;
             this.dgvActividadReciente.AllowUserToDeleteRows = false;
+            this.dgvActividadReciente.AllowUserToResizeColumns = false;
+            this.dgvActividadReciente.AllowUserToResizeRows = false;
             this.dgvActividadReciente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvActividadReciente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(23)))), ((int)(((byte)(32)))));
             this.dgvActividadReciente.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -760,18 +784,21 @@
             // 
             this.colHora.HeaderText = "Hora";
             this.colHora.Name = "colHora";
+            this.colHora.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colHora.ReadOnly = true;
             // 
             // colEvento
             // 
             this.colEvento.HeaderText = "Evento";
             this.colEvento.Name = "colEvento";
+            this.colEvento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEvento.ReadOnly = true;
             // 
             // colEstado
             // 
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
+            this.colEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEstado.ReadOnly = true;
             // 
             // lblTituloActividad
@@ -1423,6 +1450,7 @@
 
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Panel pnlContenido;
+        private System.Windows.Forms.Panel pnlVista;
         private System.Windows.Forms.FlowLayoutPanel flpMenu;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Button btnDiagnostico;

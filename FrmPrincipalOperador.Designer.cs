@@ -70,6 +70,7 @@
             this.lblTituloConfirmadasInicio = new System.Windows.Forms.Label();
             this.lblCantidadConfirmadasInicio = new System.Windows.Forms.Label();
             this.pnlAyudaInicio = new System.Windows.Forms.Panel();
+            this.pnlPantallasOperador = new System.Windows.Forms.Panel();
             this.lblTituloAyudaInicio = new System.Windows.Forms.Label();
             this.lblDescripcionAyudaInicio = new System.Windows.Forms.Label();
             this.btnVerComandosInicio = new System.Windows.Forms.Button();
@@ -148,6 +149,7 @@
             this.btnInicioOperador.ForeColor = System.Drawing.Color.White;
             this.btnInicioOperador.Location = new System.Drawing.Point(13, 168);
             this.btnInicioOperador.Name = "btnInicioOperador";
+            this.btnInicioOperador.Click += new System.EventHandler(this.btnInicioOperador_Click);
             this.btnInicioOperador.Size = new System.Drawing.Size(200, 42);
             this.btnInicioOperador.TabIndex = 0;
             this.btnInicioOperador.Text = "Inicio";
@@ -163,6 +165,7 @@
             this.btnHistorialOperador.ForeColor = System.Drawing.Color.White;
             this.btnHistorialOperador.Location = new System.Drawing.Point(13, 264);
             this.btnHistorialOperador.Name = "btnHistorialOperador";
+            this.btnHistorialOperador.Click += new System.EventHandler(this.btnHistorialOperador_Click);
             this.btnHistorialOperador.Size = new System.Drawing.Size(200, 42);
             this.btnHistorialOperador.TabIndex = 4;
             this.btnHistorialOperador.Text = "Mi historial";
@@ -200,6 +203,7 @@
             this.btnCerrarSesionOperador.ForeColor = System.Drawing.Color.White;
             this.btnCerrarSesionOperador.Location = new System.Drawing.Point(3, 74);
             this.btnCerrarSesionOperador.Name = "btnCerrarSesionOperador";
+            this.btnCerrarSesionOperador.Click += new System.EventHandler(this.btnCerrarSesionOperador_Click);
             this.btnCerrarSesionOperador.Size = new System.Drawing.Size(194, 40);
             this.btnCerrarSesionOperador.TabIndex = 20;
             this.btnCerrarSesionOperador.Text = "Cerrar sesión";
@@ -215,6 +219,7 @@
             this.btnControlVozOperador.ForeColor = System.Drawing.Color.White;
             this.btnControlVozOperador.Location = new System.Drawing.Point(13, 216);
             this.btnControlVozOperador.Name = "btnControlVozOperador";
+            this.btnControlVozOperador.Click += new System.EventHandler(this.btnControlVozOperador_Click);
             this.btnControlVozOperador.Size = new System.Drawing.Size(200, 42);
             this.btnControlVozOperador.TabIndex = 19;
             this.btnControlVozOperador.Text = "Control por voz";
@@ -329,6 +334,7 @@
             this.btnIrControlVoz.ForeColor = System.Drawing.Color.White;
             this.btnIrControlVoz.Location = new System.Drawing.Point(29, 210);
             this.btnIrControlVoz.Name = "btnIrControlVoz";
+            this.btnIrControlVoz.Click += new System.EventHandler(this.btnIrControlVoz_Click);
             this.btnIrControlVoz.Size = new System.Drawing.Size(238, 38);
             this.btnIrControlVoz.TabIndex = 29;
             this.btnIrControlVoz.Text = "Ir a Control por voz →";
@@ -628,6 +634,18 @@
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
+            // pnlPantallasOperador
+            // 
+            this.pnlPantallasOperador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPantallasOperador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
+            this.pnlPantallasOperador.Location = new System.Drawing.Point(230, 0);
+            this.pnlPantallasOperador.Name = "pnlPantallasOperador";
+            this.pnlPantallasOperador.Size = new System.Drawing.Size(1022, 885);
+            this.pnlPantallasOperador.TabIndex = 20;
+            this.pnlPantallasOperador.Visible = false;
+            // 
             // FrmPrincipalOperador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,6 +653,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(1252, 885);
             this.Controls.Add(this.pnlAyudaInicio);
+            this.Controls.Add(this.pnlPantallasOperador);
             this.Controls.Add(this.pnlResumenConfirmadas);
             this.Controls.Add(this.pnlResumenAcciones);
             this.Controls.Add(this.pnlResumenEquipos);
@@ -713,6 +732,7 @@
         private System.Windows.Forms.Label lblTituloAccionesInicio;
         private System.Windows.Forms.Label lblCantidadAccionesInicio;
         private System.Windows.Forms.Panel pnlAyudaInicio;
+        private System.Windows.Forms.Panel pnlPantallasOperador;
         private System.Windows.Forms.Label lblTituloAyudaInicio;
         private System.Windows.Forms.Label lblDescripcionAyudaInicio;
         private System.Windows.Forms.Button btnVerComandosInicio;

@@ -18,10 +18,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public frmLogin()
         {
             InitializeComponent();
-            cbxOperador.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtPIN.MaxLength = 4;
-            AcceptButton = btnIngresar;
-            Load += (s, e) => mtdCargarOperadores();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            mtdCargarOperadores();
         }
 
         // Llena la lista con los operadores que pueden entrar con PIN.

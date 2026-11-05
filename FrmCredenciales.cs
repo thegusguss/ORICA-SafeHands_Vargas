@@ -14,10 +14,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public Credenciales()
         {
             InitializeComponent();
+        }
 
-            Load += (s, e) => CargarCredenciales();
-            btnRegistrarCredencial.Click += btnRegistrarCredencial_Click;
-            dgvCredenciales.CellContentClick += dgvCredenciales_CellContentClick;
+        private void Credenciales_Load(object sender, EventArgs e)
+        {
+            CargarCredenciales();
         }
 
         private void CargarCredenciales()

@@ -213,6 +213,7 @@
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(206, 440);
             this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             this.btnGuardar.Size = new System.Drawing.Size(170, 38);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
@@ -245,6 +246,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmOperadorEditar";
+            this.AcceptButton = this.btnGuardar;
+            this.CancelButton = this.btnCancelar;
+            this.Load += new System.EventHandler(this.FrmOperadorEditar_Load);
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Operador";

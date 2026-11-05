@@ -14,11 +14,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             InitializeComponent();
 
-            txtBuscarComando.TextChanged += (s, e) => MostrarComandos();
-            btnEntendidoComandos.Click += (s, e) => Close();
-            btnEntendidoComandos.DialogResult = DialogResult.OK;
-            CancelButton = btnEntendidoComandos;
-
             // Datos temporales para comprobar el diseño.
             CargarComandos("Luz indicadora · SIM-02 (demostración)", new List<ComandoDisponible>
             {
@@ -56,6 +51,16 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             txtBuscarComando.Clear();
             MostrarComandos();
+        }
+
+        private void txtBuscarComando_TextChanged(object sender, EventArgs e)
+        {
+            MostrarComandos();
+        }
+
+        private void btnEntendidoComandos_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         // Vuelve a dibujar las tarjetas, solo las que coinciden con el texto buscado.

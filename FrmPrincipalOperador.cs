@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>Ventana principal del operador: menú a la izquierda y pantallas a la derecha.</summary>
+    // Ventana principal del operador: menú a la izquierda y pantallas a la derecha (pnlPantallasOperador).
+    // Los clics de los botones se conectan en el diseñador (FrmPrincipalOperador.Designer.cs).
     public partial class FrmPrincipalOperador : Form
     {
-        private Panel panelPantallas;  // panel donde se muestran las pantallas
-        private Form pantallaActual;   // pantalla que se está mostrando ahora
+        private Form pantallaActual;  // pantalla que se está mostrando ahora
 
-        /// <summary>True cuando el operador pulsó "Cerrar sesión" (volver al login en vez de salir).</summary>
+        // True cuando el operador pulsó "Cerrar sesión" (volver al login en vez de salir).
         public bool CerrarSesionSolicitada { get; private set; }
 
         public FrmPrincipalOperador()
@@ -25,34 +25,56 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 lblRolOperador.Text = Sesion.UsuarioActual.RolNombre;
             }
 
+            // Colores e íconos del menú (se dibujan por código).
             EstiloMenuOperador.Aplicar(pnlMenuOperador, pnlSesionOperador, btnInicioOperador,
                 btnControlVozOperador, btnHistorialOperador, btnCerrarSesionOperador, btnInicioOperador);
-
-            // El panel ocupa todo lo que queda a la derecha del menú.
-            panelPantallas = new Panel();
-            panelPantallas.Name = "pnlPantallasOperador";
-            panelPantallas.BackColor = Color.FromArgb(14, 19, 26);
-            panelPantallas.Visible = false;
-            Controls.Add(panelPantallas);
-            AjustarPanelPantallas();
-            ClientSizeChanged += (s, e) => AjustarPanelPantallas();
-
-            // Botones del menú.
-            btnInicioOperador.Click += (s, e) => MostrarInicio();
-            btnControlVozOperador.Click += (s, e) => MostrarPantalla(new FrmOperacionVoz(), btnControlVozOperador);
-            btnHistorialOperador.Click += (s, e) => MostrarPantalla(new FrmMiHistorial(), btnHistorialOperador);
-            btnIrControlVoz.Click += (s, e) => MostrarPantalla(new FrmOperacionVoz(), btnControlVozOperador);
-            btnCerrarSesionOperador.Click += (s, e) =>
-            {
-                CerrarSesionSolicitada = true;
-                Close();
-            };
         }
 
-        private void AjustarPanelPantallas()
+        // ---------------- Botones del menú ----------------
+
+        private void btnInicioOperador_Click(object sender, EventArgs e)
         {
-            int inicio = pnlMenuOperador.Right;
-            panelPantallas.SetBounds(inicio, 0, Math.Max(1, ClientSize.Width - inicio), ClientSize.Height);
+            clsPantallas.mtdCerrar(pantallaActual);
+            pantallaActual = null;
+            pnlPantallasOperador.Visible = false;
+            MarcarMenu(btnInicioOperador);
+        }
+
+        private void btnControlVozOperador_Click(object sender, EventArgs e)
+        {
+            MostrarPantalla(new FrmOperacionVoz(), btnControlVozOperador);
+        }
+
+        private void btnHistorialOperador_Click(object sender, EventArgs e)
+        {
+            MostrarPantalla(new FrmMiHistorial(), btnHistorialOperador);
+        }
+
+        // Botón "Ir a control por voz" del inicio.
+        private void btnIrControlVoz_Click(object sender, EventArgs e)
+        {
+            MostrarPantalla(new FrmOperacionVoz(), btnControlVozOperador);
+        }
+
+        private void btnCerrarSesionOperador_Click(object sender, EventArgs e)
+        {
+            CerrarSesionSolicitada = true;
+            Close();
+        }
+
+        private void btnVerComandosInicio_Click(object sender, EventArgs e)
+        {
+            new FrmComandosDisponibles().ShowDialog();
+        }
+
+        // ---------------- Pantallas ----------------
+
+        private void MostrarPantalla(Form pantalla, Button seleccionado)
+        {
+            clsPantallas.mtdCerrar(pantallaActual);
+            pantallaActual = pantalla;
+            clsPantallas.mtdMostrarEnPanel(pnlPantallasOperador, pantalla, "pnlMenuOperador");
+            MarcarMenu(seleccionado);
         }
 
         // Pinta de morado el botón elegido y deja los demás con el fondo normal.
@@ -64,27 +86,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             btnHistorialOperador.BackColor = fondo;
 
             seleccionado.BackColor = Color.FromArgb(50, 43, 96);
-        }
-
-        private void MostrarInicio()
-        {
-            clsPantallas.mtdCerrar(pantallaActual);
-            pantallaActual = null;
-            panelPantallas.Visible = false;
-            MarcarMenu(btnInicioOperador);
-        }
-
-        private void MostrarPantalla(Form pantalla, Button seleccionado)
-        {
-            clsPantallas.mtdCerrar(pantallaActual);
-            pantallaActual = pantalla;
-            clsPantallas.mtdMostrarEnPanel(panelPantallas, pantalla, "pnlMenuOperador");
-            MarcarMenu(seleccionado);
-        }
-
-        private void btnVerComandosInicio_Click(object sender, EventArgs e)
-        {
-            new FrmComandosDisponibles().ShowDialog();
         }
     }
 }

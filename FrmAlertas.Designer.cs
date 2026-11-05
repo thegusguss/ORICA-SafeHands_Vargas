@@ -624,6 +624,8 @@
             // 
             this.dgvAlertas.AllowUserToAddRows = false;
             this.dgvAlertas.AllowUserToDeleteRows = false;
+            this.dgvAlertas.AllowUserToResizeColumns = false;
+            this.dgvAlertas.AllowUserToResizeRows = false;
             this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -673,6 +675,7 @@
             this.colHoraAlerta.FillWeight = 65F;
             this.colHoraAlerta.HeaderText = "HORA";
             this.colHoraAlerta.Name = "colHoraAlerta";
+            this.colHoraAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colHoraAlerta.ReadOnly = true;
             // 
             // colTipoAlerta
@@ -680,6 +683,7 @@
             this.colTipoAlerta.FillWeight = 110F;
             this.colTipoAlerta.HeaderText = "TIPO";
             this.colTipoAlerta.Name = "colTipoAlerta";
+            this.colTipoAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTipoAlerta.ReadOnly = true;
             // 
             // colNivelAlerta
@@ -687,6 +691,7 @@
             this.colNivelAlerta.FillWeight = 65F;
             this.colNivelAlerta.HeaderText = "NIVEL";
             this.colNivelAlerta.Name = "colNivelAlerta";
+            this.colNivelAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNivelAlerta.ReadOnly = true;
             // 
             // colDescripcionAlerta
@@ -694,6 +699,7 @@
             this.colDescripcionAlerta.FillWeight = 250F;
             this.colDescripcionAlerta.HeaderText = "DESCRIPCIÓN";
             this.colDescripcionAlerta.Name = "colDescripcionAlerta";
+            this.colDescripcionAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colDescripcionAlerta.ReadOnly = true;
             // 
             // colEstadoAlerta
@@ -701,6 +707,7 @@
             this.colEstadoAlerta.FillWeight = 80F;
             this.colEstadoAlerta.HeaderText = "ESTADO";
             this.colEstadoAlerta.Name = "colEstadoAlerta";
+            this.colEstadoAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEstadoAlerta.ReadOnly = true;
             // 
             // colReconocerAlerta
@@ -709,8 +716,9 @@
             this.colReconocerAlerta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colReconocerAlerta.HeaderText = "RECONOCER";
             this.colReconocerAlerta.Name = "colReconocerAlerta";
+            this.colReconocerAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colReconocerAlerta.ReadOnly = true;
-            this.colReconocerAlerta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colReconocerAlerta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colReconocerAlerta.UseColumnTextForButtonValue = true;
             // 
             // colCerrarAlerta
@@ -719,8 +727,9 @@
             this.colCerrarAlerta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colCerrarAlerta.HeaderText = "CERRAR";
             this.colCerrarAlerta.Name = "colCerrarAlerta";
+            this.colCerrarAlerta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCerrarAlerta.ReadOnly = true;
-            this.colCerrarAlerta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCerrarAlerta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colCerrarAlerta.UseColumnTextForButtonValue = true;
             // 
             // FrmAlertas

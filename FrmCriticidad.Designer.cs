@@ -497,6 +497,8 @@
             // 
             this.dgvCriticidad.AllowUserToAddRows = false;
             this.dgvCriticidad.AllowUserToDeleteRows = false;
+            this.dgvCriticidad.AllowUserToResizeColumns = false;
+            this.dgvCriticidad.AllowUserToResizeRows = false;
             this.dgvCriticidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -545,6 +547,7 @@
             this.colNivelCriticidad.FillWeight = 70F;
             this.colNivelCriticidad.HeaderText = "NIVEL";
             this.colNivelCriticidad.Name = "colNivelCriticidad";
+            this.colNivelCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNivelCriticidad.ReadOnly = true;
             // 
             // colNombreCriticidad
@@ -552,6 +555,7 @@
             this.colNombreCriticidad.FillWeight = 90F;
             this.colNombreCriticidad.HeaderText = "NOMBRE";
             this.colNombreCriticidad.Name = "colNombreCriticidad";
+            this.colNombreCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNombreCriticidad.ReadOnly = true;
             // 
             // colConfirmacionesCriticidad
@@ -559,6 +563,7 @@
             this.colConfirmacionesCriticidad.FillWeight = 110F;
             this.colConfirmacionesCriticidad.HeaderText = "CONFIRMACIONES";
             this.colConfirmacionesCriticidad.Name = "colConfirmacionesCriticidad";
+            this.colConfirmacionesCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colConfirmacionesCriticidad.ReadOnly = true;
             // 
             // colTimeoutCriticidad
@@ -566,6 +571,7 @@
             this.colTimeoutCriticidad.FillWeight = 70F;
             this.colTimeoutCriticidad.HeaderText = "TIMEOUT";
             this.colTimeoutCriticidad.Name = "colTimeoutCriticidad";
+            this.colTimeoutCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTimeoutCriticidad.ReadOnly = true;
             // 
             // colDescripcionCriticidad
@@ -573,6 +579,7 @@
             this.colDescripcionCriticidad.FillWeight = 240F;
             this.colDescripcionCriticidad.HeaderText = "DESCRIPCIÓN";
             this.colDescripcionCriticidad.Name = "colDescripcionCriticidad";
+            this.colDescripcionCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colDescripcionCriticidad.ReadOnly = true;
             // 
             // colEditarCriticidad
@@ -581,8 +588,9 @@
             this.colEditarCriticidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colEditarCriticidad.HeaderText = "ACCIÓN";
             this.colEditarCriticidad.Name = "colEditarCriticidad";
+            this.colEditarCriticidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEditarCriticidad.ReadOnly = true;
-            this.colEditarCriticidad.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditarCriticidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colEditarCriticidad.UseColumnTextForButtonValue = true;
             // 
             // FrmCriticidad

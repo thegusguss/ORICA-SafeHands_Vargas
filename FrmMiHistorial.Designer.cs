@@ -368,6 +368,8 @@
             // 
             this.dgvMiHistorial.AllowUserToAddRows = false;
             this.dgvMiHistorial.AllowUserToDeleteRows = false;
+            this.dgvMiHistorial.AllowUserToResizeColumns = false;
+            this.dgvMiHistorial.AllowUserToResizeRows = false;
             this.dgvMiHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -415,6 +417,7 @@
             this.colHoraHistorial.FillWeight = 80F;
             this.colHoraHistorial.HeaderText = "Hora";
             this.colHoraHistorial.Name = "colHoraHistorial";
+            this.colHoraHistorial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colHoraHistorial.ReadOnly = true;
             // 
             // colEquipoHistorial
@@ -422,6 +425,7 @@
             this.colEquipoHistorial.FillWeight = 150F;
             this.colEquipoHistorial.HeaderText = "Equipo";
             this.colEquipoHistorial.Name = "colEquipoHistorial";
+            this.colEquipoHistorial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEquipoHistorial.ReadOnly = true;
             // 
             // colComandoHistorial
@@ -429,6 +433,7 @@
             this.colComandoHistorial.FillWeight = 110F;
             this.colComandoHistorial.HeaderText = "Comando";
             this.colComandoHistorial.Name = "colComandoHistorial";
+            this.colComandoHistorial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colComandoHistorial.ReadOnly = true;
             // 
             // colResultadoHistorial
@@ -436,6 +441,7 @@
             this.colResultadoHistorial.FillWeight = 140F;
             this.colResultadoHistorial.HeaderText = "Resultado";
             this.colResultadoHistorial.Name = "colResultadoHistorial";
+            this.colResultadoHistorial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colResultadoHistorial.ReadOnly = true;
             // 
             // colDetalleHistorial
@@ -449,8 +455,9 @@
             this.colDetalleHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.colDetalleHistorial.HeaderText = "Detalle";
             this.colDetalleHistorial.Name = "colDetalleHistorial";
+            this.colDetalleHistorial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colDetalleHistorial.ReadOnly = true;
-            this.colDetalleHistorial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDetalleHistorial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colDetalleHistorial.Text = "Ver detalle";
             this.colDetalleHistorial.UseColumnTextForButtonValue = true;
             // 

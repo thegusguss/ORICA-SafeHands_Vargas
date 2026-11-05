@@ -491,6 +491,8 @@
             // 
             this.dgvEquipos.AllowUserToAddRows = false;
             this.dgvEquipos.AllowUserToDeleteRows = false;
+            this.dgvEquipos.AllowUserToResizeColumns = false;
+            this.dgvEquipos.AllowUserToResizeRows = false;
             this.dgvEquipos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -540,6 +542,7 @@
             this.colCodigoEquipo.FillWeight = 75F;
             this.colCodigoEquipo.HeaderText = "CÓDIGO";
             this.colCodigoEquipo.Name = "colCodigoEquipo";
+            this.colCodigoEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colCodigoEquipo.ReadOnly = true;
             // 
             // colNombreEquipo
@@ -547,6 +550,7 @@
             this.colNombreEquipo.FillWeight = 150F;
             this.colNombreEquipo.HeaderText = "NOMBRE";
             this.colNombreEquipo.Name = "colNombreEquipo";
+            this.colNombreEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colNombreEquipo.ReadOnly = true;
             // 
             // colTipoEquipo
@@ -554,6 +558,7 @@
             this.colTipoEquipo.FillWeight = 150F;
             this.colTipoEquipo.HeaderText = "TIPO";
             this.colTipoEquipo.Name = "colTipoEquipo";
+            this.colTipoEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colTipoEquipo.ReadOnly = true;
             // 
             // colEstadoEquipo
@@ -561,6 +566,7 @@
             this.colEstadoEquipo.FillWeight = 90F;
             this.colEstadoEquipo.HeaderText = "ESTADO";
             this.colEstadoEquipo.Name = "colEstadoEquipo";
+            this.colEstadoEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEstadoEquipo.ReadOnly = true;
             // 
             // colUltimoHeartbeatEquipo
@@ -568,6 +574,7 @@
             this.colUltimoHeartbeatEquipo.FillWeight = 130F;
             this.colUltimoHeartbeatEquipo.HeaderText = "ÚLTIMO HEARTBEAT";
             this.colUltimoHeartbeatEquipo.Name = "colUltimoHeartbeatEquipo";
+            this.colUltimoHeartbeatEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colUltimoHeartbeatEquipo.ReadOnly = true;
             // 
             // colEditarEquipo
@@ -575,8 +582,9 @@
             this.colEditarEquipo.FillWeight = 65F;
             this.colEditarEquipo.HeaderText = "EDITAR";
             this.colEditarEquipo.Name = "colEditarEquipo";
+            this.colEditarEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colEditarEquipo.ReadOnly = true;
-            this.colEditarEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEditarEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // colCambiarEstadoEquipo
             // 
@@ -584,8 +592,8 @@
             this.colCambiarEstadoEquipo.HeaderText = "ESTADO";
             this.colCambiarEstadoEquipo.Name = "colCambiarEstadoEquipo";
             this.colCambiarEstadoEquipo.ReadOnly = true;
-            this.colCambiarEstadoEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCambiarEstadoEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colCambiarEstadoEquipo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colCambiarEstadoEquipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lblGestionEquipos
             // 
