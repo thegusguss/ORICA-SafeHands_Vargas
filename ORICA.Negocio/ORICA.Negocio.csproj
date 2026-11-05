@@ -40,7 +40,10 @@
     <Compile Include="clsAutenticacionNegocio.cs" />
     <Compile Include="clsLectura.cs" />
     <Compile Include="Modelos\Rol.cs" />
+    <Compile Include="Modelos\Credencial.cs" />
+    <Compile Include="Modelos\TipoCredencial.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="clsCredencialNegocio.cs" />
     <Compile Include="Resultado.cs" />
     <Compile Include="clsRolNegocio.cs" />
     <Compile Include="Sesion.cs" />

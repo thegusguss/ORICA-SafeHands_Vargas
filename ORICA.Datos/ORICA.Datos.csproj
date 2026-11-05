@@ -41,6 +41,7 @@
     <Compile Include="clsAutenticacionDatos.cs" />
     <Compile Include="clsBaseDatos.cs" />
     <Compile Include="clsConexion.cs" />
+    <Compile Include="clsCredencialDatos.cs" />
     <Compile Include="clsRolDatos.cs" />
     <Compile Include="clsUsuarioDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

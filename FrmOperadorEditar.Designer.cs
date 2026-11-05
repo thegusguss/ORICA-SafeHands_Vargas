@@ -1,4 +1,4 @@
-namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
+﻿namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
     partial class FrmOperadorEditar
     {

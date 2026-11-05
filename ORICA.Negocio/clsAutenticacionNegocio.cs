@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,7 +13,7 @@ namespace ORICA.Negocio
     public class clsAutenticacionNegocio
     {
         private const int LongitudPin = 4;
-        private const int MaxIntentosFallidos = 5;
+        internal const int MaxIntentosFallidos = 5;  // también lo usa clsCredencialNegocio
         private const string MetodoPin = "PIN";
 
         private readonly clsAutenticacionDatos _datos = new clsAutenticacionDatos();
@@ -110,7 +110,7 @@ namespace ORICA.Negocio
         // ================= REGLAS =================
 
         // Único lugar donde se valida el formato del PIN (el login ya no lo repite).
-        private static string mtdValidarPin(string pin)
+        internal static string mtdValidarPin(string pin)
         {
             if (pin.Length == 0)
                 return "Ingrese su PIN.";
@@ -128,13 +128,19 @@ namespace ORICA.Negocio
         private static bool mtdPinCoincide(string pin, byte[] salt, byte[] hashGuardado)
         {
             if (hashGuardado == null) return false;
+            return mtdCalcularHash(pin, salt).SequenceEqual(hashGuardado);
+        }
 
-            byte[] pinBytes = Encoding.ASCII.GetBytes(pin);
-            byte[] datos = salt == null ? pinBytes : salt.Concat(pinBytes).ToArray();
+        // Hash SHA-256 de (salt + texto). Se usa al iniciar sesión y al registrar credenciales,
+        // por eso los dos lados siempre calculan igual.
+        internal static byte[] mtdCalcularHash(string texto, byte[] salt)
+        {
+            byte[] textoBytes = Encoding.ASCII.GetBytes(texto);
+            byte[] datos = salt == null ? textoBytes : salt.Concat(textoBytes).ToArray();
 
             using (SHA256 sha = SHA256.Create())
             {
-                return sha.ComputeHash(datos).SequenceEqual(hashGuardado);
+                return sha.ComputeHash(datos);
             }
         }
     }

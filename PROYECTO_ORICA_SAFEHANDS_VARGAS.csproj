@@ -75,6 +75,12 @@
     <Compile Include="FrmConfiguracion.Designer.cs">
       <DependentUpon>FrmConfiguracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCredencialRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCredencialRegistrar.Designer.cs">
+      <DependentUpon>FrmCredencialRegistrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCredenciales.cs">
       <SubType>Form</SubType>
     </Compile>
