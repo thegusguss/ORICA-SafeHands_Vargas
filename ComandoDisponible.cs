@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
+﻿namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
+    /// <summary>Un comando de voz que se muestra en la ventana "Comandos disponibles".</summary>
     public class ComandoDisponible
     {
         public string Frase { get; set; }

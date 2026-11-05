@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
@@ -16,21 +10,17 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             InitializeComponent();
 
-            using (var forma = new System.Drawing.Drawing2D.GraphicsPath())
+            // Recorta el botón de "pulsar para hablar" para que se vea redondo.
+            using (GraphicsPath circulo = new GraphicsPath())
             {
-                forma.AddEllipse(0, 0,
-                    btnPTTVoz.Width,
-                    btnPTTVoz.Height
-                );
-
-                btnPTTVoz.Region = new System.Drawing.Region(forma);
+                circulo.AddEllipse(0, 0, btnPTTVoz.Width, btnPTTVoz.Height);
+                btnPTTVoz.Region = new Region(circulo);
             }
         }
 
         private void lnkComandosDisponibles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FrmComandosDisponibles frmComandos = new FrmComandosDisponibles();
-            frmComandos.Show();
+            new FrmComandosDisponibles().Show();
         }
     }
 }

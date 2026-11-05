@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsPantallas.cs" />
     <Compile Include="ComandoDisponible.cs" />
     <Compile Include="EstiloMenuOperador.cs" />
     <Compile Include="FrmAlertas.cs">

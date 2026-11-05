@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
+        /// <summary>Punto de entrada: la aplicación empieza en el login.</summary>
         [STAThread]
         static void Main()
         {

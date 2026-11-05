@@ -5,54 +5,61 @@ using System.Data.SqlClient;
 namespace ORICA.Datos
 {
     /// <summary>
-    /// Helper interno de ADO.NET. Evita repetir el mismo bloque using/open
-    /// en cada clase Datos. Solo visible dentro de ORICA.Datos.
+    /// Métodos comunes para ejecutar SQL. Las clases Datos solo escriben
+    /// la consulta y sus parámetros; aquí se abre y cierra la conexión.
     /// </summary>
     internal static class clsBaseDatos
     {
+        /// <summary>Ejecuta un SELECT y devuelve las filas en un DataTable.</summary>
         public static DataTable mtdConsultar(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = clsConexion.mtdCrearConexion())
-            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            using (SqlConnection conexion = clsConexion.mtdCrearConexion())
+            using (SqlCommand comando = mtdCrearComando(conexion, sql, parametros))
+            using (SqlDataAdapter adaptador = new SqlDataAdapter(comando))
             {
-                if (parametros != null) cmd.Parameters.AddRange(parametros);
-
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-                }
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+                return tabla;
             }
         }
 
+        /// <summary>Ejecuta la consulta y devuelve solo el primer valor (un Id, un COUNT...).</summary>
         public static object mtdConsultarValor(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = clsConexion.mtdCrearConexion())
-            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            using (SqlConnection conexion = clsConexion.mtdCrearConexion())
+            using (SqlCommand comando = mtdCrearComando(conexion, sql, parametros))
             {
-                if (parametros != null) cmd.Parameters.AddRange(parametros);
-                cn.Open();
-                return cmd.ExecuteScalar();
+                conexion.Open();
+                return comando.ExecuteScalar();
             }
         }
 
-        /// <summary>Devuelve el número de filas afectadas.</summary>
+        /// <summary>Ejecuta un INSERT/UPDATE/DELETE y devuelve las filas afectadas.</summary>
         public static int mtdEjecutarComando(string sql, params SqlParameter[] parametros)
         {
-            using (SqlConnection cn = clsConexion.mtdCrearConexion())
-            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            using (SqlConnection conexion = clsConexion.mtdCrearConexion())
+            using (SqlCommand comando = mtdCrearComando(conexion, sql, parametros))
             {
-                if (parametros != null) cmd.Parameters.AddRange(parametros);
-                cn.Open();
-                return cmd.ExecuteNonQuery();
+                conexion.Open();
+                return comando.ExecuteNonQuery();
             }
         }
 
-        /// <summary>Convierte texto vacío o null en DBNull para columnas opcionales.</summary>
-        public static object mtdTextoParaSql(string valor)
+        /// <summary>
+        /// Crea un parámetro SQL. Si el valor es null o un texto vacío,
+        /// se envía NULL a la base de datos.
+        /// </summary>
+        public static SqlParameter mtdParametro(string nombre, object valor)
         {
-            return string.IsNullOrWhiteSpace(valor) ? (object)DBNull.Value : valor;
+            bool vacio = valor == null || (valor is string texto && string.IsNullOrWhiteSpace(texto));
+            return new SqlParameter(nombre, vacio ? DBNull.Value : valor);
+        }
+
+        private static SqlCommand mtdCrearComando(SqlConnection conexion, string sql, SqlParameter[] parametros)
+        {
+            SqlCommand comando = new SqlCommand(sql, conexion);
+            comando.Parameters.AddRange(parametros);
+            return comando;
         }
     }
 }

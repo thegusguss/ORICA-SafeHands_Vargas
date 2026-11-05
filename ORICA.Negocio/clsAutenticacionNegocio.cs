@@ -109,6 +109,7 @@ namespace ORICA.Negocio
 
         // ================= REGLAS =================
 
+        // Único lugar donde se valida el formato del PIN (el login ya no lo repite).
         private static string mtdValidarPin(string pin)
         {
             if (pin.Length == 0)

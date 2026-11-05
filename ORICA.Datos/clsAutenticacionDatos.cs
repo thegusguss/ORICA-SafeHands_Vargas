@@ -1,6 +1,5 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace ORICA.Datos
 {
@@ -9,13 +8,10 @@ namespace ORICA.Datos
     /// </summary>
     public class clsAutenticacionDatos
     {
-        private const string CodigoTipoPin = "PIN";
-
         /// <summary>Usuarios activos que tienen al menos una credencial PIN activa.</summary>
         public DataTable mtdListarUsuariosConPin()
         {
-            const string sql = @"
-SELECT u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos, u.IdRol, r.Codigo AS RolCodigo, r.Nombre AS RolNombre, u.Estado
+            const string sql = @"SELECT u.IdUsuario, u.Codigo, u.Nombres, u.Apellidos, u.IdRol, r.Codigo AS RolCodigo, r.Nombre AS RolNombre, u.Estado
 FROM dbo.Usuario u
 INNER JOIN dbo.Rol r ON r.IdRol = u.IdRol
 WHERE u.Estado = 1
@@ -25,10 +21,10 @@ WHERE u.Estado = 1
               INNER JOIN dbo.TipoCredencial tc ON tc.IdTipoCredencial = c.IdTipoCredencial
               WHERE c.IdUsuario = u.IdUsuario
                 AND c.Estado = 1
-                AND tc.Codigo = @TipoPin)
+                AND tc.Codigo = 'PIN')
 ORDER BY u.Codigo;";
 
-            return clsBaseDatos.mtdConsultar(sql, new SqlParameter("@TipoPin", CodigoTipoPin));
+            return clsBaseDatos.mtdConsultar(sql);
         }
 
         /// <summary>Credencial PIN activa del usuario (si tiene varias, la más reciente).</summary>
@@ -40,12 +36,11 @@ FROM dbo.Credencial c
 INNER JOIN dbo.TipoCredencial tc ON tc.IdTipoCredencial = c.IdTipoCredencial
 WHERE c.IdUsuario = @IdUsuario
   AND c.Estado = 1
-  AND tc.Codigo = @TipoPin
+  AND tc.Codigo = 'PIN'
 ORDER BY c.IdCredencial DESC;";
 
             return clsBaseDatos.mtdConsultar(sql,
-                new SqlParameter("@IdUsuario", SqlDbType.Int) { Value = idUsuario },
-                new SqlParameter("@TipoPin", CodigoTipoPin));
+                clsBaseDatos.mtdParametro("@IdUsuario", idUsuario));
         }
 
         /// <summary>Suma un intento fallido y devuelve el total acumulado.</summary>
@@ -58,14 +53,14 @@ OUTPUT INSERTED.IntentosFallidos
 WHERE IdCredencial = @IdCredencial;";
 
             object total = clsBaseDatos.mtdConsultarValor(sql,
-                new SqlParameter("@IdCredencial", SqlDbType.Int) { Value = idCredencial });
+                clsBaseDatos.mtdParametro("@IdCredencial", idCredencial));
 
             return Convert.ToInt32(total);
         }
 
         /// <summary>
-        /// Reinicia los intentos, marca el último acceso y abre una sesión.
-        /// Todo en una sola transacción. Devuelve el IdSesion generado.
+        /// Reinicia los intentos, marca el último acceso y abre una sesión,
+        /// todo en una sola transacción. Devuelve el IdSesion generado.
         /// </summary>
         public Guid mtdRegistrarAccesoExitoso(int idCredencial, int idUsuario, string metodo, string estacion)
         {
@@ -93,10 +88,10 @@ COMMIT TRANSACTION;
 SELECT IdSesion FROM @Sesion;";
 
             object id = clsBaseDatos.mtdConsultarValor(sql,
-                new SqlParameter("@IdCredencial", SqlDbType.Int) { Value = idCredencial },
-                new SqlParameter("@IdUsuario", SqlDbType.Int) { Value = idUsuario },
-                new SqlParameter("@Metodo", metodo),
-                new SqlParameter("@Estacion", clsBaseDatos.mtdTextoParaSql(estacion)));
+                clsBaseDatos.mtdParametro("@IdCredencial", idCredencial),
+                clsBaseDatos.mtdParametro("@IdUsuario", idUsuario),
+                clsBaseDatos.mtdParametro("@Metodo", metodo),
+                clsBaseDatos.mtdParametro("@Estacion", estacion));
 
             return (Guid)id;
         }
@@ -111,7 +106,7 @@ WHERE IdSesion = @IdSesion
   AND EstadoSesion = 'ABIERTA';";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
-                new SqlParameter("@IdSesion", SqlDbType.UniqueIdentifier) { Value = idSesion });
+                clsBaseDatos.mtdParametro("@IdSesion", idSesion));
         }
     }
 }
