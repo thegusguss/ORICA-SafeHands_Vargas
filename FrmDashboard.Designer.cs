@@ -49,8 +49,8 @@
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.pnlAcceso = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblSesionAdmin = new System.Windows.Forms.Label();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlVista = new System.Windows.Forms.Panel();
             this.pnlSimulacion = new System.Windows.Forms.Panel();
@@ -427,39 +427,40 @@
             // 
             // pnlAcceso
             // 
-            this.pnlAcceso.Controls.Add(this.label1);
-            this.pnlAcceso.Controls.Add(this.button1);
+            this.pnlAcceso.Controls.Add(this.lblSesionAdmin);
+            this.pnlAcceso.Controls.Add(this.btnCerrarSesion);
             this.pnlAcceso.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAcceso.Location = new System.Drawing.Point(13, 744);
             this.pnlAcceso.Name = "pnlAcceso";
             this.pnlAcceso.Size = new System.Drawing.Size(200, 100);
             this.pnlAcceso.TabIndex = 18;
             // 
-            // label1
+            // lblSesionAdmin
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Sin sesión";
+            this.lblSesionAdmin.AutoSize = true;
+            this.lblSesionAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSesionAdmin.ForeColor = System.Drawing.Color.White;
+            this.lblSesionAdmin.Location = new System.Drawing.Point(7, 17);
+            this.lblSesionAdmin.Name = "lblSesionAdmin";
+            this.lblSesionAdmin.Size = new System.Drawing.Size(69, 16);
+            this.lblSesionAdmin.TabIndex = 21;
+            this.lblSesionAdmin.Text = "Sin sesión";
             // 
-            // button1
+            // btnCerrarSesion
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 40);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Cerrar sesión";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(3, 48);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(194, 40);
+            this.btnCerrarSesion.TabIndex = 20;
+            this.btnCerrarSesion.Text = "Cerrar sesión";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
             // 
             // pnlVista
             // 
@@ -1545,8 +1546,8 @@
         private System.Windows.Forms.Label lblModoSistema;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlAcceso;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblSesionAdmin;
+        private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Panel pnlUsuario;
     }
 }

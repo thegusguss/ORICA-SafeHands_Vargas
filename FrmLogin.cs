@@ -101,14 +101,19 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             principal.Show();
         }
 
-        // Al cerrar la pantalla principal: si el operador pidió "Cerrar sesión"
-        // se vuelve al login; en cualquier otro caso se cierra la aplicación.
+        // Al cerrar la pantalla principal (administrador u operador): si se pulsó "Cerrar sesión"
+        // se vuelve al login; si se cerró la ventana con la X, se cierra la aplicación.
         private void principal_FormClosed(object sender, FormClosedEventArgs e)
         {
             autenticacion.mtdCerrarSesion();
 
-            FrmPrincipalOperador operador = sender as FrmPrincipalOperador;
-            if (operador != null && operador.CerrarSesionSolicitada)
+            bool volverAlLogin = false;
+            if (sender is FrmPrincipalOperador)
+                volverAlLogin = ((FrmPrincipalOperador)sender).CerrarSesionSolicitada;
+            if (sender is frmPrincipal)
+                volverAlLogin = ((frmPrincipal)sender).CerrarSesionSolicitada;
+
+            if (volverAlLogin)
             {
                 mtdCargarOperadores();
                 Show();

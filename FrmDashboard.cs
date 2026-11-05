@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ORICA.Negocio;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,9 +11,19 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
     {
         private Form formularioActivo;  // pantalla que se está mostrando ahora en pnlVista
 
+        // True cuando se pulsó "Cerrar sesión" (volver al login en vez de salir).
+        public bool CerrarSesionSolicitada { get; private set; }
+
         public frmPrincipal()
         {
             InitializeComponent();
+
+            // Datos del usuario que inició sesión (abajo del menú y en la tarjeta "Sesión actual").
+            if (Sesion.Activa)
+            {
+                lblSesionAdmin.Text = Sesion.UsuarioActual.NombreCompleto;
+                lblEstadoSesion.Text = Sesion.UsuarioActual.Codigo + " · " + Sesion.UsuarioActual.RolNombre;
+            }
 
             // Los íconos se dibujan por código porque son imágenes hechas con una fuente.
             ColocarIcono(btnDashboard, "⌂");
@@ -43,6 +54,12 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private void btnSincronizacion_Click(object sender, EventArgs e) { AbrirFormulario(new FrmSincronizacion()); }
         private void btnReportes_Click(object sender, EventArgs e) { AbrirFormulario(new FrmReportes()); }
         private void btnConfiguracion_Click(object sender, EventArgs e) { AbrirFormulario(new FrmConfiguracion()); }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesionSolicitada = true;
+            Close();
+        }
 
         // ---------------- Pantallas ----------------
 
