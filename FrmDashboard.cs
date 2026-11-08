@@ -62,6 +62,28 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             FormClosed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
             actualizacion.Tick += (s, e) => { if (!pnlVista.Visible) CargarDashboard(); };
             btnParadaSimulada.Click += btnParadaSimulada_Click;
+
+            AplicarPermisos();
+        }
+
+        // ---------------- Permisos por rol ----------------
+
+        // Oculta los botones del menú que el rol no puede usar.
+        // El menú es un FlowLayoutPanel, así que los botones visibles se acomodan solos.
+        private void AplicarPermisos()
+        {
+            btnDashboard.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Dashboard);
+            btnDiagnostico.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Diagnostico);
+            btnAlertas.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Alertas);
+            btnCriticidad.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Criticidad);
+            btnEventos.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Eventos);
+            btnOperadores.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Operadores);
+            btnCredenciales.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Credenciales);
+            btnEquipos.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Equipos);
+            btnComandos.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Comandos);
+            btnSincronizacion.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Sincronizacion);
+            btnReportes.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Reportes);
+            btnConfiguracion.Visible = clsPermisoNegocio.mtdPuedeVer(clsPermisoNegocio.Configuracion);
         }
 
         // ---------------- Botones del menú ----------------

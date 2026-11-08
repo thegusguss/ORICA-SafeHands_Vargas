@@ -1,6 +1,6 @@
 # ORICA SafeHands: avance y pendientes
 
-Última actualización: 07/11/2026 (Gustavo)
+Última actualización: 08/11/2026 (Gustavo)
 
 ## Hecho y conectado a la BD
 
@@ -19,12 +19,14 @@
 | **Alertas** | `FrmAlertas`, `clsAlertaNegocio/Datos`, `Modelos/Alerta`, `clsMonitorArduino` (desconexión USB) |
 | **Dashboard** (administrador) | `FrmDashboard` (frmPrincipal), `clsDashboardNegocio/Datos`, `Modelos/ResumenDashboard` |
 | **Inicio del operador** | `FrmPrincipalOperador` (datos de su sesión), `clsDashboardNegocio.mtdResumenOperador`, `Modelos/ResumenOperador` |
+| **Permisos por rol** | `clsPermisoNegocio` (qué módulo ve cada rol), `FrmDashboard.AplicarPermisos` (oculta botones del menú) |
 | **Eventos / Auditoría** | `FrmEventos`, `clsEventoNegocio/Datos`, `clsAuditoriaNegocio/Datos`, `Modelos/RegistroHistorial` |
 
 ### Reglas que ya aplica el código
 - **Criticidad:** de 0 a 2 confirmaciones. El timeout va de 3 a 60 s, y es 0 cuando no hay confirmaciones. N4 siempre lleva doble confirmación.
 - **Comandos:** la frase se guarda en MAYÚSCULAS y sin tildes (`clsComandoNegocio.mtdNormalizarFrase`, que también sirve para comparar lo que reconozca la voz). Debe tener al menos 2 palabras y no puede ser CONFIRMAR ni CANCELAR. Los niveles N3 y N4 piden 90 % de confianza o más. Cada comando necesita al menos un equipo.
 - **Equipos:** el código es único y el identificador de hardware también.
+- **Permisos por rol** (menú del administrador): ADMIN ve todo. SUP ve Dashboard, Alertas, Eventos y Reportes. MANT ve Dashboard, Diagnóstico, Alertas, Equipos y Sincronización. Un rol desconocido solo ve el Dashboard. OPE usa `FrmPrincipalOperador`. La parada general queda visible para todos. Para cambiar permisos, editar las listas de `clsPermisoNegocio`.
 
 ### Cómo registrar eventos y auditoría (úsalo en los módulos nuevos)
 - **Operación** (voz, sesión, parada): `new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoComandoVoz, clsEventoNegocio.ResultadoEjecutado, detalle, idEquipo, idComando, idNivel, texto, confianza, confirmado)`.
@@ -35,9 +37,8 @@
 - **Leer la configuración** desde cualquier módulo: `new clsConfiguracionNegocio().mtdObtenerDecimal(clsConfiguracionNegocio.UmbralConfianza)`.
 
 ## Pendiente (en este orden)
-1. **Permisos por rol**: ahora SUP y MANT ven el menú completo del administrador.
-2. **Login con RFID**: el botón todavía solo prueba la conexión.
-3. Reportes, enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
+1. **Login con RFID**: el botón todavía solo prueba la conexión.
+2. Reportes, enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
 
 ## Para trabajar sin conflictos
 - No modificar `clsBaseDatos`, `clsLectura`, `Resultado` ni `Sesion` sin avisar.

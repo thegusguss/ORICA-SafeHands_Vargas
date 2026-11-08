@@ -66,6 +66,7 @@
     <Compile Include="clsCredencialNegocio.cs" />
     <Compile Include="Resultado.cs" />
     <Compile Include="clsRolNegocio.cs" />
+    <Compile Include="clsPermisoNegocio.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="clsSistemaNegocio.cs" />
     <Compile Include="clsUsuarioNegocio.cs" />
