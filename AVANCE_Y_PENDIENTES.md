@@ -18,6 +18,7 @@
 | **Mi historial** (operador) | `FrmMiHistorial` (lee `clsEventoNegocio.mtdListarHistorialUsuario`) |
 | **Alertas** | `FrmAlertas`, `clsAlertaNegocio/Datos`, `Modelos/Alerta`, `clsMonitorArduino` (desconexión USB) |
 | **Dashboard** (administrador) | `FrmDashboard` (frmPrincipal), `clsDashboardNegocio/Datos`, `Modelos/ResumenDashboard` |
+| **Inicio del operador** | `FrmPrincipalOperador` (datos de su sesión), `clsDashboardNegocio.mtdResumenOperador`, `Modelos/ResumenOperador` |
 | **Eventos / Auditoría** | `FrmEventos`, `clsEventoNegocio/Datos`, `clsAuditoriaNegocio/Datos`, `Modelos/RegistroHistorial` |
 
 ### Reglas que ya aplica el código

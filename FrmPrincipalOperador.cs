@@ -1,4 +1,5 @@
 ﻿using ORICA.Negocio;
+using ORICA.Negocio.Modelos;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -28,6 +29,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             // Colores e íconos del menú (se dibujan por código).
             EstiloMenuOperador.Aplicar(pnlMenuOperador, pnlSesionOperador, btnInicioOperador,
                 btnControlVozOperador, btnHistorialOperador, btnCerrarSesionOperador, btnInicioOperador);
+
+            // La pantalla de inicio se llena con los datos reales del operador.
+            Load += (s, e) => CargarInicio();
         }
 
         // ---------------- Botones del menú ----------------
@@ -38,6 +42,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             pantallaActual = null;
             pnlPantallasOperador.Visible = false;
             MarcarMenu(btnInicioOperador);
+            CargarInicio();   // al volver al inicio se ven las acciones recién hechas
         }
 
         private void btnControlVozOperador_Click(object sender, EventArgs e)
@@ -65,6 +70,86 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private void btnVerComandosInicio_Click(object sender, EventArgs e)
         {
             new FrmComandosDisponibles().ShowDialog();
+        }
+
+        // ---------------- Inicio con datos reales ----------------
+
+        // Llena el saludo y las tarjetas con la sesión y el historial del operador que entró.
+        private void CargarInicio()
+        {
+            if (!Sesion.Activa) return;
+
+            lblTituloInicio.Text = "Hola, " + Sesion.UsuarioActual.Nombres;
+            lblRutaInicio.Text = "ORICA / OPERADOR / " + Sesion.UsuarioActual.Codigo;
+
+            ResumenOperador r;
+            try
+            {
+                r = new clsDashboardNegocio().mtdResumenOperador();
+            }
+            catch (Exception)
+            {
+                lblMensaje.Text = "No se pudo conectar con la base de datos para mostrar tu resumen.";
+                lblMensaje.ForeColor = Color.Salmon;
+                return;
+            }
+
+            // Mensaje superior: última acción o primera vez
+            lblMensaje.ForeColor = Color.Silver;
+            if (r.UltimaAccionFecha.HasValue)
+            {
+                lblMensaje.Text = "Tu última acción: " + r.UltimaAccionTexto + " · " +
+                                  TextoResultado(r.UltimaAccionResultado) + " · " + TextoFecha(r.UltimaAccionFecha.Value);
+            }
+            else
+            {
+                lblMensaje.Text = "Aún no has dado comandos. Empieza en Control por voz.";
+            }
+
+            if (r.SesionAnterior.HasValue)
+                lblMensaje.Text += "   |   Sesión anterior: " + TextoFecha(r.SesionAnterior.Value);
+
+            // Tarjeta: equipos disponibles
+            lblCantidadEquiposInicio.Text = r.EquiposDisponibles.ToString();
+            lblDetalleEquiposInicio.Text = r.EquiposDisponibles == 0
+                ? "Ningún equipo tiene comandos activos"
+                : r.CodigosEquipos + " · " + r.ComandosDisponibles + " comando(s)";
+
+            // Tarjeta: acciones en esta sesión
+            lblCantidadAccionesInicio.Text = r.AccionesSesion.ToString();
+            lblDetalleAccionesInicio.Text = r.AccionesSesion == 0
+                ? "Comandos procesados en esta sesión"
+                : r.EjecutadasSesion + " ejecutada(s) · " + r.RechazadasSesion + " rechazada(s) · " +
+                  r.CanceladasSesion + " cancelada(s)";
+
+            // Tarjeta: acciones confirmadas (ejecutadas después de confirmar)
+            lblCantidadConfirmadasInicio.Text = r.ConfirmadasSesion.ToString();
+            lblDetalleConfirmadasInicio.Text = "De " + r.EjecutadasSesion + " ejecutada(s) en esta sesión · " +
+                                               r.EjecutadasTotal + " en total";
+
+            // Ayuda
+            lblDescripcionAyudaInicio.Text = "Tienes " + r.ComandosDisponibles +
+                " frase(s) disponibles. Revisa cuáles piden confirmación antes de usarlas.";
+        }
+
+        private static string TextoResultado(string resultado)
+        {
+            switch (resultado)
+            {
+                case clsEventoNegocio.ResultadoEjecutado: return "ejecutada";
+                case clsEventoNegocio.ResultadoRechazado: return "rechazada";
+                case clsEventoNegocio.ResultadoCancelado: return "cancelada";
+                case clsEventoNegocio.ResultadoError: return "con error";
+                default: return (resultado ?? "").ToLower();
+            }
+        }
+
+        // "hoy 14:32", "ayer 09:10" o "05/11 18:00"
+        private static string TextoFecha(DateTime fecha)
+        {
+            if (fecha.Date == DateTime.Today) return "hoy " + fecha.ToString("HH:mm");
+            if (fecha.Date == DateTime.Today.AddDays(-1)) return "ayer " + fecha.ToString("HH:mm");
+            return fecha.ToString("dd/MM HH:mm");
         }
 
         // ---------------- Pantallas ----------------

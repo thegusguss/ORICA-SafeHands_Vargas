@@ -69,6 +69,49 @@ namespace ORICA.Negocio
             return r;
         }
 
+        /// <summary>Resumen de la pantalla de inicio del operador que inició sesión.</summary>
+        public ResumenOperador mtdResumenOperador()
+        {
+            ResumenOperador r = new ResumenOperador();
+            if (!Sesion.Activa) return r;
+
+            int idUsuario = Sesion.UsuarioActual.IdUsuario;
+
+            DataTable dt = _datos.mtdResumenOperador(idUsuario, Sesion.IdSesion);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow f = dt.Rows[0];
+                r.AccionesSesion = clsLectura.mtdLeerEntero(f, "AccionesSesion");
+                r.EjecutadasSesion = clsLectura.mtdLeerEntero(f, "EjecutadasSesion");
+                r.ConfirmadasSesion = clsLectura.mtdLeerEntero(f, "ConfirmadasSesion");
+                r.RechazadasSesion = clsLectura.mtdLeerEntero(f, "RechazadasSesion");
+                r.CanceladasSesion = clsLectura.mtdLeerEntero(f, "CanceladasSesion");
+                r.EjecutadasTotal = clsLectura.mtdLeerEntero(f, "EjecutadasTotal");
+                r.SesionAnterior = clsLectura.mtdLeerFecha(f, "SesionAnterior");
+                r.EquiposDisponibles = clsLectura.mtdLeerEntero(f, "EquiposDisponibles");
+                r.ComandosDisponibles = clsLectura.mtdLeerEntero(f, "ComandosDisponibles");
+                r.CodigosEquipos = clsLectura.mtdLeerTexto(f, "CodigosEquipos");
+            }
+
+            DataTable ultima = _datos.mtdUltimaAccionOperador(idUsuario);
+            if (ultima.Rows.Count > 0)
+            {
+                DataRow u = ultima.Rows[0];
+                string frase = clsLectura.mtdLeerTexto(u, "Frase");
+                string texto = clsLectura.mtdLeerTexto(u, "TextoDetectado");
+                string equipo = clsLectura.mtdLeerTexto(u, "EquipoCodigo");
+                bool esParada = clsLectura.mtdLeerTexto(u, "TipoEvento") == clsEventoNegocio.TipoParada;
+
+                r.UltimaAccionFecha = clsLectura.mtdLeerFecha(u, "FechaHora");
+                r.UltimaAccionResultado = clsLectura.mtdLeerTexto(u, "Resultado");
+                r.UltimaAccionTexto = (esParada ? "Parada de equipo"
+                                      : "\"" + (frase ?? texto ?? "comando") + "\"") +
+                                      (equipo == null ? "" : " en " + equipo);
+            }
+
+            return r;
+        }
+
         /// <summary>Envía una parada a todos los equipos activos (botón PARADA SIMULADA del administrador).</summary>
         public Resultado mtdParadaGeneral()
         {

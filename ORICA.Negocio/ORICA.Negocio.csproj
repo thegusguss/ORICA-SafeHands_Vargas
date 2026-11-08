@@ -37,6 +37,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelos\ResumenOperador.cs" />
     <Compile Include="clsDashboardNegocio.cs" />
     <Compile Include="Modelos\ResumenDashboard.cs" />
     <Compile Include="clsAlertaNegocio.cs" />
