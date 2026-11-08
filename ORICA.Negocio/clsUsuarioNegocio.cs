@@ -59,6 +59,9 @@ namespace ORICA.Negocio
                 int id = _datos.mtdRegistrar(u.Codigo, u.Nombres, u.Apellidos, u.Documento,
                                           u.Telefono, u.Correo, u.IdRol, true);
 
+                clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloOperadores, "REGISTRAR", "Usuario", id,
+                    "Usuario " + u.Codigo + " - " + u.NombreCompleto + " registrado.");
+
                 return Resultado.Ok($"Usuario {u.Codigo} registrado correctamente.", id);
             }
             catch (SqlException ex) { return Resultado.Error(mtdTraducirError(ex)); }
@@ -85,6 +88,9 @@ namespace ORICA.Negocio
                 if (filas == 0)
                     return Resultado.Error("El usuario fue modificado por otra persona o ya no existe. Actualice la lista e intente nuevamente.");
 
+                clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloOperadores, "MODIFICAR", "Usuario", u.IdUsuario,
+                    "Usuario " + u.Codigo + " - " + u.NombreCompleto + " modificado.");
+
                 return Resultado.Ok($"Usuario {u.Codigo} modificado correctamente.", u.IdUsuario);
             }
             catch (SqlException ex) { return Resultado.Error(mtdTraducirError(ex)); }
@@ -99,6 +105,9 @@ namespace ORICA.Negocio
 
                 int filas = _datos.mtdCambiarEstado(idUsuario, activo);
                 if (filas == 0) return Resultado.Error("El usuario ya no existe.");
+
+                clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloOperadores, activo ? "ACTIVAR" : "SUSPENDER",
+                    "Usuario", idUsuario, activo ? "Usuario activado." : "Usuario suspendido.");
 
                 return Resultado.Ok(activo ? "Usuario activado correctamente." : "Usuario suspendido correctamente.", idUsuario);
             }

@@ -66,7 +66,11 @@ namespace ORICA.Negocio
                 int intentosFallidos = clsLectura.mtdLeerEntero(credencial, "IntentosFallidos");
 
                 if (intentosFallidos >= MaxIntentosFallidos)
+                {
+                    new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoAccesoFallido, clsEventoNegocio.ResultadoRechazado,
+                        "Intento con credencial PIN bloqueada.", idUsuario: usuario.IdUsuario);
                     return Resultado.Error("La credencial está bloqueada por intentos fallidos. Contacte al administrador.");
+                }
 
                 byte[] hashGuardado = clsLectura.mtdLeerBytes(credencial, "HashCredencial");
                 byte[] salt = clsLectura.mtdLeerBytes(credencial, "Salt");
@@ -76,6 +80,10 @@ namespace ORICA.Negocio
                     int intentos = _datos.mtdRegistrarIntentoFallido(idCredencial);
                     int restantes = MaxIntentosFallidos - intentos;
 
+                    new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoAccesoFallido, clsEventoNegocio.ResultadoRechazado,
+                        restantes > 0 ? "PIN incorrecto (" + intentos + " de " + MaxIntentosFallidos + ")." : "PIN incorrecto. Credencial bloqueada.",
+                        idUsuario: usuario.IdUsuario);
+
                     return restantes > 0
                         ? Resultado.Error($"El PIN es incorrecto. Intentos restantes: {restantes}.")
                         : Resultado.Error("El PIN es incorrecto. La credencial quedó bloqueada.");
@@ -84,6 +92,9 @@ namespace ORICA.Negocio
                 Guid idSesion = _datos.mtdRegistrarAccesoExitoso(idCredencial, usuario.IdUsuario,
                                                               MetodoPin, Environment.MachineName);
                 Sesion.Iniciar(usuario, idSesion);
+
+                new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoInicioSesion, clsEventoNegocio.ResultadoInformativo,
+                    "Ingreso con PIN desde " + Environment.MachineName + ".");
 
                 return Resultado.Ok($"Bienvenido, {usuario.NombreCompleto}.", usuario.IdUsuario);
             }
@@ -95,6 +106,10 @@ namespace ORICA.Negocio
         {
             try
             {
+                if (Sesion.Activa)
+                    new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoCierreSesion, clsEventoNegocio.ResultadoInformativo,
+                        "Sesión cerrada.");
+
                 if (Sesion.IdSesion != Guid.Empty) _datos.mtdCerrarSesion(Sesion.IdSesion);
             }
             catch (Exception)

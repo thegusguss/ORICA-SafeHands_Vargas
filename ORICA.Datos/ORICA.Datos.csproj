@@ -38,6 +38,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsConfiguracionDatos.cs" />
+    <Compile Include="clsAuditoriaDatos.cs" />
+    <Compile Include="clsEventoDatos.cs" />
+    <Compile Include="clsComandoDatos.cs" />
+    <Compile Include="clsCriticidadDatos.cs" />
+    <Compile Include="clsEquipoDatos.cs" />
     <Compile Include="clsAutenticacionDatos.cs" />
     <Compile Include="clsBaseDatos.cs" />
     <Compile Include="clsConexion.cs" />

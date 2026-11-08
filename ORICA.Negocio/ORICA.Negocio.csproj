@@ -37,6 +37,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsOperacionVozNegocio.cs" />
+    <Compile Include="Modelos\OperacionVoz.cs" />
+    <Compile Include="clsAuditoriaNegocio.cs" />
+    <Compile Include="clsEventoNegocio.cs" />
+    <Compile Include="clsConfiguracionNegocio.cs" />
+    <Compile Include="Modelos\RegistroHistorial.cs" />
+    <Compile Include="Modelos\ParametroConfiguracion.cs" />
+    <Compile Include="clsComandoNegocio.cs" />
+    <Compile Include="Modelos\Comando.cs" />
+    <Compile Include="Modelos\TipoAccion.cs" />
+    <Compile Include="clsCriticidadNegocio.cs" />
+    <Compile Include="Modelos\NivelCriticidad.cs" />
+    <Compile Include="clsEquipoNegocio.cs" />
+    <Compile Include="Modelos\Equipo.cs" />
+    <Compile Include="Modelos\TipoEquipo.cs" />
     <Compile Include="clsAutenticacionNegocio.cs" />
     <Compile Include="clsLectura.cs" />
     <Compile Include="Modelos\Rol.cs" />

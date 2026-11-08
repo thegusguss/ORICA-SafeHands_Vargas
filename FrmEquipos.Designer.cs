@@ -445,7 +445,7 @@
             this.lblSubtituloEquipos.Name = "lblSubtituloEquipos";
             this.lblSubtituloEquipos.Size = new System.Drawing.Size(200, 15);
             this.lblSubtituloEquipos.TabIndex = 2;
-            this.lblSubtituloEquipos.Text = "ipos\tInventario de activos simulados";
+            this.lblSubtituloEquipos.Text = "Inventario de activos simulados";
             // 
             // lblTituloEquipos
             // 

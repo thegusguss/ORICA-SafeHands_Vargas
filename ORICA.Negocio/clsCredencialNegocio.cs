@@ -94,6 +94,10 @@ namespace ORICA.Negocio
 
                 int id = _datos.mtdRegistrar(codigo, idUsuario, tipo.IdTipoCredencial, hash, salt, referencia);
 
+                clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloCredenciales, "REGISTRAR", "Credencial", id,
+                    "Credencial " + tipo.Nombre + " " + codigo + " registrada para el usuario " + idUsuario +
+                    (reemplaza ? " (reemplaza a la anterior)." : "."));
+
                 string mensaje = "Credencial " + tipo.Nombre + " registrada correctamente.";
                 if (reemplaza) mensaje += "\nLa credencial " + tipo.Nombre + " anterior quedó desactivada.";
 
@@ -113,12 +117,16 @@ namespace ORICA.Negocio
                 if (c.Bloqueada)
                 {
                     _datos.mtdDesbloquear(c.IdCredencial);
+                    clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloCredenciales, "DESBLOQUEAR", "Credencial",
+                        c.IdCredencial, "Credencial " + c.Tipo + " de " + c.Operador + " desbloqueada.");
                     return Resultado.Ok("Credencial desbloqueada. El operador ya puede volver a ingresar.");
                 }
 
                 if (c.Estado)
                 {
                     _datos.mtdCambiarEstado(c.IdCredencial, false);
+                    clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloCredenciales, "DESACTIVAR", "Credencial",
+                        c.IdCredencial, "Credencial " + c.Tipo + " de " + c.Operador + " desactivada.");
                     return Resultado.Ok("Credencial desactivada.");
                 }
 
@@ -127,6 +135,8 @@ namespace ORICA.Negocio
                                            " activa. Desactívela primero.");
 
                 _datos.mtdCambiarEstado(c.IdCredencial, true);
+                clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloCredenciales, "ACTIVAR", "Credencial",
+                    c.IdCredencial, "Credencial " + c.Tipo + " de " + c.Operador + " activada.");
                 return Resultado.Ok("Credencial activada.");
             }
             catch (SqlException ex) { return Resultado.Error("Error de base de datos: " + ex.Message); }

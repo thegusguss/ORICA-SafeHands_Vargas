@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ORICA.Negocio;
+using ORICA.Negocio.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,35 +12,59 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
     {
         private readonly List<ComandoDisponible> comandos = new List<ComandoDisponible>();
 
-        public FrmComandosDisponibles()
+        // Sin equipo: muestra el primer equipo activo que tenga comandos asignados.
+        public FrmComandosDisponibles() : this(null)
+        {
+        }
+
+        // Con equipo: muestra solo los comandos que el operador puede usar en ese equipo.
+        public FrmComandosDisponibles(Equipo equipo)
         {
             InitializeComponent();
+            CargarDesdeBaseDatos(equipo);
+        }
 
-            // Datos temporales para comprobar el diseño.
-            CargarComandos("Luz indicadora · SIM-02 (demostración)", new List<ComandoDisponible>
+        private void CargarDesdeBaseDatos(Equipo equipo)
+        {
+            try
             {
-                new ComandoDisponible
+                clsComandoNegocio comandoNegocio = new clsComandoNegocio();
+                List<Comando> lista = new List<Comando>();
+
+                if (equipo != null)
                 {
-                    Frase = "Consultar estado",
-                    Descripcion = "Consulta si la luz está encendida o apagada.",
-                    Confirmacion = "Sin confirmación",
-                    RequiereConfirmacion = false
-                },
-                new ComandoDisponible
-                {
-                    Frase = "Encender luz",
-                    Descripcion = "Solicita el encendido del equipo seleccionado.",
-                    Confirmacion = "Requiere confirmación",
-                    RequiereConfirmacion = true
-                },
-                new ComandoDisponible
-                {
-                    Frase = "Apagar luz",
-                    Descripcion = "Solicita el apagado del equipo seleccionado.",
-                    Confirmacion = "Sin confirmación",
-                    RequiereConfirmacion = false
+                    lista = comandoNegocio.mtdListarPorEquipo(equipo.IdEquipo);
                 }
-            });
+                else
+                {
+                    foreach (Equipo eq in new clsEquipoNegocio().mtdListarActivos())
+                    {
+                        lista = comandoNegocio.mtdListarPorEquipo(eq.IdEquipo);
+                        if (lista.Count > 0) { equipo = eq; break; }
+                    }
+                }
+
+                List<ComandoDisponible> disponibles = new List<ComandoDisponible>();
+                foreach (Comando c in lista)
+                {
+                    disponibles.Add(new ComandoDisponible
+                    {
+                        Frase = c.Frase,
+                        Descripcion = c.Nombre + " · " + c.CriticidadTexto + " · Confianza mínima " +
+                                      c.ConfianzaMinima.ToString("0.##") + " %" + (c.RequierePTT ? " · Mantener PTT" : ""),
+                        Confirmacion = c.ConfirmacionTexto,
+                        RequiereConfirmacion = c.NumeroConfirmaciones > 0
+                    });
+                }
+
+                CargarComandos(equipo == null ? "Sin equipos con comandos asignados" : equipo.Etiqueta, disponibles);
+            }
+            catch (Exception ex)
+            {
+                CargarComandos("Sin conexión", null);
+                MessageBox.Show("No se pudieron cargar los comandos.\n" + ex.Message,
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void CargarComandos(string nombreEquipo, IEnumerable<ComandoDisponible> comandosPermitidos)
