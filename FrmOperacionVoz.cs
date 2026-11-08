@@ -30,6 +30,8 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
         private clsReconocedorVoz reconocedor;         // null = Windows no tiene voz en español
         private bool gramaticaLista;                   // la gramática del equipo ya se cargó
+        private int versionGramatica;                  // si se piden varias seguidas, vale solo la última
+        private bool cargandoEquipos;                  // mientras se llena el combo no se reacciona a sus cambios
         private SpeechSynthesizer sintetizador;        // null = sin respuesta hablada
 
         private List<Comando> comandos = new List<Comando>();
@@ -59,7 +61,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             // Los eventos se conectan aquí para no tocar el diseñador.
             Load += FrmOperacionVoz_Load;
             FormClosed += FrmOperacionVoz_FormClosed;
-            cbxEquipoVoz.SelectedIndexChanged += (s, e) => SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
+            cbxEquipoVoz.SelectedIndexChanged += (s, e) =>
+            {
+                if (!cargandoEquipos) SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
+            };
             btnPTTVoz.MouseDown += btnPTTVoz_MouseDown;
             btnPTTVoz.MouseUp += btnPTTVoz_MouseUp;
             btnConfirmarComando.Click += (s, e) => Responder(clsOperacionVozNegocio.PalabraConfirmar);
@@ -157,21 +162,28 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
         private void CargarEquipos()
         {
+            List<Equipo> equipos = new List<Equipo>();
+            cargandoEquipos = true;
             try
             {
-                List<Equipo> equipos = voz.mtdListarEquipos();
+                equipos = voz.mtdListarEquipos();
                 cbxEquipoVoz.DataSource = equipos;
                 cbxEquipoVoz.DisplayMember = "Etiqueta";
-                cbxEquipoVoz.SelectedIndex = -1;
-
-                if (equipos.Count == 1) cbxEquipoVoz.SelectedIndex = 0;   // si solo hay uno, se elige solo
-                if (equipos.Count == 0) lblConexionEquipoVoz.Text = "No hay equipos activos";
+                cbxEquipoVoz.SelectedIndex = equipos.Count == 1 ? 0 : -1;   // si solo hay uno, se elige solo
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudieron cargar los equipos.\n" + ex.Message,
                     "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                cargandoEquipos = false;
+            }
+
+            // Una sola vez, ya con el combo listo.
+            SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
+            if (equipos.Count == 0) lblConexionEquipoVoz.Text = "No hay equipos activos";
         }
 
         private void SeleccionarEquipo(Equipo equipo)
@@ -207,9 +219,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             }
 
             lblEstadoEquipoVoz.Text = equipo.EstadoTexto;
-            lblConexionEquipoVoz.Text = comandos.Count + " comando(s) · " + (equipo.UltimoHeartbeat.HasValue
-                ? "señal " + equipo.HeartbeatTexto
-                : "ESP32 no conectado (simulación)");
+            lblConexionEquipoVoz.Text = comandos.Count + " comando(s) · " + (clsMonitorArduino.Conectado
+                ? "Arduino en " + clsMonitorArduino.Puerto + " (simulación)"
+                : "Arduino no conectado (simulación)");
             lblEquipoConfirmacion.Text = "Equipo: " + equipo.Etiqueta;
 
             CargarGramatica();
@@ -221,6 +233,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             if (reconocedor == null) return;
 
+            int miVersion = ++versionGramatica;
             gramaticaLista = false;
             btnPTTVoz.Enabled = false;
 
@@ -230,7 +243,8 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             string error = await reconocedor.PrepararAsync(frases);
 
-            if (IsDisposed) return;
+            // Si mientras tanto se eligió otro equipo, este resultado ya no sirve.
+            if (IsDisposed || reconocedor == null || miVersion != versionGramatica) return;
             btnPTTVoz.Enabled = true;
             gramaticaLista = error == null;
 
@@ -238,6 +252,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             {
                 lblModoOperacion.Text = "Voz no disponible";
                 MostrarUltimaAccion(error, ColorError);
+            }
+            else
+            {
+                lblModoOperacion.Text = "Micrófono · " + reconocedor.Idioma;
             }
         }
 

@@ -59,7 +59,7 @@ SELECT TOP (@Maximo) *
 FROM (
     SELECT e.FechaHora, 'EVENTO' AS Fuente, e.TipoEvento AS Tipo,
            u.Codigo AS UsuarioCodigo, u.Nombres + ' ' + u.Apellidos AS UsuarioNombre,
-           c.Frase, eq.Codigo AS EquipoCodigo, e.TextoDetectado, e.Detalle,
+           c.Frase, eq.Codigo AS EquipoCodigo, eq.Nombre AS EquipoNombre, e.TextoDetectado, e.Detalle,
            e.Confianza, e.IdNivelCriticidad, nc.Nombre AS CriticidadNombre,
            e.Resultado, e.Confirmado, CAST(NULL AS VARCHAR(60)) AS Modulo,
            CAST(NULL AS NVARCHAR(MAX)) AS ValorAnterior, CAST(NULL AS NVARCHAR(MAX)) AS ValorNuevo
@@ -74,7 +74,7 @@ FROM (
 
     SELECT a.FechaHora, 'AUDITORIA', a.Accion,
            u.Codigo, u.Nombres + ' ' + u.Apellidos,
-           NULL, NULL, NULL, a.Descripcion,
+           NULL, NULL, NULL, NULL, a.Descripcion,
            NULL, NULL, NULL,
            'AUDITORIA', NULL, a.Modulo,
            a.ValorAnterior, a.ValorNuevo

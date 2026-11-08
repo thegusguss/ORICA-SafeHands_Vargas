@@ -88,6 +88,7 @@ namespace ORICA.Negocio
                 string nombre = clsLectura.mtdLeerTexto(r, "UsuarioNombre");
                 string frase = clsLectura.mtdLeerTexto(r, "Frase");
                 string equipo = clsLectura.mtdLeerTexto(r, "EquipoCodigo");
+                string equipoNombre = clsLectura.mtdLeerTexto(r, "EquipoNombre");
                 string texto = clsLectura.mtdLeerTexto(r, "TextoDetectado");
                 string detalle = clsLectura.mtdLeerTexto(r, "Detalle");
                 string modulo = clsLectura.mtdLeerTexto(r, "Modulo");
@@ -130,7 +131,12 @@ namespace ORICA.Negocio
                     IdNivelCriticidad = nivel > 0 ? (int?)nivel : null,
                     Criticidad = clsLectura.mtdLeerTexto(r, "CriticidadNombre"),
                     Resultado = clsLectura.mtdLeerTexto(r, "Resultado"),
-                    Detalle = completo.ToString()
+                    Detalle = completo.ToString(),
+                    Equipo = equipo == null ? null : equipo + " - " + equipoNombre,
+                    Comando = !string.IsNullOrEmpty(frase) ? frase
+                            : !string.IsNullOrEmpty(texto) ? "\"" + texto + "\""
+                            : fuente == "AUDITORIA" ? modulo + " · " + tipo : mtdNombreTipo(tipo),
+                    TextoDetectado = texto
                 });
             }
 

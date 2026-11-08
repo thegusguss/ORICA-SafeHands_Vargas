@@ -37,6 +37,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsDashboardNegocio.cs" />
+    <Compile Include="Modelos\ResumenDashboard.cs" />
+    <Compile Include="clsAlertaNegocio.cs" />
+    <Compile Include="Modelos\Alerta.cs" />
     <Compile Include="clsOperacionVozNegocio.cs" />
     <Compile Include="Modelos\OperacionVoz.cs" />
     <Compile Include="clsAuditoriaNegocio.cs" />

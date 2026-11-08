@@ -15,6 +15,28 @@ namespace ORICA.Negocio.Modelos
         public string Criticidad { get; set; }
         public string Resultado { get; set; }
         public string Detalle { get; set; }         // texto completo (para el doble clic / CSV)
+        public string Equipo { get; set; }          // "EQ-001 - Simulador principal" o null
+        public string Comando { get; set; }         // frase del comando, lo que se escuchó o el tipo de evento
+        public string TextoDetectado { get; set; }  // lo que entendió el reconocedor
+
+        /// <summary>Resultado en palabras para el operador.</summary>
+        public string ResultadoTexto
+        {
+            get
+            {
+                switch (Resultado)
+                {
+                    case "EJECUTADO": return "Ejecutado";
+                    case "CANCELADO": return Detalle != null && Detalle.IndexOf("tiempo", System.StringComparison.OrdinalIgnoreCase) >= 0
+                                             ? "Sin respuesta" : "Cancelado";
+                    case "RECHAZADO": return "Rechazado";
+                    case "ERROR": return "Error";
+                    case "IGNORADO": return "Ignorado";
+                    case "INFORMATIVO": return "Informativo";
+                    default: return Resultado;
+                }
+            }
+        }
 
         public string ConfianzaTexto
         {

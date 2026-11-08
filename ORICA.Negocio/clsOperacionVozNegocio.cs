@@ -24,6 +24,7 @@ namespace ORICA.Negocio
         private readonly clsConfiguracionNegocio _configuracion = new clsConfiguracionNegocio();
         private readonly clsEventoNegocio _eventos = new clsEventoNegocio();
         private readonly clsEventoDatos _eventoDatos = new clsEventoDatos();
+        private readonly clsAlertaNegocio _alertas = new clsAlertaNegocio();
 
         // ================= CONSULTAS =================
 
@@ -92,13 +93,16 @@ namespace ORICA.Negocio
         /// <summary>Registra en Evento un intento rechazado (frase desconocida o poca confianza).</summary>
         public void mtdRegistrarRechazo(InterpretacionVoz r, Equipo equipo)
         {
-            _eventos.mtdRegistrar(
+            Guid id = _eventos.mtdRegistrar(
                 r.Comando == null ? clsEventoNegocio.TipoNoReconocido : clsEventoNegocio.TipoComandoVoz,
                 clsEventoNegocio.ResultadoRechazado, r.Motivo,
                 equipo == null ? (int?)null : equipo.IdEquipo,
                 r.Comando == null ? (int?)null : r.Comando.IdComando,
                 r.Comando == null ? (int?)null : r.Comando.IdNivelCriticidad,
                 r.TextoReconocido, r.Confianza);
+
+            // N3/N4 rechazado → alerta (para N1/N2 o frases desconocidas no se genera).
+            _alertas.mtdAlertaComando(clsAlertaNegocio.TipoComandoRechazado, r.Comando, equipo, id, r.Motivo);
         }
 
         // ================= 2) CONFIRMACIONES =================
@@ -164,8 +168,10 @@ namespace ORICA.Negocio
                 bool sigueDisponible = mtdListarComandos(p.Equipo.IdEquipo).Any(c => c.IdComando == p.Comando.IdComando);
                 if (!sigueDisponible)
                 {
-                    mtdGuardar(p, clsEventoNegocio.ResultadoRechazado,
+                    Guid idRechazo = mtdGuardar(p, clsEventoNegocio.ResultadoRechazado,
                         "El comando o el equipo fue desactivado mientras se confirmaba.");
+                    _alertas.mtdAlertaComando(clsAlertaNegocio.TipoComandoRechazado, p.Comando, p.Equipo, idRechazo,
+                        "el comando o el equipo fue desactivado mientras se confirmaba.");
                     return Resultado.Error("El comando ya no está disponible para este equipo. No se ejecutó.");
                 }
 
@@ -177,14 +183,19 @@ namespace ORICA.Negocio
             }
             catch (Exception ex)
             {
-                mtdGuardar(p, clsEventoNegocio.ResultadoError, ex.Message);
+                Guid idError = mtdGuardar(p, clsEventoNegocio.ResultadoError, ex.Message);
+                _alertas.mtdAlertaComando(clsAlertaNegocio.TipoErrorEjecucion, p.Comando, p.Equipo, idError, ex.Message);
                 return Resultado.Error("No se pudo ejecutar el comando: " + ex.Message);
             }
         }
 
         public void mtdCancelar(OperacionPendiente p, string motivo)
         {
-            mtdGuardar(p, clsEventoNegocio.ResultadoCancelado, motivo);
+            Guid id = mtdGuardar(p, clsEventoNegocio.ResultadoCancelado, motivo);
+
+            bool vencida = p.Respuestas.Count > 0 && p.Respuestas[p.Respuestas.Count - 1].Respuesta == RespuestaTimeout;
+            _alertas.mtdAlertaComando(vencida ? clsAlertaNegocio.TipoConfirmacionVencida : clsAlertaNegocio.TipoComandoCancelado,
+                                      p.Comando, p.Equipo, id, motivo);
         }
 
         /// <summary>Parada del equipo (botón DETENER). Es una acción segura: no pide confirmación.</summary>
@@ -193,9 +204,11 @@ namespace ORICA.Negocio
             if (pendienteCancelada != null)
                 mtdGuardar(pendienteCancelada, clsEventoNegocio.ResultadoCancelado, "Cancelado por parada del equipo.");
 
-            _eventos.mtdRegistrar(clsEventoNegocio.TipoParada, clsEventoNegocio.ResultadoEjecutado,
+            Guid id = _eventos.mtdRegistrar(clsEventoNegocio.TipoParada, clsEventoNegocio.ResultadoEjecutado,
                 "Parada solicitada por el operador (simulación).",
                 equipo == null ? (int?)null : equipo.IdEquipo);
+
+            _alertas.mtdAlertaParada(equipo, id);
         }
 
         // Evento + cada paso de confirmación. Devuelve el IdEvento (Guid.Empty si no se pudo guardar).

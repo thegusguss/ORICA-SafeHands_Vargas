@@ -11,7 +11,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            clsMonitorArduino.Iniciar();   // vigila el puerto COM del Arduino y genera la alerta si se desconecta
             Application.Run(new frmLogin());
+            clsMonitorArduino.Detener();
         }
     }
 }

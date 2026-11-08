@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Globalization;
 using Windows.Media.SpeechRecognition;
@@ -17,6 +18,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
     {
         private SpeechRecognizer reconocedor;
         private bool preparado;
+
+        // Windows no permite preparar/iniciar/detener a la vez: los pedidos se atienden de uno en uno.
+        private readonly SemaphoreSlim turno = new SemaphoreSlim(1, 1);
 
         /// <summary>Idioma en uso, por ejemplo "es-MX".</summary>
         public string Idioma { get; private set; }
@@ -50,9 +54,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         /// </summary>
         public async Task<string> PrepararAsync(IEnumerable<string> frases)
         {
+            await turno.WaitAsync();
             try
             {
-                await DetenerAsync();
+                await DetenerSinTurnoAsync();
 
                 if (reconocedor == null)
                 {
@@ -85,16 +90,21 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 preparado = false;
                 return Traducir(ex);
             }
+            finally
+            {
+                turno.Release();
+            }
         }
 
         /// <summary>Empieza a escuchar. Devuelve null si pudo, o el mensaje del problema.</summary>
         public async Task<string> IniciarAsync()
         {
-            if (reconocedor == null || !preparado) return "El reconocimiento de voz no está listo.";
-            if (Escuchando) return null;
-
+            await turno.WaitAsync();
             try
             {
+                if (reconocedor == null || !preparado) return "El reconocimiento de voz no está listo.";
+                if (Escuchando) return null;
+
                 Escuchando = true;
                 await reconocedor.ContinuousRecognitionSession.StartAsync();
                 return null;
@@ -104,10 +114,28 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 Escuchando = false;
                 return Traducir(ex);
             }
+            finally
+            {
+                turno.Release();
+            }
         }
 
         /// <summary>Deja de escuchar; lo último que se dijo todavía se procesa.</summary>
         public async Task DetenerAsync()
+        {
+            await turno.WaitAsync();
+            try
+            {
+                await DetenerSinTurnoAsync();
+            }
+            finally
+            {
+                turno.Release();
+            }
+        }
+
+        // Detiene la escucha; quien lo llama ya tiene el turno.
+        private async Task DetenerSinTurnoAsync()
         {
             if (reconocedor == null || !Escuchando) return;
 

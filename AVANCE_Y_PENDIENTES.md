@@ -15,6 +15,9 @@
 | **Comandos disponibles** (operador) | `FrmComandosDisponibles`: ahora lee de la BD; constructor `(Equipo)` opcional |
 | **Configuración** | `FrmConfiguracion`, `clsConfiguracionNegocio/Datos`, `Modelos/ParametroConfiguracion` |
 | **Operación por voz** | `FrmOperacionVoz`, `clsOperacionVozNegocio`, `Modelos/OperacionVoz` (System.Speech; ejecución simulada hasta conectar el ESP32) |
+| **Mi historial** (operador) | `FrmMiHistorial` (lee `clsEventoNegocio.mtdListarHistorialUsuario`) |
+| **Alertas** | `FrmAlertas`, `clsAlertaNegocio/Datos`, `Modelos/Alerta`, `clsMonitorArduino` (desconexión USB) |
+| **Dashboard** (administrador) | `FrmDashboard` (frmPrincipal), `clsDashboardNegocio/Datos`, `Modelos/ResumenDashboard` |
 | **Eventos / Auditoría** | `FrmEventos`, `clsEventoNegocio/Datos`, `clsAuditoriaNegocio/Datos`, `Modelos/RegistroHistorial` |
 
 ### Reglas que ya aplica el código
@@ -27,15 +30,13 @@
 - **Cambios administrativos**: `clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloEquipos, "MODIFICAR", "Equipo", id, descripcion, antes, despues)`.
 - Ninguno de los dos lanza excepciones: si falla la BD, la operación principal sigue funcionando.
 - Ya quedan registrados: inicio y cierre de sesión, PIN incorrecto o bloqueado, y los cambios en operadores, credenciales, equipos, comandos, criticidad y configuración.
+- **Alertas automáticas**: se crean solas en `clsOperacionVozNegocio` (N3/N4 rechazado, cancelado, vencido o con error; parada) y en `clsMonitorArduino` (desconexión del puerto COM). Para una falla del enlace serial, usar `new clsAlertaNegocio().mtdAlertaEnlace(puerto, detalle)`.
 - **Leer la configuración** desde cualquier módulo: `new clsConfiguracionNegocio().mtdObtenerDecimal(clsConfiguracionNegocio.UmbralConfianza)`.
 
 ## Pendiente (en este orden)
-1. **Mi historial** del operador (`FrmMiHistorial`): ya existe `clsEventoNegocio.mtdListarHistorialUsuario(idUsuario)`.
-2. **Alertas** (sugerencia: crear una alerta en `clsOperacionVozNegocio` cuando haya timeout o rechazo en N3/N4) (`FrmAlertas`, tabla `Alerta`: ACTIVA → RECONOCIDA → CERRADA).
-3. **Dashboard** con totales reales.
-4. **Permisos por rol**: ahora SUP y MANT ven el menú completo del administrador.
-5. **Login con RFID**: el botón todavía solo prueba la conexión.
-6. Reportes, enlace serial real con el ESP32 (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase ESP32).
+1. **Permisos por rol**: ahora SUP y MANT ven el menú completo del administrador.
+2. **Login con RFID**: el botón todavía solo prueba la conexión.
+3. Reportes, enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
 
 ## Para trabajar sin conflictos
 - No modificar `clsBaseDatos`, `clsLectura`, `Resultado` ni `Sesion` sin avisar.

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsMonitorArduino.cs" />
     <Compile Include="clsReconocedorVoz.cs" />
     <Compile Include="FrmComandoEditar.cs">
       <SubType>Form</SubType>
