@@ -35,11 +35,11 @@
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.pcbIcon2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblInicioSesion = new System.Windows.Forms.Label();
             this.lblIndicacion = new System.Windows.Forms.Label();
             this.lblOperador = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@
             this.txtPIN = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.lblAyuda = new System.Windows.Forms.Label();
-            this.lblDemo = new System.Windows.Forms.Label();
             this.pnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcon)).BeginInit();
             this.panel1.SuspendLayout();
@@ -136,6 +135,42 @@
             this.panel1.Size = new System.Drawing.Size(472, 643);
             this.panel1.TabIndex = 4;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(32, 286);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 47);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "capas";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(32, 248);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(320, 47);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "con seguridad por";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(32, 201);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(361, 47);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Control manos libres";
+            // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
@@ -158,42 +193,6 @@
             this.pcbIcon2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbIcon2.TabIndex = 4;
             this.pcbIcon2.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(32, 201);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(361, 47);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Control manos libres";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(32, 248);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(422, 47);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "con seguridad por";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(32, 286);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 47);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "capas";
             // 
             // lblInicioSesion
             // 
@@ -232,12 +231,12 @@
             // cbxOperador
             // 
             this.cbxOperador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(32)))), ((int)(((byte)(45)))));
+            this.cbxOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxOperador.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.cbxOperador.FormattingEnabled = true;
             this.cbxOperador.Location = new System.Drawing.Point(564, 283);
             this.cbxOperador.Name = "cbxOperador";
-            this.cbxOperador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOperador.Size = new System.Drawing.Size(259, 21);
             this.cbxOperador.TabIndex = 9;
             // 
@@ -258,8 +257,8 @@
             this.txtPIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPIN.ForeColor = System.Drawing.Color.White;
             this.txtPIN.Location = new System.Drawing.Point(564, 385);
-            this.txtPIN.Name = "txtPIN";
             this.txtPIN.MaxLength = 4;
+            this.txtPIN.Name = "txtPIN";
             this.txtPIN.Size = new System.Drawing.Size(259, 20);
             this.txtPIN.TabIndex = 11;
             this.txtPIN.UseSystemPasswordChar = true;
@@ -279,7 +278,7 @@
             this.btnIngresar.Text = "Ingresar con PIN";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            //
+            // 
             // lblAyuda
             // 
             this.lblAyuda.AutoSize = true;
@@ -288,29 +287,17 @@
             this.lblAyuda.ForeColor = System.Drawing.Color.White;
             this.lblAyuda.Location = new System.Drawing.Point(544, 570);
             this.lblAyuda.Name = "lblAyuda";
-            this.lblAyuda.Size = new System.Drawing.Size(302, 20);
+            this.lblAyuda.Size = new System.Drawing.Size(219, 20);
             this.lblAyuda.TabIndex = 14;
             this.lblAyuda.Text = "Ingrese su PIN de 4 números.";
             // 
-            // lblDemo
-            // 
-            this.lblDemo.AutoSize = true;
-            this.lblDemo.BackColor = System.Drawing.Color.Transparent;
-            this.lblDemo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDemo.ForeColor = System.Drawing.Color.White;
-            this.lblDemo.Location = new System.Drawing.Point(544, 538);
-            this.lblDemo.Name = "lblDemo";
-            this.lblDemo.Size = new System.Drawing.Size(130, 20);
-            this.lblDemo.TabIndex = 15;
-            this.lblDemo.Text = "Demo: PIN 1234.";
-            // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
             this.ClientSize = new System.Drawing.Size(936, 676);
-            this.Controls.Add(this.lblDemo);
             this.Controls.Add(this.lblAyuda);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPIN);
@@ -324,10 +311,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
-            this.AcceptButton = this.btnIngresar;
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ORICA SafeHands — Inicio de sesión";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.pnlBarraSuperior.ResumeLayout(false);
             this.pnlBarraSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbIcon)).EndInit();
@@ -360,7 +346,6 @@
         private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label lblAyuda;
-        private System.Windows.Forms.Label lblDemo;
     }
 }
 

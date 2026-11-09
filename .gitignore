@@ -480,3 +480,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Cadena de conexión de Azure con contraseña (cada PC tiene la suya)
+conexion.config

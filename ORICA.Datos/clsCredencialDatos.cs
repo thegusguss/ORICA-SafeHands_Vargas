@@ -70,7 +70,7 @@ WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;";
 BEGIN TRANSACTION;
 
 UPDATE dbo.Credencial
-SET Estado = 0, FechaModificacion = SYSDATETIME()
+SET Estado = 0, FechaModificacion = dbo.fnAhora()
 WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;
 
 INSERT INTO dbo.Credencial (Codigo, IdUsuario, IdTipoCredencial, HashCredencial, Salt, ReferenciaVisible)
@@ -95,7 +95,7 @@ COMMIT TRANSACTION;";
         public int mtdCambiarEstado(int idCredencial, bool estado)
         {
             const string sql = @"UPDATE dbo.Credencial
-SET Estado = @Estado, FechaModificacion = SYSDATETIME()
+SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
 WHERE IdCredencial = @IdCredencial;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
@@ -107,7 +107,7 @@ WHERE IdCredencial = @IdCredencial;";
         public int mtdDesbloquear(int idCredencial)
         {
             const string sql = @"UPDATE dbo.Credencial
-SET IntentosFallidos = 0, FechaModificacion = SYSDATETIME()
+SET IntentosFallidos = 0, FechaModificacion = dbo.fnAhora()
 WHERE IdCredencial = @IdCredencial;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,

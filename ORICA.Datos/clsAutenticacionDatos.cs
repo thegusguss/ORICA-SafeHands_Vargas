@@ -68,11 +68,11 @@ namespace ORICA.Datos
 
                                 UPDATE dbo.Credencial
                                 SET IntentosFallidos = 0,
-                                    UltimoUso = SYSDATETIME()
+                                    UltimoUso = dbo.fnAhora()
                                 WHERE IdCredencial = @IdCredencial;
 
                                 UPDATE dbo.Usuario
-                                SET UltimoAcceso = SYSDATETIME()
+                                SET UltimoAcceso = dbo.fnAhora()
                                 WHERE IdUsuario = @IdUsuario;
 
                                 DECLARE @Sesion TABLE (IdSesion UNIQUEIDENTIFIER);
@@ -96,7 +96,7 @@ namespace ORICA.Datos
 
         public int mtdCerrarSesion(Guid idSesion)
         {
-            const string sql = @"UPDATE dbo.SesionOperador SET FechaFin = SYSDATETIME(),
+            const string sql = @"UPDATE dbo.SesionOperador SET FechaFin = dbo.fnAhora(),
                                 EstadoSesion = 'CERRADA'
                             WHERE IdSesion = @IdSesion
                               AND EstadoSesion = 'ABIERTA';";

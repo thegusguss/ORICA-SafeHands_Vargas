@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ORICA.Negocio;
+using System;
 using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
@@ -17,9 +18,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             Application.ThreadException += (s, e) =>
                 MessageBox.Show(e.Exception.ToString(), "Error inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            clsSincronizacionNegocio.mtdIniciar();   // conecta con Azure y, si no hay internet, trabaja con la copia local
             clsMonitorArduino.Iniciar();   // vigila el puerto COM del Arduino y genera la alerta si se desconecta
             Application.Run(new frmLogin());
             clsMonitorArduino.Detener();
+            clsSincronizacionNegocio.mtdDetener();
         }
     }
 }

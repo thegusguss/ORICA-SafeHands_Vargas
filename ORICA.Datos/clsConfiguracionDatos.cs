@@ -38,7 +38,7 @@ ORDER BY Categoria, Clave;";
                 sql.AppendFormat(@"
 IF EXISTS (SELECT 1 FROM dbo.Configuracion WHERE Clave = @Clave{0})
     UPDATE dbo.Configuracion
-    SET Valor = @Valor{0}, FechaModificacion = SYSDATETIME(), IdUsuarioModifica = @IdUsuario
+    SET Valor = @Valor{0}, FechaModificacion = dbo.fnAhora(), IdUsuarioModifica = @IdUsuario
     WHERE Clave = @Clave{0} AND EsEditable = 1 AND Valor <> @Valor{0};
 ELSE
     INSERT INTO dbo.Configuracion (Categoria, Clave, Valor, TipoDato, Descripcion, IdUsuarioModifica)

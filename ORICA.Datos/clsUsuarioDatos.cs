@@ -58,7 +58,7 @@ ORDER BY u.Codigo;";
             const string sql = @"
 INSERT INTO dbo.Usuario (Codigo, Nombres, Apellidos, Documento, Telefono, Correo, IdRol, Estado, FechaRegistro)
 OUTPUT INSERTED.IdUsuario
-VALUES (@Codigo, @Nombres, @Apellidos, @Documento, @Telefono, @Correo, @IdRol, @Estado, SYSDATETIME());";
+VALUES (@Codigo, @Nombres, @Apellidos, @Documento, @Telefono, @Correo, @IdRol, @Estado, dbo.fnAhora());";
 
             object id = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@Codigo", codigo),
@@ -90,7 +90,7 @@ SET Codigo = @Codigo,
     Telefono = @Telefono,
     Correo = @Correo,
     IdRol = @IdRol,
-    FechaModificacion = SYSDATETIME()
+    FechaModificacion = dbo.fnAhora()
 WHERE IdUsuario = @IdUsuario
   AND RowVersion = @RowVersion;";
 
@@ -111,7 +111,7 @@ WHERE IdUsuario = @IdUsuario
             const string sql = @"
 UPDATE dbo.Usuario
 SET Estado = @Estado,
-    FechaModificacion = SYSDATETIME()
+    FechaModificacion = dbo.fnAhora()
 WHERE IdUsuario = @IdUsuario;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,

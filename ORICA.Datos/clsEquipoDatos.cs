@@ -77,7 +77,7 @@ SET Codigo = @Codigo,
     Descripcion = @Descripcion,
     IdentificadorHardware = @Hardware,
     UbicacionReferencia = @Ubicacion,
-    FechaModificacion = SYSDATETIME()
+    FechaModificacion = dbo.fnAhora()
 WHERE IdEquipo = @IdEquipo
   AND RowVersion = @RowVersion;";
 
@@ -96,7 +96,7 @@ WHERE IdEquipo = @IdEquipo
         {
             const string sql = @"
 UPDATE dbo.Equipo
-SET Estado = @Estado, FechaModificacion = SYSDATETIME()
+SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
 WHERE IdEquipo = @IdEquipo;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,

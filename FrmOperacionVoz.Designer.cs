@@ -35,6 +35,7 @@
             this.lblTituloOperacionVoz = new System.Windows.Forms.Label();
             this.pnlSeleccionEquipo = new System.Windows.Forms.Panel();
             this.lblConexionEquipoVoz = new System.Windows.Forms.Label();
+            this.picEquipoVoz = new System.Windows.Forms.PictureBox();
             this.cbxEquipoVoz = new System.Windows.Forms.ComboBox();
             this.lblEstadoEquipoVoz = new System.Windows.Forms.Label();
             this.lblTituloEstadoEquipo = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.lblUltimaAccionVoz = new System.Windows.Forms.Label();
             this.lblTituloUltimaAccionVoz = new System.Windows.Forms.Label();
             this.pnlMenuOperador = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSeccionOperador = new System.Windows.Forms.Label();
@@ -68,18 +70,16 @@
             this.lblNombreOperador = new System.Windows.Forms.Label();
             this.lblRolOperador = new System.Windows.Forms.Label();
             this.btnCerrarSesionOperador = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.picEquipoVoz = new System.Windows.Forms.PictureBox();
             this.pnlCabeceraVoz.SuspendLayout();
             this.pnlSeleccionEquipo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).BeginInit();
             this.pnlControlVoz.SuspendLayout();
             this.pnlConfirmacionVoz.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlMenuOperador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlSesionOperador.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabeceraVoz
@@ -171,6 +171,16 @@
             this.lblConexionEquipoVoz.Size = new System.Drawing.Size(137, 16);
             this.lblConexionEquipoVoz.TabIndex = 24;
             this.lblConexionEquipoVoz.Text = "Selecciona un equipo";
+            // 
+            // picEquipoVoz
+            // 
+            this.picEquipoVoz.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Ícono_de_micrófono_violeta_minimalista;
+            this.picEquipoVoz.Location = new System.Drawing.Point(36, 95);
+            this.picEquipoVoz.Name = "picEquipoVoz";
+            this.picEquipoVoz.Size = new System.Drawing.Size(221, 215);
+            this.picEquipoVoz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picEquipoVoz.TabIndex = 23;
+            this.picEquipoVoz.TabStop = false;
             // 
             // cbxEquipoVoz
             // 
@@ -471,6 +481,16 @@
             this.pnlMenuOperador.TabIndex = 20;
             this.pnlMenuOperador.WrapContents = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Placa_blanca_con_logo_ORICA_azul;
+            this.pictureBox2.Location = new System.Drawing.Point(13, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 70);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
@@ -598,26 +618,6 @@
             this.btnCerrarSesionOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCerrarSesionOperador.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Placa_blanca_con_logo_ORICA_azul;
-            this.pictureBox2.Location = new System.Drawing.Point(13, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 70);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
-            // 
-            // picEquipoVoz
-            // 
-            this.picEquipoVoz.Image = global::PROYECTO_ORICA_SAFEHANDS_VARGAS.Properties.Resources.Ícono_de_micrófono_violeta_minimalista;
-            this.picEquipoVoz.Location = new System.Drawing.Point(36, 95);
-            this.picEquipoVoz.Name = "picEquipoVoz";
-            this.picEquipoVoz.Size = new System.Drawing.Size(221, 215);
-            this.picEquipoVoz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picEquipoVoz.TabIndex = 23;
-            this.picEquipoVoz.TabStop = false;
-            // 
             // FrmOperacionVoz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -633,11 +633,12 @@
             this.Controls.Add(this.pnlCabeceraVoz);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "FrmOperacionVoz";
-            this.Text = "Control por voz";
+            this.Text = "76";
             this.pnlCabeceraVoz.ResumeLayout(false);
             this.pnlCabeceraVoz.PerformLayout();
             this.pnlSeleccionEquipo.ResumeLayout(false);
             this.pnlSeleccionEquipo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).EndInit();
             this.pnlControlVoz.ResumeLayout(false);
             this.pnlControlVoz.PerformLayout();
             this.pnlConfirmacionVoz.ResumeLayout(false);
@@ -645,12 +646,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlMenuOperador.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlSesionOperador.ResumeLayout(false);
             this.pnlSesionOperador.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEquipoVoz)).EndInit();
             this.ResumeLayout(false);
 
         }

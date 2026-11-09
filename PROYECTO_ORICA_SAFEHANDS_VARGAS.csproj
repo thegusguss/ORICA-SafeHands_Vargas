@@ -264,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="conexion.ejemplo.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo OS blanco sobre fondo transparente %281%29.png" />
@@ -293,4 +294,9 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Copia conexion.config (cadena de Azure, no se sube a git) a la carpeta bin en cada compilación.
+       Se revisa al compilar, así funciona aunque el archivo se haya creado con Visual Studio abierto. -->
+  <Target Name="CopiarConexionAzure" AfterTargets="Build" Condition="Exists('conexion.config')">
+    <Copy SourceFiles="conexion.config" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
 </Project>

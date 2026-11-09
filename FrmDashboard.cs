@@ -160,8 +160,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
         private void MostrarCabecera(bool conectado)
         {
-            lblEstadoDatos.Text = conectado ? "● SQL Server conectado" : "● Sin conexión a la BD";
-            lblEstadoDatos.ForeColor = conectado ? ColorOk : ColorError;
+            // Azure conectado (verde), sin conexión con datos locales (amarillo) o sin base (rojo).
+            lblEstadoDatos.Text = conectado ? clsSincronizacionNegocio.TextoEstado : "● Sin conexión a la BD";
+            lblEstadoDatos.ForeColor = !conectado ? ColorError
+                                     : clsSincronizacionNegocio.SinConexion ? Color.Goldenrod : ColorOk;
 
             lblConexionESP32.Text = clsMonitorArduino.TextoEstado;
             lblConexionESP32.ForeColor = clsMonitorArduino.Conectado ? ColorOk : ColorApagado;

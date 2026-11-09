@@ -92,6 +92,8 @@ namespace ORICA.Negocio
                 Guid idSesion = _datos.mtdRegistrarAccesoExitoso(idCredencial, usuario.IdUsuario,
                                                               MetodoPin, Environment.MachineName);
                 Sesion.Iniciar(usuario, idSesion);
+                // Sin conexión con Azure, solo el operador puede registrar cosas (las demás se perderían al sincronizar).
+                clsConexion.SoloLecturaSinConexion = usuario.RolCodigo != "OPE";
 
                 new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoInicioSesion, clsEventoNegocio.ResultadoInformativo,
                     "Ingreso con PIN desde " + Environment.MachineName + ".");
@@ -119,6 +121,7 @@ namespace ORICA.Negocio
             finally
             {
                 Sesion.Limpiar();
+                clsConexion.SoloLecturaSinConexion = false;
             }
         }
 

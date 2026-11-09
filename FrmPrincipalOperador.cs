@@ -11,6 +11,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
     public partial class FrmPrincipalOperador : Form
     {
         private Form pantallaActual;  // pantalla que se está mostrando ahora
+        private readonly Timer estadoConexion = new Timer { Interval = 3000 };  // revisa si hay conexión con Azure
 
         // True cuando el operador pulsó "Cerrar sesión" (volver al login en vez de salir).
         public bool CerrarSesionSolicitada { get; private set; }
@@ -30,6 +31,12 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             EstiloMenuOperador.Aplicar(pnlMenuOperador, pnlSesionOperador, btnInicioOperador,
                 btnControlVozOperador, btnHistorialOperador, btnCerrarSesionOperador, btnInicioOperador);
 
+            // Debajo de "SafeHands" se avisa si se está trabajando sin conexión (las órdenes se guardan en la PC).
+            MostrarConexion();
+            estadoConexion.Tick += (s, e) => MostrarConexion();
+            estadoConexion.Start();
+            Disposed += (s, e) => estadoConexion.Dispose();
+
             // La pantalla de inicio se llena con los datos reales del operador.
             // Si falla, se avisa: un error dentro de Load puede perderse sin mensaje al depurar en 64 bits.
             Load += (s, e) =>
@@ -37,6 +44,20 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 try { CargarInicio(); }
                 catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error al cargar el inicio", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             };
+        }
+
+        private void MostrarConexion()
+        {
+            if (clsSincronizacionNegocio.SinConexion)
+            {
+                lblSeccionOperador.Text = "● SIN CONEXIÓN · SE GUARDA EN LA PC";
+                lblSeccionOperador.ForeColor = Color.Goldenrod;
+            }
+            else
+            {
+                lblSeccionOperador.Text = "ESPACIO DEL OPERADOR";
+                lblSeccionOperador.ForeColor = Color.Silver;
+            }
         }
 
         // ---------------- Botones del menú ----------------

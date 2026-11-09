@@ -66,7 +66,7 @@ ORDER BY CASE a.EstadoAlerta WHEN 'ACTIVA' THEN 0 WHEN 'RECONOCIDA' THEN 1 ELSE 
         {
             const string sql = @"
 UPDATE dbo.Alerta
-SET EstadoAlerta = 'RECONOCIDA', FechaReconocida = SYSDATETIME(), IdUsuarioReconoce = @IdUsuario
+SET EstadoAlerta = 'RECONOCIDA', FechaReconocida = dbo.fnAhora(), IdUsuarioReconoce = @IdUsuario
 WHERE IdAlerta = @IdAlerta AND EstadoAlerta = 'ACTIVA';";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
@@ -79,7 +79,7 @@ WHERE IdAlerta = @IdAlerta AND EstadoAlerta = 'ACTIVA';";
         {
             const string sql = @"
 UPDATE dbo.Alerta
-SET EstadoAlerta = 'CERRADA', FechaCierre = SYSDATETIME(), IdUsuarioCierra = @IdUsuario
+SET EstadoAlerta = 'CERRADA', FechaCierre = dbo.fnAhora(), IdUsuarioCierra = @IdUsuario
 WHERE IdAlerta = @IdAlerta AND EstadoAlerta = 'RECONOCIDA';";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
@@ -97,10 +97,10 @@ SELECT
     (SELECT MAX(FechaHora) FROM dbo.Alerta WHERE EstadoAlerta = 'ACTIVA') AS UltimaActiva,
     (SELECT COUNT(1) FROM dbo.Evento
       WHERE Resultado = 'RECHAZADO' AND Detalle LIKE 'Confianza insuficiente%'
-        AND FechaHora >= CAST(CAST(SYSDATETIME() AS DATE) AS DATETIME2))   AS RechazosConfianzaHoy,
+        AND FechaHora >= CAST(CAST(dbo.fnAhora() AS DATE) AS DATETIME2))   AS RechazosConfianzaHoy,
     (SELECT COUNT(1) FROM dbo.Alerta
       WHERE Tipo = 'ENLACE_ARDUINO'
-        AND FechaHora >= CAST(CAST(SYSDATETIME() AS DATE) AS DATETIME2))   AS FallasEnlaceHoy,
+        AND FechaHora >= CAST(CAST(dbo.fnAhora() AS DATE) AS DATETIME2))   AS FallasEnlaceHoy,
     (SELECT COUNT(1) FROM dbo.Alerta
       WHERE Tipo = 'ENLACE_ARDUINO' AND EstadoAlerta <> 'CERRADA')         AS FallasEnlaceAbiertas;";
 

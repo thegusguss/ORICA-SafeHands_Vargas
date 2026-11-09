@@ -119,7 +119,7 @@ SET Codigo = @Codigo,
     IdTipoAccion = @IdTipoAccion,
     ConfianzaMinima = @Confianza,
     RequierePTT = @PTT,
-    FechaModificacion = SYSDATETIME()
+    FechaModificacion = dbo.fnAhora()
 WHERE IdComando = @IdComando
   AND RowVersion = @RowVersion;
 
@@ -166,7 +166,7 @@ SELECT @Filas;";
         {
             const string sql = @"
 UPDATE dbo.Comando
-SET Estado = @Estado, FechaModificacion = SYSDATETIME()
+SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
 WHERE IdComando = @IdComando;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
