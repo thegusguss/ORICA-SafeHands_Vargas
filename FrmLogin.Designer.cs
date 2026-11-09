@@ -47,7 +47,6 @@
             this.lblPIN = new System.Windows.Forms.Label();
             this.txtPIN = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.btnRFID = new System.Windows.Forms.Button();
             this.lblAyuda = new System.Windows.Forms.Label();
             this.lblDemo = new System.Windows.Forms.Label();
             this.pnlBarraSuperior.SuspendLayout();
@@ -273,30 +272,14 @@
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
-            this.btnIngresar.Location = new System.Drawing.Point(548, 437);
+            this.btnIngresar.Location = new System.Drawing.Point(564, 437);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(134, 44);
+            this.btnIngresar.Size = new System.Drawing.Size(259, 44);
             this.btnIngresar.TabIndex = 12;
             this.btnIngresar.Text = "Ingresar con PIN";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            // 
-            // btnRFID
-            // 
-            this.btnRFID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(32)))), ((int)(((byte)(45)))));
-            this.btnRFID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRFID.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(95)))), ((int)(((byte)(220)))));
-            this.btnRFID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRFID.ForeColor = System.Drawing.Color.White;
-            this.btnRFID.Location = new System.Drawing.Point(717, 437);
-            this.btnRFID.Name = "btnRFID";
-            this.btnRFID.Size = new System.Drawing.Size(129, 44);
-            this.btnRFID.TabIndex = 13;
-            this.btnRFID.Text = "Simular RFID / NFC";
-            this.btnRFID.UseVisualStyleBackColor = false;
-            this.btnRFID.Click += new System.EventHandler(this.btnRFID_Click);
-            // 
+            //
             // lblAyuda
             // 
             this.lblAyuda.AutoSize = true;
@@ -307,7 +290,7 @@
             this.lblAyuda.Name = "lblAyuda";
             this.lblAyuda.Size = new System.Drawing.Size(302, 20);
             this.lblAyuda.TabIndex = 14;
-            this.lblAyuda.Text = "También puede usar Simular RFID / NFC.";
+            this.lblAyuda.Text = "Ingrese su PIN de 4 números.";
             // 
             // lblDemo
             // 
@@ -329,7 +312,6 @@
             this.ClientSize = new System.Drawing.Size(936, 676);
             this.Controls.Add(this.lblDemo);
             this.Controls.Add(this.lblAyuda);
-            this.Controls.Add(this.btnRFID);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPIN);
             this.Controls.Add(this.lblPIN);
@@ -377,7 +359,6 @@
         private System.Windows.Forms.Label lblPIN;
         private System.Windows.Forms.TextBox txtPIN;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.Button btnRFID;
         private System.Windows.Forms.Label lblAyuda;
         private System.Windows.Forms.Label lblDemo;
     }

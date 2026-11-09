@@ -39,8 +39,7 @@
 - **Leer la configuración** desde cualquier módulo: `new clsConfiguracionNegocio().mtdObtenerDecimal(clsConfiguracionNegocio.UmbralConfianza)`.
 
 ## Pendiente (en este orden)
-1. **Login con RFID**: el botón todavía solo prueba la conexión.
-2. Enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
+1. Enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
 
 ## Para trabajar sin conflictos
 - No modificar `clsBaseDatos`, `clsLectura`, `Resultado` ni `Sesion` sin avisar.

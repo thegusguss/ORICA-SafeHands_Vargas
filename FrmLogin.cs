@@ -137,14 +137,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             }
         }
 
-        // Por ahora el botón RFID solo prueba la conexión con la base de datos.
-        private void btnRFID_Click(object sender, EventArgs e)
-        {
-            Resultado resultado = clsSistemaNegocio.mtdProbarConexion();
-            MessageBox.Show(resultado.Mensaje, "ORICA SafeHands", MessageBoxButtons.OK,
-                resultado.Exito ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
-        }
-
         // ---------------- Ventana ----------------
 
         private void btnCerrar_Click(object sender, EventArgs e)
