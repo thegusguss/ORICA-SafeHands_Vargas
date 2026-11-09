@@ -14,14 +14,15 @@
 | **Comandos** (con equipos asignados) | `FrmComandos`, `FrmComandoEditar`, `clsComandoNegocio/Datos`, `Modelos/Comando`, `Modelos/TipoAccion` |
 | **Comandos disponibles** (operador) | `FrmComandosDisponibles`: ahora lee de la BD; constructor `(Equipo)` opcional |
 | **Configuración** | `FrmConfiguracion`, `clsConfiguracionNegocio/Datos`, `Modelos/ParametroConfiguracion` |
-| **Operación por voz** | `FrmOperacionVoz`, `clsOperacionVozNegocio`, `Modelos/OperacionVoz` (System.Speech; ejecución simulada hasta conectar el ESP32) |
+| **Operación por voz** | `FrmOperacionVoz`, `clsOperacionVozNegocio`, `Modelos/OperacionVoz` (las órdenes se ejecutan en el Arduino) |
 | **Mi historial** (operador) | `FrmMiHistorial` (lee `clsEventoNegocio.mtdListarHistorialUsuario`) |
-| **Alertas** | `FrmAlertas`, `clsAlertaNegocio/Datos`, `Modelos/Alerta`, `clsMonitorArduino` (desconexión USB) |
+| **Alertas** | `FrmAlertas`, `clsAlertaNegocio/Datos`, `Modelos/Alerta`, `clsEnlaceArduino` (desconexión USB, heartbeat, watchdog) |
 | **Dashboard** (administrador) | `FrmDashboard` (frmPrincipal), `clsDashboardNegocio/Datos`, `Modelos/ResumenDashboard` |
 | **Inicio del operador** | `FrmPrincipalOperador` (datos de su sesión), `clsDashboardNegocio.mtdResumenOperador`, `Modelos/ResumenOperador` |
 | **Permisos por rol** | `clsPermisoNegocio` (qué módulo ve cada rol), `FrmDashboard.AplicarPermisos` (oculta botones del menú) |
 | **Reportes** | `FrmReportes` (filtros, rango de fechas, gráficos), `clsReporteNegocio/Datos`, `Modelos/Reporte`, `clsImpresionReporte` (genera el PDF y lo abre) |
 | **Azure + modo sin conexión** | `clsConexion` (elige Azure o LocalDB), `clsSincronizacionDatos/Negocio`, `Modelos/EstadoSincronizacion`, `FrmSincronizacion`, `Scripts/ORICA_SafeHandsDB_Azure.sql`, `conexion.ejemplo.config` |
+| **Arduino Uno (enlace serial)** | `Arduino/ORICA_SafeHands/ORICA_SafeHands.ino`, `clsEnlaceArduino`, `clsProtocoloArduino`, `clsMonitorArduino`, `FrmDiagnostico`, `Arduino/GUIA_ARDUINO.md` |
 | **Eventos / Auditoría** | `FrmEventos`, `clsEventoNegocio/Datos`, `clsAuditoriaNegocio/Datos`, `Modelos/RegistroHistorial` |
 
 ### Reglas que ya aplica el código
@@ -33,12 +34,14 @@
 
 - **Azure y sin conexión:** Azure SQL es la base principal (compartida). La LocalDB es una copia: si Azure no responde, la app sigue con la copia y lo que haga el operador (sesión, eventos, confirmaciones, alertas) queda pendiente. Cada 30 s se reintenta; al volver, se sube lo pendiente en una transacción, se vuelve a Azure y se renueva la copia. Sin conexión, los roles que no son operador solo pueden consultar. Las fechas usan `dbo.fnAhora()` (hora de Perú; Azure trabaja en UTC). En la copia local las llaves foráneas están apagadas y los eventos quedan con Origen `SIN_CONEXION`.
 
+- **Arduino:** las órdenes van por USB con secuencia y CRC, y el Arduino responde ACK o NAK. El tipo de acción del comando define la orden (INFORMATIVA→ESTADO, INDICADOR, OPERAR, DETENER, CRITICA, ESTADO_SEGURO→PARADA). Hay heartbeat cada HEARTBEAT_MS: si se pierden MAX_HEARTBEAT_PERDIDOS seguidos, sale una alerta, y el watchdog del Arduino apaga todo. Después de una PARADA (botón, parada general o pulsador físico) o de un WATCHDOG, el Arduino rechaza órdenes hasta que se rearme en Diagnóstico. Si no hay Arduino, los comandos fallan, salvo que se marque "Simular comandos si no hay Arduino" (SIMULAR_SIN_ARDUINO).
+
 ### Cómo registrar eventos y auditoría (úsalo en los módulos nuevos)
 - **Operación** (voz, sesión, parada): `new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoComandoVoz, clsEventoNegocio.ResultadoEjecutado, detalle, idEquipo, idComando, idNivel, texto, confianza, confirmado)`.
 - **Cambios administrativos**: `clsAuditoriaNegocio.mtdRegistrar(clsAuditoriaNegocio.ModuloEquipos, "MODIFICAR", "Equipo", id, descripcion, antes, despues)`.
 - Ninguno de los dos lanza excepciones: si falla la BD, la operación principal sigue funcionando.
 - Ya quedan registrados: inicio y cierre de sesión, PIN incorrecto o bloqueado, y los cambios en operadores, credenciales, equipos, comandos, criticidad y configuración.
-- **Alertas automáticas**: se crean solas en `clsOperacionVozNegocio` (N3/N4 rechazado, cancelado, vencido o con error; parada) y en `clsMonitorArduino` (desconexión del puerto COM). Para una falla del enlace serial, usar `new clsAlertaNegocio().mtdAlertaEnlace(puerto, detalle)`.
+- **Alertas automáticas**: se crean solas en `clsOperacionVozNegocio` (N3/N4 rechazado, cancelado, vencido o con error; parada). El enlace serial (`clsEnlaceArduino`) genera solo las alertas de desconexión, heartbeat perdido, pulsador de parada y watchdog.
 - **Leer la configuración** desde cualquier módulo: `new clsConfiguracionNegocio().mtdObtenerDecimal(clsConfiguracionNegocio.UmbralConfianza)`.
 
 ## Configurar Azure (una vez)
@@ -50,8 +53,9 @@
    - Los demás: **Descargar de Azure**.
 5. Para probar sin internet: **Simular sin conexión** → entrar como operador y dar órdenes → **Volver a conectar**.
 
-## Pendiente (en este orden)
-1. Enlace serial real con el **Arduino Uno** por USB (antes era ESP32) (reemplazar la simulación en `clsOperacionVozNegocio.mtdEjecutar`), Diagnóstico y Sincronización (fase Arduino).
+## Pendiente
+1. Probar con el Arduino conectado, siguiendo la lista de `Arduino/GUIA_ARDUINO.md`.
+2. Impresión directa de reportes (por ahora se genera el PDF).
 
 ## Para trabajar sin conflictos
 - `clsBaseDatos` ahora abre la conexión con `clsConexion.mtdAbrirConexion` (Azure o local) y usa un candado. No modificar `clsBaseDatos`, `clsLectura`, `Resultado` ni `Sesion` sin avisar.

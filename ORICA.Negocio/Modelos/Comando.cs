@@ -16,6 +16,7 @@ namespace ORICA.Negocio.Modelos
         public int TimeoutSegundos { get; set; }        // viene del nivel de criticidad
         public int IdTipoAccion { get; set; }
         public string TipoAccionNombre { get; set; }
+        public string TipoAccionCodigo { get; set; }    // INFORMATIVA, INDICADOR, OPERAR, DETENER, CRITICA, ESTADO_SEGURO
         public decimal ConfianzaMinima { get; set; }    // 0 a 100
         public bool RequierePTT { get; set; }
         public bool Estado { get; set; }

@@ -37,8 +37,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsSincronizacionNegocio.cs" />
-    <Compile Include="Modelos\EstadoSincronizacion.cs" />
+    <Compile Include="clsProtocoloArduino.cs" />
+    <Compile Include="clsEnlaceArduino.cs" />
+    <Compile Include="clsSincronizacionNegocio.cs" />
+
+    <Compile Include="Modelos\EstadoSincronizacion.cs" />
+
     <Compile Include="Modelos\ResumenOperador.cs" />
     <Compile Include="clsDashboardNegocio.cs" />
     <Compile Include="clsReporteNegocio.cs" />

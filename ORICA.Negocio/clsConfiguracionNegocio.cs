@@ -33,6 +33,7 @@ namespace ORICA.Negocio
         public const string ParadaPrioritaria = "PARADA_PRIORITARIA";
         public const string ModoOffline = "MODO_OFFLINE";
         public const string SincronizacionAutomatica = "SINCRONIZACION_AUTOMATICA";
+        public const string SimularSinArduino = "SIMULAR_SIN_ARDUINO";
 
         // Rangos permitidos (los usa también la pantalla)
         public const int MinUmbral = 50, MaxUmbral = 100;
@@ -50,7 +51,7 @@ namespace ORICA.Negocio
             { GramaticaCerrada,         new[] { "VOZ", "BOOLEAN", "true", "Restringe el reconocimiento a comandos autorizados." } },
             { PttObligatorio,           new[] { "VOZ", "BOOLEAN", "true", "PTT obligatorio." } },
             { FeedbackVoz,              new[] { "VOZ", "BOOLEAN", "true", "La aplicación responde por voz al operador." } },
-            { PuertoCom,                new[] { "COMUNICACION", "STRING", "COM3", "Puerto serial del ESP32." } },
+            { PuertoCom,                new[] { "COMUNICACION", "STRING", "COM3", "Puerto serial del Arduino." } },
             { BaudRate,                 new[] { "COMUNICACION", "INTEGER", "115200", "Velocidad serial." } },
             { HeartbeatMs,              new[] { "COMUNICACION", "INTEGER", "250", "Intervalo de heartbeat." } },
             { MaxHeartbeatPerdidos,     new[] { "COMUNICACION", "INTEGER", "3", "Máximo de heartbeat perdidos." } },
@@ -61,7 +62,8 @@ namespace ORICA.Negocio
             { EstadoSeguroError,        new[] { "SEGURIDAD", "BOOLEAN", "true", "Ante un error, el prototipo pasa a estado seguro." } },
             { ParadaPrioritaria,        new[] { "SEGURIDAD", "BOOLEAN", "true", "La parada tiene prioridad sobre cualquier comando." } },
             { ModoOffline,              new[] { "PERSISTENCIA", "BOOLEAN", "true", "Permite trabajo offline." } },
-            { SincronizacionAutomatica, new[] { "PERSISTENCIA", "BOOLEAN", "true", "Sincronización automática." } }
+            { SincronizacionAutomatica, new[] { "PERSISTENCIA", "BOOLEAN", "true", "Sincronización automática." } },
+            { SimularSinArduino,        new[] { "COMUNICACION", "BOOLEAN", "false", "Si no hay Arduino conectado, los comandos se simulan." } }
         };
 
         private readonly clsConfiguracionDatos _datos = new clsConfiguracionDatos();

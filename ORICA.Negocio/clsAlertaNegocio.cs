@@ -65,7 +65,7 @@ namespace ORICA.Negocio
 
         /// <summary>
         /// Alerta porque se perdió la conexión con el Arduino. Si ya hay una abierta igual, no se repite.
-        /// La llamará el módulo de enlace serial cuando se implemente.
+        /// La llama clsEnlaceArduino (puerto desconectado o heartbeat perdido).
         /// </summary>
         public void mtdAlertaEnlace(string puerto, string detalle)
         {
@@ -79,6 +79,17 @@ namespace ORICA.Negocio
             catch (Exception) { return; }
 
             mtdCrear(null, TipoEnlaceArduino, SeveridadCritica, descripcion);
+        }
+
+        /// <summary>
+        /// Alerta por un aviso del Arduino: pulsador de parada (TipoParada) o watchdog (cualquier otro tipo).
+        /// </summary>
+        public void mtdAlertaSeguridad(string tipoEvento, string detalle, Guid idEvento)
+        {
+            if (tipoEvento == clsEventoNegocio.TipoParada)
+                mtdCrear(idEvento, TipoParadaEquipo, SeveridadAlta, detalle);
+            else
+                mtdCrear(idEvento, TipoEnlaceArduino, SeveridadCritica, detalle);
         }
 
         private void mtdCrear(Guid? idEvento, string tipo, string severidad, string descripcion)

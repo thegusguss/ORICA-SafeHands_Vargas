@@ -239,6 +239,7 @@ namespace ORICA.Negocio
                     TimeoutSegundos = clsLectura.mtdLeerEntero(r, "TimeoutSegundos"),
                     IdTipoAccion = clsLectura.mtdLeerEntero(r, "IdTipoAccion"),
                     TipoAccionNombre = clsLectura.mtdLeerTexto(r, "TipoAccionNombre"),
+                    TipoAccionCodigo = clsLectura.mtdLeerTexto(r, "TipoAccionCodigo"),
                     ConfianzaMinima = r["ConfianzaMinima"] == DBNull.Value ? 0m : Convert.ToDecimal(r["ConfianzaMinima"]),
                     RequierePTT = clsLectura.mtdLeerBooleano(r, "RequierePTT"),
                     Estado = clsLectura.mtdLeerBooleano(r, "Estado"),

@@ -223,9 +223,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             }
 
             lblEstadoEquipoVoz.Text = equipo.EstadoTexto;
-            lblConexionEquipoVoz.Text = comandos.Count + " comando(s) · " + (clsMonitorArduino.Conectado
-                ? "Arduino en " + clsMonitorArduino.Puerto + " (simulación)"
-                : "Arduino no conectado (simulación)");
+            lblConexionEquipoVoz.Text = comandos.Count + " comando(s) · " + clsMonitorArduino.TextoEstado.TrimStart('●', ' ');
             lblEquipoConfirmacion.Text = "Equipo: " + equipo.Etiqueta;
 
             CargarGramatica();
@@ -517,10 +515,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             }
 
             DetenerEscucha();
-            voz.mtdRegistrarParada(equipoActual, pendiente);
+            string resultado = voz.mtdRegistrarParada(equipoActual, pendiente);   // dice si el Arduino la confirmó
             pendiente = null;
             MostrarSinPendiente();
-            MostrarUltimaAccion("Parada enviada a " + equipoActual.Codigo + " (simulación).", ColorError);
+            MostrarUltimaAccion("Parada · " + resultado, ColorError);
             Hablar("Equipo detenido.");
         }
 

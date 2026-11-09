@@ -10,7 +10,7 @@ namespace ORICA.Datos
         private const string SelectComandos = @"
 SELECT c.IdComando, c.Codigo, c.Nombre, c.Frase, c.IdNivelCriticidad,
        nc.Nombre AS CriticidadNombre, nc.NumeroConfirmaciones, nc.TimeoutSegundos,
-       c.IdTipoAccion, ta.Nombre AS TipoAccionNombre,
+       c.IdTipoAccion, ta.Nombre AS TipoAccionNombre, ta.Codigo AS TipoAccionCodigo,
        c.ConfianzaMinima, c.RequierePTT, c.Estado, c.FechaRegistro, c.FechaModificacion, c.RowVersion
 FROM dbo.Comando c
 INNER JOIN dbo.NivelCriticidad nc ON nc.IdNivelCriticidad = c.IdNivelCriticidad

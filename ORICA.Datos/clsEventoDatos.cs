@@ -9,14 +9,14 @@ namespace ORICA.Datos
         /// <summary>Inserta un evento y devuelve su IdEvento (GUID generado por la BD).</summary>
         public Guid mtdRegistrar(Guid? idSesion, int? idUsuario, int? idEquipo, int? idComando, int? idNivel,
                                  string tipoEvento, string textoDetectado, decimal? confianza, string resultado,
-                                 bool? confirmado, string detalle)
+                                 bool? confirmado, string detalle, long? secuencia = null, string crc = null)
         {
             const string sql = @"
 INSERT INTO dbo.Evento (IdSesion, IdUsuario, IdEquipo, IdComando, IdNivelCriticidad, TipoEvento,
-                        TextoDetectado, Confianza, Resultado, Confirmado, Detalle)
+                        TextoDetectado, Confianza, Resultado, Confirmado, Detalle, Secuencia, CRC)
 OUTPUT INSERTED.IdEvento
 VALUES (@IdSesion, @IdUsuario, @IdEquipo, @IdComando, @IdNivel, @TipoEvento,
-        @Texto, @Confianza, @Resultado, @Confirmado, @Detalle);";
+        @Texto, @Confianza, @Resultado, @Confirmado, @Detalle, @Secuencia, @CRC);";
 
             object id = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@IdSesion", idSesion),
@@ -29,7 +29,9 @@ VALUES (@IdSesion, @IdUsuario, @IdEquipo, @IdComando, @IdNivel, @TipoEvento,
                 clsBaseDatos.mtdParametro("@Confianza", confianza),
                 clsBaseDatos.mtdParametro("@Resultado", resultado),
                 clsBaseDatos.mtdParametro("@Confirmado", confirmado),
-                clsBaseDatos.mtdParametro("@Detalle", detalle));
+                clsBaseDatos.mtdParametro("@Detalle", detalle),
+                clsBaseDatos.mtdParametro("@Secuencia", secuencia),   // de la trama enviada al Arduino
+                clsBaseDatos.mtdParametro("@CRC", crc));
 
             return (Guid)id;
         }

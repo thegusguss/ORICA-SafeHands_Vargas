@@ -57,7 +57,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                     r.ConfianzaTexto,
                     r.CriticidadTexto,
                     r.Resultado,
-                    "BD");   // se guarda directo en SQL Server; la sincronización offline vendrá con el ESP32
+                    "BD");   // origen del registro en la base de datos
 
                 DataGridViewRow row = dgvCriticidad.Rows[fila];
                 row.Tag = r;

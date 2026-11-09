@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using ORICA.Datos;
@@ -122,11 +123,12 @@ namespace ORICA.Negocio
 
                 if (equipos.Count == 0) return Resultado.Error("No hay equipos activos para detener.");
 
+                // Cada línea dice si el Arduino confirmó la parada de ese equipo.
+                List<string> lineas = new List<string>();
                 foreach (Equipo eq in equipos)
-                    voz.mtdRegistrarParada(eq, null);
+                    lineas.Add(voz.mtdRegistrarParada(eq, null));
 
-                return Resultado.Ok("Parada enviada a " + equipos.Count + " equipo(s): " +
-                                    string.Join(", ", equipos.Select(e => e.Codigo)) + " (simulación).");
+                return Resultado.Ok("Parada enviada a " + equipos.Count + " equipo(s):\n" + string.Join("\n", lineas));
             }
             catch (Exception ex)
             {

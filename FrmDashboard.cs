@@ -240,9 +240,17 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                                           : porcentaje >= 50 ? ColorAviso : ColorError;
         }
 
-        // "Estado de simulación": se deduce de los últimos comandos ejecutados (hasta conectar el Arduino).
+        // Estado del equipo: si el Arduino está conectado se usa lo que respondió en su última orden;
+        // si no, se deduce de los últimos comandos ejecutados.
         private void MostrarSimulacion(ResumenDashboard r)
         {
+            if (clsEnlaceArduino.Conectado && clsEnlaceArduino.SalidasConocidas)
+            {
+                r.MotorEnMarcha = clsEnlaceArduino.Simulador;
+                r.LedEncendido = clsEnlaceArduino.Indicador;
+                r.ParadaActiva = clsEnlaceArduino.RequiereRearme;
+            }
+
             Estado(lblEstadoMotor, lblIndicadorMotor, r.MotorEnMarcha,
                    r.MotorEnMarcha ? "En marcha" : "Detenido", r.MotorDesde, ColorOk);
 

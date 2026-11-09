@@ -19,7 +19,9 @@ namespace ORICA.Negocio
         public const string TipoAccesoFallido = "ACCESO_FALLIDO";
         public const string TipoComandoVoz = "COMANDO_VOZ";
         public const string TipoNoReconocido = "VOZ_NO_RECONOCIDA";
-        public const string TipoParada = "PARADA_SIMULADA";
+        public const string TipoParada = "PARADA_SIMULADA";        // botón DETENER, parada general o pulsador del Arduino
+        public const string TipoWatchdog = "WATCHDOG_ARDUINO";     // el Arduino pasó a estado seguro por falta de enlace
+        public const string TipoRearme = "REARME";                 // mantenimiento rearmó el equipo
 
         // Resultados permitidos por el CHECK de dbo.Evento
         public const string ResultadoEjecutado = "EJECUTADO";
@@ -39,7 +41,7 @@ namespace ORICA.Negocio
         public Guid mtdRegistrar(string tipoEvento, string resultado, string detalle = null,
                                  int? idEquipo = null, int? idComando = null, int? idNivelCriticidad = null,
                                  string textoDetectado = null, decimal? confianza = null, bool? confirmado = null,
-                                 int? idUsuario = null)
+                                 int? idUsuario = null, long? secuencia = null, string crc = null)
         {
             try
             {
@@ -52,7 +54,7 @@ namespace ORICA.Negocio
                     clsAuditoriaNegocio.mtdRecortar(tipoEvento, 40),
                     clsAuditoriaNegocio.mtdRecortar(textoDetectado, 250),
                     confianza, resultado, confirmado,
-                    clsAuditoriaNegocio.mtdRecortar(detalle, 500));
+                    clsAuditoriaNegocio.mtdRecortar(detalle, 500), secuencia, crc);
             }
             catch (Exception)
             {
@@ -152,7 +154,9 @@ namespace ORICA.Negocio
                 case TipoAccesoFallido: return "Acceso fallido";
                 case TipoComandoVoz: return "Comando de voz";
                 case TipoNoReconocido: return "Voz no reconocida";
-                case TipoParada: return "Parada simulada";
+                case TipoParada: return "Parada de equipo";
+                case TipoWatchdog: return "Watchdog del Arduino";
+                case TipoRearme: return "Rearme del equipo";
                 default: return tipo;
             }
         }
