@@ -31,7 +31,12 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
                 btnControlVozOperador, btnHistorialOperador, btnCerrarSesionOperador, btnInicioOperador);
 
             // La pantalla de inicio se llena con los datos reales del operador.
-            Load += (s, e) => CargarInicio();
+            // Si falla, se avisa: un error dentro de Load puede perderse sin mensaje al depurar en 64 bits.
+            Load += (s, e) =>
+            {
+                try { CargarInicio(); }
+                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error al cargar el inicio", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            };
         }
 
         // ---------------- Botones del menú ----------------

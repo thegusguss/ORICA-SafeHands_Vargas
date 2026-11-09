@@ -37,8 +37,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             // Los eventos se conectan aquí para no tocar el diseñador.
             Load += (s, e) => { Cargar(); actualizacion.Start(); };
-            FormClosed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
-            actualizacion.Tick += (s, e) => Cargar();
+            // Se usa Disposed (no FormClosed): si se cierra la ventana principal con esta pantalla abierta,
+            // FormClosed no se dispara y el temporizador seguía llenando una tabla ya destruida (sin columnas).
+            Disposed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
+            actualizacion.Tick += (s, e) => { if (!IsDisposed) Cargar(); };
             dgvAlertas.CellContentClick += dgvAlertas_CellContentClick;
             dgvAlertas.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) MostrarDetalle(AlertaDeFila(e.RowIndex)); };
         }

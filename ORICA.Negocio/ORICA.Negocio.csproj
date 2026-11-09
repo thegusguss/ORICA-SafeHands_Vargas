@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="Modelos\ResumenOperador.cs" />
     <Compile Include="clsDashboardNegocio.cs" />
+    <Compile Include="clsReporteNegocio.cs" />
+    <Compile Include="Modelos\Reporte.cs" />
     <Compile Include="Modelos\ResumenDashboard.cs" />
     <Compile Include="clsAlertaNegocio.cs" />
     <Compile Include="Modelos\Alerta.cs" />

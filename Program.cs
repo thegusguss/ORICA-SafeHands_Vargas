@@ -11,6 +11,12 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Cualquier error no controlado se muestra en un mensaje en vez de cerrar la app en silencio.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += (s, e) =>
+                MessageBox.Show(e.Exception.ToString(), "Error inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             clsMonitorArduino.Iniciar();   // vigila el puerto COM del Arduino y genera la alerta si se desconecta
             Application.Run(new frmLogin());
             clsMonitorArduino.Detener();

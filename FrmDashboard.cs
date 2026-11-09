@@ -58,7 +58,13 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             pgbSaludEnlace.Maximum = 100;
 
             // Eventos del panel (se conectan aquí para no tocar el diseñador).
-            Load += (s, e) => { CargarDashboard(); actualizacion.Start(); };
+            // Si falla, se avisa: un error dentro de Load puede perderse sin mensaje al depurar en 64 bits.
+            Load += (s, e) =>
+            {
+                try { CargarDashboard(); }
+                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error al cargar el dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                actualizacion.Start();
+            };
             FormClosed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
             actualizacion.Tick += (s, e) => { if (!pnlVista.Visible) CargarDashboard(); };
             btnParadaSimulada.Click += btnParadaSimulada_Click;

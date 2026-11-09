@@ -60,7 +60,10 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             // Los eventos se conectan aquí para no tocar el diseñador.
             Load += FrmOperacionVoz_Load;
-            FormClosed += FrmOperacionVoz_FormClosed;
+            // Se libera en los dos casos: al cambiar de pantalla (FormClosed) y al cerrar la ventana
+            // principal con esta pantalla abierta (ahí solo llega Disposed). Liberar() se puede llamar dos veces.
+            FormClosed += (s, e) => Liberar();
+            Disposed += (s, e) => Liberar();
             cbxEquipoVoz.SelectedIndexChanged += (s, e) =>
             {
                 if (!cargandoEquipos) SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
@@ -90,7 +93,8 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             MostrarSinPendiente();
         }
 
-        private void FrmOperacionVoz_FormClosed(object sender, FormClosedEventArgs e)
+        // Detiene el temporizador, cancela lo pendiente y suelta el micrófono y la voz.
+        private void Liberar()
         {
             temporizador.Stop();
             temporizador.Dispose();

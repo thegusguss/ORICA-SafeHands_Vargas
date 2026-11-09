@@ -90,15 +90,28 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             txtPIN.Clear();
 
-            Form principal;
-            if (Sesion.UsuarioActual.RolCodigo == "OPE")
-                principal = new FrmPrincipalOperador();
-            else
-                principal = new frmPrincipal();
+            Form principal = null;
+            try
+            {
+                if (Sesion.UsuarioActual.RolCodigo == "OPE")
+                    principal = new FrmPrincipalOperador();
+                else
+                    principal = new frmPrincipal();
 
-            principal.FormClosed += principal_FormClosed;
-            Hide();
-            principal.Show();
+                Hide();
+                principal.Show();
+                principal.Activate();   // la trae al frente
+                principal.FormClosed += principal_FormClosed;   // se conecta después de abrir bien
+            }
+            catch (Exception ex)
+            {
+                // Si la ventana no pudo abrir: se avisa el motivo y se vuelve al login (antes se cerraba todo sin decir nada).
+                if (principal != null) principal.Dispose();
+                autenticacion.mtdCerrarSesion();
+                Show();
+                MessageBox.Show("No se pudo abrir la pantalla principal.\n\n" + ex.ToString(),
+                    "Error al ingresar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Al cerrar la pantalla principal (administrador u operador): si se pulsó "Cerrar sesión"

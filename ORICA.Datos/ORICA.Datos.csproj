@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsDashboardDatos.cs" />
+    <Compile Include="clsReporteDatos.cs" />
     <Compile Include="clsAlertaDatos.cs" />
     <Compile Include="clsConfiguracionDatos.cs" />
     <Compile Include="clsAuditoriaDatos.cs" />
