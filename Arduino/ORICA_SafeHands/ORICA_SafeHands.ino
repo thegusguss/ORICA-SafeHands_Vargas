@@ -43,6 +43,8 @@ unsigned long ultimoMensaje = 0;
 bool pcConectada = false;          // el watchdog solo vigila después de que la PC habló
 unsigned long finBuzzer = 0;
 bool botonAnterior = HIGH;
+unsigned long ultimoCambioBoton = 0;
+const unsigned long ANTIRREBOTE_MS = 50;   // el pulsador "rebota" al presionarlo: se ignoran cambios más rápidos
 
 String buffer = "";
 
@@ -55,6 +57,7 @@ void setup() {
   pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_ENLACE, OUTPUT);
   pinMode(PIN_PARADA, INPUT_PULLUP);
+  botonAnterior = digitalRead(PIN_PARADA);
 
   apagarTodo();
   Serial.begin(115200);              // debe ser igual a BAUD_RATE en Configuración de la app
@@ -175,11 +178,15 @@ int separar(String texto, String partes[], int maximo) {
 
 void revisarBotonParada() {
   bool boton = digitalRead(PIN_PARADA);
-  if (botonAnterior == HIGH && boton == LOW) {   // se acaba de presionar
+  // Antirrebote: solo cuenta un cambio si pasaron más de 50 ms desde el anterior.
+  if (boton == botonAnterior || millis() - ultimoCambioBoton < ANTIRREBOTE_MS) return;
+  ultimoCambioBoton = millis();
+  botonAnterior = boton;
+
+  if (boton == LOW) {                // se acaba de presionar (con INPUT_PULLUP presionado = LOW)
     pararTodo(PARADA);
     enviar(0, "EVT,PARADA_FISICA," + String(EQUIPO_ID));
   }
-  botonAnterior = boton;
 }
 
 void revisarWatchdog() {
