@@ -8,10 +8,8 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    // Reglas para registrar, modificar y activar/desactivar equipos.
     public class clsEquipoNegocio
     {
-        // Longitudes reales de la tabla dbo.Equipo
         private const int MaxCodigo = 20;
         private const int MaxNombre = 100;
         private const int MaxDescripcion = 250;
@@ -20,7 +18,6 @@ namespace ORICA.Negocio
 
         private readonly clsEquipoDatos _datos = new clsEquipoDatos();
 
-        // ================= CONSULTAS =================
 
         public List<Equipo> mtdListar()
         {

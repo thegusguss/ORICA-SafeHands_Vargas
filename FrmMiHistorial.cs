@@ -36,13 +36,26 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             cbxResultadoHistorial.Items.Clear();
             foreach (string[] f in Filtros) cbxResultadoHistorial.Items.Add(f[0]);
             cbxResultadoHistorial.SelectedIndex = 0;
+        }
 
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => CargarHistorial();
-            txtBuscarHistorial.TextChanged += (s, e) => MostrarRegistros();
-            cbxResultadoHistorial.SelectedIndexChanged += (s, e) => MostrarRegistros();
-            dgvMiHistorial.CellContentClick += dgvMiHistorial_CellContentClick;
-            dgvMiHistorial.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) MostrarDetalle(e.RowIndex); };
+        private void FrmMiHistorial_Load(object sender, EventArgs e)
+        {
+            CargarHistorial();
+        }
+
+        private void txtBuscarHistorial_TextChanged(object sender, EventArgs e)
+        {
+            MostrarRegistros();
+        }
+
+        private void cbxResultadoHistorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MostrarRegistros();
+        }
+
+        private void dgvMiHistorial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) MostrarDetalle(e.RowIndex);
         }
 
         // Lee de la BD solo los eventos del operador en sesión.

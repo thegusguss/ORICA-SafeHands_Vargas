@@ -7,7 +7,6 @@ using System.Windows.Forms;
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
     // Lista de operadores: buscar, crear, editar y suspender/activar.
-    // Los eventos se conectan en el diseñador (FrmOperadores.Designer.cs).
     public partial class FrmOperadores : Form
     {
         private readonly clsUsuarioNegocio usuarioNegocio = new clsUsuarioNegocio();
@@ -81,7 +80,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             dgvOperadores.ClearSelection();
         }
 
-        // usuario = null → crear uno nuevo; si no, editar el que llega.
         private void AbrirEditor(Usuario usuario)
         {
             using (FrmOperadorEditar editor = new FrmOperadorEditar(usuario))

@@ -22,7 +22,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private Form formularioActivo;  // pantalla que se está mostrando ahora en pnlVista
         private readonly clsDashboardNegocio dashboardNegocio = new clsDashboardNegocio();
         private readonly clsEventoNegocio eventoNegocio = new clsEventoNegocio();
-        private readonly Timer actualizacion = new Timer { Interval = 10000 };
 
         // True cuando se pulsó "Cerrar sesión" (volver al login en vez de salir).
         public bool CerrarSesionSolicitada { get; private set; }
@@ -57,19 +56,25 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             pgbSaludEnlace.Minimum = 0;
             pgbSaludEnlace.Maximum = 100;
 
-            // Eventos del panel (se conectan aquí para no tocar el diseñador).
-            // Si falla, se avisa: un error dentro de Load puede perderse sin mensaje al depurar en 64 bits.
-            Load += (s, e) =>
-            {
-                try { CargarDashboard(); }
-                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error al cargar el dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                actualizacion.Start();
-            };
-            FormClosed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
-            actualizacion.Tick += (s, e) => { if (!pnlVista.Visible) CargarDashboard(); };
-            btnParadaSimulada.Click += btnParadaSimulada_Click;
-
             AplicarPermisos();
+        }
+
+        private void FrmDashboard_Load(object sender, EventArgs e)
+        {
+            try { CargarDashboard(); }
+            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error al cargar el dashboard", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            actualizacion.Start();
+        }
+
+        private void FrmDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            actualizacion.Stop();
+            actualizacion.Dispose();
+        }
+
+        private void actualizacion_Tick(object sender, EventArgs e)
+        {
+            if (!pnlVista.Visible) CargarDashboard();
         }
 
         // ---------------- Permisos por rol ----------------

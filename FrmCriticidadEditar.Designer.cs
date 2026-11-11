@@ -61,6 +61,7 @@
             this.numConfirmaciones.Name = "numConfirmaciones";
             this.numConfirmaciones.Size = new System.Drawing.Size(352, 22);
             this.numConfirmaciones.TabIndex = 1;
+            this.numConfirmaciones.ValueChanged += new System.EventHandler(this.numConfirmaciones_ValueChanged);
             //
             // lblTimeout
             //

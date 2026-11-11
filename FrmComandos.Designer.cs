@@ -477,6 +477,7 @@
             this.btnNuevoComando.TabIndex = 13;
             this.btnNuevoComando.Text = "+ Nuevo comando";
             this.btnNuevoComando.UseVisualStyleBackColor = false;
+            this.btnNuevoComando.Click += new System.EventHandler(this.btnNuevoComando_Click);
             // 
             // dgvComandos
             // 
@@ -528,6 +529,7 @@
             this.dgvComandos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvComandos.Size = new System.Drawing.Size(934, 294);
             this.dgvComandos.TabIndex = 12;
+            this.dgvComandos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvComandos_CellClick);
             // 
             // colFraseComando
             // 
@@ -618,6 +620,7 @@
             // 
             // FrmComandos
             // 
+            this.Load += new System.EventHandler(this.FrmComandos_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));

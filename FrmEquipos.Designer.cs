@@ -486,6 +486,7 @@
             this.btnNuevoEquipo.TabIndex = 13;
             this.btnNuevoEquipo.Text = "+ Nuevo equipo";
             this.btnNuevoEquipo.UseVisualStyleBackColor = false;
+            this.btnNuevoEquipo.Click += new System.EventHandler(this.btnNuevoEquipo_Click);
             // 
             // dgvEquipos
             // 
@@ -536,6 +537,7 @@
             this.dgvEquipos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEquipos.Size = new System.Drawing.Size(934, 294);
             this.dgvEquipos.TabIndex = 12;
+            this.dgvEquipos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEquipos_CellContentClick);
             // 
             // colCodigoEquipo
             // 
@@ -608,6 +610,7 @@
             // 
             // FrmEquipos
             // 
+            this.Load += new System.EventHandler(this.FrmEquipos_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));

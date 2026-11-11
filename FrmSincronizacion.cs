@@ -18,9 +18,7 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private static readonly Color ColorAviso = Color.Goldenrod;
         private static readonly Color ColorError = Color.Salmon;
 
-        private readonly Timer actualizacion = new Timer { Interval = 5000 };
-
-        // Botones para la primera vez en una PC (se crean aquí para no tocar el diseñador).
+        // Botones configurados en tiempo de ejecución para la primera vez en una PC.
         private readonly Button btnDescargarAzure = new Button();
         private readonly Button btnSubirAzure = new Button();
 
@@ -37,21 +35,57 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             colIdLocalSync.HeaderText = "DETALLE";
             colEstadoSync.HeaderText = "ESTADO / FECHA";
 
+            ConfigurarBotonesAzure();
+        }
+
+        private void FrmSincronizacion_Load(object sender, EventArgs e)
+        {
+            MostrarEstado();
+            CargarHistorial();
+            actualizacion.Start();
+        }
+
+        private void FrmSincronizacion_Disposed(object sender, EventArgs e)
+        {
+            actualizacion.Stop();
+            actualizacion.Dispose();
+        }
+
+        private void actualizacion_Tick(object sender, EventArgs e)
+        {
+            if (!IsDisposed) MostrarEstado();
+        }
+
+        private async void btnSincronizarAhora_Click(object sender, EventArgs e)
+        {
+            await Ejecutar(clsSincronizacionNegocio.mtdSincronizar, null);
+        }
+
+        private async void btnDescargarAzure_Click(object sender, EventArgs e)
+        {
+            await Ejecutar(clsSincronizacionNegocio.mtdDescargarDeAzure,
+                "Se borrarán los datos de esta PC y se reemplazarán por los de Azure. ¿Continuar?");
+        }
+
+        private async void btnSubirAzure_Click(object sender, EventArgs e)
+        {
+            await Ejecutar(clsSincronizacionNegocio.mtdSubirTodoAAzure,
+                "Se borrarán TODOS los datos de Azure y se reemplazarán por los de esta PC.\n" +
+                "Úselo solo la primera vez. ¿Continuar?");
+        }
+
+        private void btnSimularRedSQL_Click(object sender, EventArgs e)
+        {
+            SimularCorte();
+        }
+
+        private void ConfigurarBotonesAzure()
+        {
             CrearBoton(btnDescargarAzure, "Descargar de Azure", 446);
             CrearBoton(btnSubirAzure, "Subir esta PC a Azure", 270);
             btnSubirAzure.Visible = Sesion.Activa && Sesion.UsuarioActual.RolCodigo == "ADMIN";
-
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => { MostrarEstado(); CargarHistorial(); actualizacion.Start(); };
-            Disposed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
-            actualizacion.Tick += (s, e) => { if (!IsDisposed) MostrarEstado(); };
-            btnSincronizarAhora.Click += async (s, e) => await Ejecutar(clsSincronizacionNegocio.mtdSincronizar, null);
-            btnDescargarAzure.Click += async (s, e) => await Ejecutar(clsSincronizacionNegocio.mtdDescargarDeAzure,
-                "Se borrarán los datos de esta PC y se reemplazarán por los de Azure. ¿Continuar?");
-            btnSubirAzure.Click += async (s, e) => await Ejecutar(clsSincronizacionNegocio.mtdSubirTodoAAzure,
-                "Se borrarán TODOS los datos de Azure y se reemplazarán por los de esta PC.\n" +
-                "Úselo solo la primera vez. ¿Continuar?");
-            btnSimularRedSQL.Click += (s, e) => SimularCorte();
+            btnDescargarAzure.Click += new System.EventHandler(btnDescargarAzure_Click);
+            btnSubirAzure.Click += new System.EventHandler(btnSubirAzure_Click);
         }
 
         private void CrearBoton(Button boton, string texto, int x)

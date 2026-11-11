@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    // Lista de equipos: crear, editar y activar/desactivar.
     public partial class FrmEquipos : Form
     {
         private readonly clsEquipoNegocio equipoNegocio = new clsEquipoNegocio();
@@ -14,11 +13,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public FrmEquipos()
         {
             InitializeComponent();
-
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += FrmEquipos_Load;
-            btnNuevoEquipo.Click += btnNuevoEquipo_Click;
-            dgvEquipos.CellContentClick += dgvEquipos_CellContentClick;
         }
 
         private void FrmEquipos_Load(object sender, EventArgs e)
@@ -31,7 +25,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             AbrirEditor(null);
         }
 
-        // Clic en un botón de la tabla: "Editar" o "Activar/Desactivar".
         private void dgvEquipos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;  // clic en el encabezado

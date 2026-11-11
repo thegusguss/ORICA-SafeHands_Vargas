@@ -20,9 +20,8 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private static readonly Color ColorApagado = Color.Silver;
 
         private readonly clsOperacionVozNegocio voz = new clsOperacionVozNegocio();
-        private readonly Timer actualizacion = new Timer { Interval = 500 };
 
-        // Controles creados aquí para no tocar el diseñador: monitor serial y opciones.
+        // Monitor serial y opciones configurados en tiempo de ejecución.
         private readonly Panel pnlMonitor = new Panel();
         private readonly ListBox lstMonitor = new ListBox();
         private readonly CheckBox chkSimular = new CheckBox();
@@ -44,18 +43,59 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             btnSimularPerdidaHeartbeat.Text = "Perder heartbeat";
 
             CrearMonitor();
+        }
 
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => { Actualizar(); actualizacion.Start(); };
-            Disposed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
-            actualizacion.Tick += (s, e) => { if (!IsDisposed) Actualizar(); };
-            btnProbarMicrofono.Click += async (s, e) => await ProbarMicrofono();
-            btnSimularPerdidaHeartbeat.Click += (s, e) => PerderHeartbeat();
-            btnRecuperarEnlace.Click += (s, e) => { clsEnlaceArduino.mtdReconectar(); Actualizar(); };
-            btnRearmarSistema.Click += (s, e) => Rearmar();
-            btnParadaSimulada.Click += (s, e) => ParadaGeneral();
-            btnProbarEstado.Click += (s, e) => ProbarEstado();
-            chkSimular.Click += (s, e) => GuardarSimulacion();
+        private void FrmDiagnostico_Load(object sender, EventArgs e)
+        {
+            Actualizar();
+            actualizacion.Start();
+        }
+
+        private void FrmDiagnostico_Disposed(object sender, EventArgs e)
+        {
+            actualizacion.Stop();
+            actualizacion.Dispose();
+        }
+
+        private void actualizacion_Tick(object sender, EventArgs e)
+        {
+            if (!IsDisposed) Actualizar();
+        }
+
+        private async void btnProbarMicrofono_Click(object sender, EventArgs e)
+        {
+            await ProbarMicrofono();
+        }
+
+        private void btnSimularPerdidaHeartbeat_Click(object sender, EventArgs e)
+        {
+            PerderHeartbeat();
+        }
+
+        private void btnRecuperarEnlace_Click(object sender, EventArgs e)
+        {
+            clsEnlaceArduino.mtdReconectar();
+            Actualizar();
+        }
+
+        private void btnRearmarSistema_Click(object sender, EventArgs e)
+        {
+            Rearmar();
+        }
+
+        private void btnParadaSimulada_Click(object sender, EventArgs e)
+        {
+            ParadaGeneral();
+        }
+
+        private void btnProbarEstado_Click(object sender, EventArgs e)
+        {
+            ProbarEstado();
+        }
+
+        private void chkSimular_Click(object sender, EventArgs e)
+        {
+            GuardarSimulacion();
         }
 
         // Panel debajo del diagnóstico integral con el monitor serial.
@@ -103,6 +143,9 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             pnlMonitor.Controls.AddRange(new Control[] { titulo, chkSimular, btnProbarEstado, lstMonitor });
             Controls.Add(pnlMonitor);
+
+            btnProbarEstado.Click += new System.EventHandler(btnProbarEstado_Click);
+            chkSimular.Click += new System.EventHandler(chkSimular_Click);
         }
 
         // ---------------- Mostrar ----------------

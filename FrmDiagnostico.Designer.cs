@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.actualizacion = new System.Windows.Forms.Timer(this.components);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDiagnostico));
             this.flpMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -436,6 +438,7 @@
             this.btnParadaSimulada.TabIndex = 6;
             this.btnParadaSimulada.Text = "■ PARADA SIMULADA";
             this.btnParadaSimulada.UseVisualStyleBackColor = false;
+            this.btnParadaSimulada.Click += new System.EventHandler(this.btnParadaSimulada_Click);
             // 
             // lblEstadoDatos
             // 
@@ -978,6 +981,7 @@
             this.btnProbarMicrofono.TabIndex = 10;
             this.btnProbarMicrofono.Text = "Probar micrófono";
             this.btnProbarMicrofono.UseVisualStyleBackColor = false;
+            this.btnProbarMicrofono.Click += new System.EventHandler(this.btnProbarMicrofono_Click);
             // 
             // btnSimularPerdidaHeartbeat
             // 
@@ -991,6 +995,7 @@
             this.btnSimularPerdidaHeartbeat.TabIndex = 11;
             this.btnSimularPerdidaHeartbeat.Text = "Perder heartbeat";
             this.btnSimularPerdidaHeartbeat.UseVisualStyleBackColor = false;
+            this.btnSimularPerdidaHeartbeat.Click += new System.EventHandler(this.btnSimularPerdidaHeartbeat_Click);
             // 
             // btnRecuperarEnlace
             // 
@@ -1004,6 +1009,7 @@
             this.btnRecuperarEnlace.TabIndex = 12;
             this.btnRecuperarEnlace.Text = "Recuperar enlace";
             this.btnRecuperarEnlace.UseVisualStyleBackColor = false;
+            this.btnRecuperarEnlace.Click += new System.EventHandler(this.btnRecuperarEnlace_Click);
             // 
             // btnRearmarSistema
             // 
@@ -1017,9 +1023,17 @@
             this.btnRearmarSistema.TabIndex = 13;
             this.btnRearmarSistema.Text = "Rearmar sistema";
             this.btnRearmarSistema.UseVisualStyleBackColor = false;
-            // 
+            this.btnRearmarSistema.Click += new System.EventHandler(this.btnRearmarSistema_Click);
+            //
+            // actualizacion
+            //
+            this.actualizacion.Interval = 500;
+            this.actualizacion.Tick += new System.EventHandler(this.actualizacion_Tick);
+            //
             // FrmDiagnostico
             // 
+            this.Load += new System.EventHandler(this.FrmDiagnostico_Load);
+            this.Disposed += new System.EventHandler(this.FrmDiagnostico_Disposed);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
@@ -1147,5 +1161,6 @@
         private System.Windows.Forms.Button btnSimularPerdidaHeartbeat;
         private System.Windows.Forms.Button btnProbarMicrofono;
         private System.Windows.Forms.Button btnRearmarSistema;
+        private System.Windows.Forms.Timer actualizacion;
     }
 }

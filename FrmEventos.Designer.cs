@@ -489,6 +489,7 @@
             this.btnLimpiarDemoEventos.TabIndex = 14;
             this.btnLimpiarDemoEventos.Text = "Limpiar demo";
             this.btnLimpiarDemoEventos.UseVisualStyleBackColor = false;
+            this.btnLimpiarDemoEventos.Click += new System.EventHandler(this.btnLimpiarDemoEventos_Click);
             // 
             // btnExportarEventosCSV
             // 
@@ -504,6 +505,7 @@
             this.btnExportarEventosCSV.TabIndex = 13;
             this.btnExportarEventosCSV.Text = "Exportar CSV";
             this.btnExportarEventosCSV.UseVisualStyleBackColor = false;
+            this.btnExportarEventosCSV.Click += new System.EventHandler(this.btnExportarEventosCSV_Click);
             // 
             // dgvCriticidad
             // 
@@ -554,6 +556,8 @@
             this.dgvCriticidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCriticidad.Size = new System.Drawing.Size(934, 294);
             this.dgvCriticidad.TabIndex = 12;
+            this.dgvCriticidad.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEventos_CellContentClick);
+            this.dgvCriticidad.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCriticidad_CellDoubleClick);
             // 
             // colFechaHoraEvento
             // 
@@ -627,6 +631,7 @@
             // 
             // FrmEventos
             // 
+            this.Load += new System.EventHandler(this.FrmEventos_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));

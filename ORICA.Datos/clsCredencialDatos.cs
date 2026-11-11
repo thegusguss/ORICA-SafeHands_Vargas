@@ -4,21 +4,17 @@ using System.Data.SqlClient;
 
 namespace ORICA.Datos
 {
-    // Acceso a datos de las credenciales (PIN, RFID, NFC) de los usuarios.
     public class clsCredencialDatos
     {
-        // ---------------- Consultas ----------------
-
-        // Todas las credenciales con el nombre del operador y el tipo, la más nueva primero.
         public DataTable mtdListar()
         {
             const string sql = @"SELECT c.IdCredencial, c.Codigo, c.IdUsuario, c.IdTipoCredencial,
-       u.Codigo AS UsuarioCodigo, u.Nombres + ' ' + u.Apellidos AS Operador,
-       tc.Codigo AS Tipo, c.ReferenciaVisible, c.FechaRegistro, c.Estado, c.IntentosFallidos
-FROM dbo.Credencial c
-INNER JOIN dbo.Usuario u         ON u.IdUsuario = c.IdUsuario
-INNER JOIN dbo.TipoCredencial tc ON tc.IdTipoCredencial = c.IdTipoCredencial
-ORDER BY c.IdCredencial DESC;";
+                               u.Codigo AS UsuarioCodigo, u.Nombres + ' ' + u.Apellidos AS Operador,
+                               tc.Codigo AS Tipo, c.ReferenciaVisible, c.FechaRegistro, c.Estado, c.IntentosFallidos
+                        FROM dbo.Credencial c
+                        INNER JOIN dbo.Usuario u         ON u.IdUsuario = c.IdUsuario
+                        INNER JOIN dbo.TipoCredencial tc ON tc.IdTipoCredencial = c.IdTipoCredencial
+                        ORDER BY c.IdCredencial DESC;";
 
             return clsBaseDatos.mtdConsultar(sql);
         }
@@ -26,9 +22,9 @@ ORDER BY c.IdCredencial DESC;";
         public DataTable mtdListarTipos()
         {
             const string sql = @"SELECT IdTipoCredencial, Codigo, Nombre, RequiereSalt
-FROM dbo.TipoCredencial
-WHERE Estado = 1
-ORDER BY IdTipoCredencial;";
+                                FROM dbo.TipoCredencial
+                                WHERE Estado = 1
+                                ORDER BY IdTipoCredencial;";
 
             return clsBaseDatos.mtdConsultar(sql);
         }
@@ -37,7 +33,7 @@ ORDER BY IdTipoCredencial;";
         public bool mtdExisteHash(int idTipo, byte[] hash)
         {
             const string sql = @"SELECT COUNT(1) FROM dbo.Credencial
-WHERE IdTipoCredencial = @IdTipo AND HashCredencial = @Hash AND Estado = 1;";
+                                WHERE IdTipoCredencial = @IdTipo AND HashCredencial = @Hash AND Estado = 1;";
 
             object total = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@IdTipo", idTipo),
@@ -50,7 +46,7 @@ WHERE IdTipoCredencial = @IdTipo AND HashCredencial = @Hash AND Estado = 1;";
         public bool mtdTieneActiva(int idUsuario, int idTipo)
         {
             const string sql = @"SELECT COUNT(1) FROM dbo.Credencial
-WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;";
+                                WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;";
 
             object total = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@IdUsuario", idUsuario),
@@ -67,17 +63,17 @@ WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;";
                                 byte[] salt, string referencia)
         {
             const string sql = @"SET XACT_ABORT ON;
-BEGIN TRANSACTION;
+                                BEGIN TRANSACTION;
 
-UPDATE dbo.Credencial
-SET Estado = 0, FechaModificacion = dbo.fnAhora()
-WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;
+                                UPDATE dbo.Credencial
+                                SET Estado = 0, FechaModificacion = dbo.fnAhora()
+                                WHERE IdUsuario = @IdUsuario AND IdTipoCredencial = @IdTipo AND Estado = 1;
 
-INSERT INTO dbo.Credencial (Codigo, IdUsuario, IdTipoCredencial, HashCredencial, Salt, ReferenciaVisible)
-OUTPUT INSERTED.IdCredencial
-VALUES (@Codigo, @IdUsuario, @IdTipo, @Hash, @Salt, @Referencia);
+                                INSERT INTO dbo.Credencial (Codigo, IdUsuario, IdTipoCredencial, HashCredencial, Salt, ReferenciaVisible)
+                                OUTPUT INSERTED.IdCredencial
+                                VALUES (@Codigo, @IdUsuario, @IdTipo, @Hash, @Salt, @Referencia);
 
-COMMIT TRANSACTION;";
+                                COMMIT TRANSACTION;";
 
             object id = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@Codigo", codigo),
@@ -95,8 +91,8 @@ COMMIT TRANSACTION;";
         public int mtdCambiarEstado(int idCredencial, bool estado)
         {
             const string sql = @"UPDATE dbo.Credencial
-SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
-WHERE IdCredencial = @IdCredencial;";
+                                SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
+                                WHERE IdCredencial = @IdCredencial;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
                 clsBaseDatos.mtdParametro("@IdCredencial", idCredencial),
@@ -107,8 +103,8 @@ WHERE IdCredencial = @IdCredencial;";
         public int mtdDesbloquear(int idCredencial)
         {
             const string sql = @"UPDATE dbo.Credencial
-SET IntentosFallidos = 0, FechaModificacion = dbo.fnAhora()
-WHERE IdCredencial = @IdCredencial;";
+                                SET IntentosFallidos = 0, FechaModificacion = dbo.fnAhora()
+                                WHERE IdCredencial = @IdCredencial;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
                 clsBaseDatos.mtdParametro("@IdCredencial", idCredencial));

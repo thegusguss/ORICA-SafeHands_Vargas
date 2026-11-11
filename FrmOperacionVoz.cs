@@ -10,15 +10,14 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>
-    /// Control por voz del operador.
-    /// 1) Elige el equipo → se arma la gramática cerrada con sus comandos.
-    /// 2) Mantiene pulsado el botón (PTT) y habla → se interpreta la frase y la confianza.
-    /// 3) Si el nivel de criticidad lo pide, confirma (1 o 2 veces) por voz o con el botón, antes del timeout.
-    /// Las reglas están en clsOperacionVozNegocio; aquí solo va el micrófono y la pantalla.
-    /// El reconocimiento usa el motor moderno de Windows (clsReconocedorVoz); System.Speech solo se usa para hablar.
-    /// Clic derecho en el botón = escribir la frase (sirve para probar sin micrófono).
-    /// </summary>
+    // Control por voz del operador.
+    // 1) Elige el equipo → se arma la gramática cerrada con sus comandos.
+    // 2) Mantiene pulsado el botón (PTT) y habla → se interpreta la frase y la confianza.
+    // 3) Si el nivel de criticidad lo pide, confirma (1 o 2 veces) por voz o con el botón, antes del timeout.
+    // Las reglas están en clsOperacionVozNegocio; aquí solo va el micrófono y la pantalla.
+    // El reconocimiento usa el motor moderno de Windows (clsReconocedorVoz); System.Speech solo se usa para hablar.
+    // Clic derecho en el botón = escribir la frase (sirve para probar sin micrófono).
+    
     public partial class FrmOperacionVoz : Form
     {
         private static readonly Color ColorOk = Color.MediumAquamarine;
@@ -26,7 +25,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private static readonly Color ColorAviso = Color.Goldenrod;
 
         private readonly clsOperacionVozNegocio voz = new clsOperacionVozNegocio();
-        private readonly Timer temporizador = new Timer { Interval = 250 };
 
         private clsReconocedorVoz reconocedor;         // null = Windows no tiene voz en español
         private bool gramaticaLista;                   // la gramática del equipo ya se cargó
@@ -57,26 +55,35 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 
             colorPtt = btnPTTVoz.BackColor;
             textoPtt = btnPTTVoz.Text;
-
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += FrmOperacionVoz_Load;
-            // Se libera en los dos casos: al cambiar de pantalla (FormClosed) y al cerrar la ventana
-            // principal con esta pantalla abierta (ahí solo llega Disposed). Liberar() se puede llamar dos veces.
-            FormClosed += (s, e) => Liberar();
-            Disposed += (s, e) => Liberar();
-            cbxEquipoVoz.SelectedIndexChanged += (s, e) =>
-            {
-                if (!cargandoEquipos) SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
-            };
-            btnPTTVoz.MouseDown += btnPTTVoz_MouseDown;
-            btnPTTVoz.MouseUp += btnPTTVoz_MouseUp;
-            btnConfirmarComando.Click += (s, e) => Responder(clsOperacionVozNegocio.PalabraConfirmar);
-            btnCancelarComando.Click += (s, e) => Responder(clsOperacionVozNegocio.PalabraCancelar);
-            btnDetenerEquipo.Click += btnDetenerEquipo_Click;
-            temporizador.Tick += temporizador_Tick;
         }
 
-        // ======================= INICIO / CIERRE =======================
+        private void FrmOperacionVoz_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Liberar();
+        }
+
+        // También se libera al destruir el contenedor, cuando FormClosed no se dispara.
+        private void FrmOperacionVoz_Disposed(object sender, EventArgs e)
+        {
+            Liberar();
+        }
+
+        private void cbxEquipoVoz_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!cargandoEquipos) SeleccionarEquipo(cbxEquipoVoz.SelectedItem as Equipo);
+        }
+
+        private void btnConfirmarComando_Click(object sender, EventArgs e)
+        {
+            Responder(clsOperacionVozNegocio.PalabraConfirmar);
+        }
+
+        private void btnCancelarComando_Click(object sender, EventArgs e)
+        {
+            Responder(clsOperacionVozNegocio.PalabraCancelar);
+        }
+
+        // Inicio cierre
 
         private void FrmOperacionVoz_Load(object sender, EventArgs e)
         {

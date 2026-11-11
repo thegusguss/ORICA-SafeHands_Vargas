@@ -541,6 +541,7 @@
             this.dgvCriticidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCriticidad.Size = new System.Drawing.Size(934, 294);
             this.dgvCriticidad.TabIndex = 12;
+            this.dgvCriticidad.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCriticidad_CellContentClick);
             // 
             // colNivelCriticidad
             // 

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.actualizacion = new System.Windows.Forms.Timer(this.components);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
@@ -1297,6 +1299,7 @@
             this.btnParadaSimulada.TabIndex = 6;
             this.btnParadaSimulada.Text = "■ PARADA SIMULADA";
             this.btnParadaSimulada.UseVisualStyleBackColor = false;
+            this.btnParadaSimulada.Click += new System.EventHandler(this.btnParadaSimulada_Click);
             // 
             // lblEstadoDatos
             // 
@@ -1380,9 +1383,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            // 
+            //
+            // actualizacion
+            //
+            this.actualizacion.Interval = 10000;
+            this.actualizacion.Tick += new System.EventHandler(this.actualizacion_Tick);
+            //
             // frmPrincipal
             // 
+            this.Load += new System.EventHandler(this.FrmDashboard_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDashboard_FormClosed);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(17)))), ((int)(((byte)(23)))));
@@ -1549,5 +1559,6 @@
         private System.Windows.Forms.Label lblSesionAdmin;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Panel pnlUsuario;
+        private System.Windows.Forms.Timer actualizacion;
     }
 }

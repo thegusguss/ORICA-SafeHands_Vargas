@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    // Niveles de criticidad leídos desde dbo.NivelCriticidad; el botón ACCIÓN abre el editor.
     public partial class FrmCriticidad : Form
     {
         private readonly clsCriticidadNegocio criticidadNegocio = new clsCriticidadNegocio();
@@ -15,7 +14,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public FrmCriticidad()
         {
             InitializeComponent();
-            dgvCriticidad.CellContentClick += dgvCriticidad_CellContentClick;
         }
 
         private void FrmCriticidad_Load(object sender, EventArgs e)

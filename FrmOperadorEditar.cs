@@ -5,14 +5,10 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>
-    /// Ventana para crear o editar un operador.
-    /// Si recibe null es "Nuevo"; si recibe un usuario, es "Editar".
-    /// </summary>
     public partial class FrmOperadorEditar : Form
     {
         private readonly clsUsuarioNegocio usuarioNegocio = new clsUsuarioNegocio();
-        private readonly Usuario usuarioOriginal;  // null cuando es nuevo
+        private readonly Usuario usuarioOriginal; 
 
         public FrmOperadorEditar(Usuario usuario)
         {

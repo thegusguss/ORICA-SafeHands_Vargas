@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    // Lista de credenciales: registrar nuevas y activar / desactivar / desbloquear.
     public partial class Credenciales : Form
     {
         private readonly clsCredencialNegocio credencialNegocio = new clsCredencialNegocio();

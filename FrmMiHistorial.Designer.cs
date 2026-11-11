@@ -333,6 +333,7 @@
             this.txtBuscarHistorial.Name = "txtBuscarHistorial";
             this.txtBuscarHistorial.Size = new System.Drawing.Size(429, 20);
             this.txtBuscarHistorial.TabIndex = 42;
+            this.txtBuscarHistorial.TextChanged += new System.EventHandler(this.txtBuscarHistorial_TextChanged);
             // 
             // lblResultadoHistorial
             // 
@@ -363,6 +364,7 @@
             this.cbxResultadoHistorial.Name = "cbxResultadoHistorial";
             this.cbxResultadoHistorial.Size = new System.Drawing.Size(429, 21);
             this.cbxResultadoHistorial.TabIndex = 45;
+            this.cbxResultadoHistorial.SelectedIndexChanged += new System.EventHandler(this.cbxResultadoHistorial_SelectedIndexChanged);
             // 
             // dgvMiHistorial
             // 
@@ -411,6 +413,8 @@
             this.dgvMiHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMiHistorial.Size = new System.Drawing.Size(897, 294);
             this.dgvMiHistorial.TabIndex = 46;
+            this.dgvMiHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMiHistorial_CellContentClick);
+            this.dgvMiHistorial.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMiHistorial_CellDoubleClick);
             // 
             // colHoraHistorial
             // 
@@ -463,6 +467,7 @@
             // 
             // FrmMiHistorial
             // 
+            this.Load += new System.EventHandler(this.FrmMiHistorial_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));

@@ -6,13 +6,11 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    /// <summary>
-    /// Reglas de la operación por voz (sin nada de pantalla ni micrófono):
-    /// 1) interpretar lo que se escuchó contra la gramática cerrada del equipo,
-    /// 2) llevar los pasos de confirmación según el nivel de criticidad,
-    /// 3) ejecutar en el Arduino (clsEnlaceArduino) o cancelar,
-    /// 4) dejar todo registrado en dbo.Evento y dbo.Confirmacion.
-    /// </summary>
+    // Reglas de la operación por voz (sin nada de pantalla ni micrófono):
+    // 1) interpretar lo que se escuchó contra la gramática cerrada del equipo,
+    // 2) llevar los pasos de confirmación según el nivel de criticidad,
+    // 3) ejecutar en el Arduino (clsEnlaceArduino) o cancelar,
+    // 4) dejar todo registrado en dbo.Evento y dbo.Confirmacion.
     public class clsOperacionVozNegocio
     {
         public const string PalabraConfirmar = "CONFIRMAR";
@@ -26,14 +24,12 @@ namespace ORICA.Negocio
         private readonly clsEventoDatos _eventoDatos = new clsEventoDatos();
         private readonly clsAlertaNegocio _alertas = new clsAlertaNegocio();
 
-        // ================= CONSULTAS =================
+        //CONSULTAS
 
         public List<Equipo> mtdListarEquipos()
         {
             return _equipos.mtdListarActivos();
         }
-
-        /// <summary>Comandos que el operador puede decir para ese equipo (la gramática cerrada).</summary>
         public List<Comando> mtdListarComandos(int idEquipo)
         {
             return _comandos.mtdListarPorEquipo(idEquipo);

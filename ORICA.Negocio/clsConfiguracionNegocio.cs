@@ -9,10 +9,6 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    /// <summary>
-    /// Lee y guarda los parámetros de dbo.Configuracion.
-    /// Los demás módulos (voz, enlace ESP32) leen sus valores con mtdObtenerEntero / Decimal / Booleano / Texto.
-    /// </summary>
     public class clsConfiguracionNegocio
     {
         // ---------------- Claves ----------------
@@ -68,9 +64,6 @@ namespace ORICA.Negocio
 
         private readonly clsConfiguracionDatos _datos = new clsConfiguracionDatos();
 
-        // ================= CONSULTAS =================
-
-        /// <summary>Todos los parámetros activos, por clave. Las claves que faltan en la BD vienen con su valor por defecto.</summary>
         public Dictionary<string, ParametroConfiguracion> mtdListar()
         {
             Dictionary<string, ParametroConfiguracion> lista = new Dictionary<string, ParametroConfiguracion>(StringComparer.OrdinalIgnoreCase);
@@ -136,12 +129,6 @@ namespace ORICA.Negocio
             return string.Equals(mtdObtenerTexto(clave), "true", StringComparison.OrdinalIgnoreCase);
         }
 
-        // ================= ESCRITURA =================
-
-        /// <summary>
-        /// Valida y guarda los valores (clave → valor en texto). Solo escribe los que cambiaron
-        /// y deja un registro de auditoría con el valor anterior y el nuevo.
-        /// </summary>
         public Resultado mtdGuardar(Dictionary<string, string> valores)
         {
             try
@@ -194,7 +181,6 @@ namespace ORICA.Negocio
             catch (Exception ex) { return Resultado.Error("Error inesperado: " + ex.Message); }
         }
 
-        // ================= REGLAS =================
 
         private static string mtdValidar(Dictionary<string, string> v)
         {
@@ -246,7 +232,6 @@ namespace ORICA.Negocio
             return v.TryGetValue(clave, out texto) && string.Equals(texto, "false", StringComparison.OrdinalIgnoreCase);
         }
 
-        /// <summary>Convierte un valor a texto como se guarda en la BD (punto decimal, true/false).</summary>
         public static string mtdATexto(object valor)
         {
             if (valor is bool) return (bool)valor ? "true" : "false";

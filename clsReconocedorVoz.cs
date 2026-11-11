@@ -8,12 +8,10 @@ using Windows.Media.SpeechRecognition;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>
-    /// Envoltura del reconocedor de voz moderno de Windows 10/11 (Windows.Media.SpeechRecognition).
-    /// Es el que se instala con "Reconocimiento de voz básico" en Configuración → Idioma.
-    /// Solo reconoce las frases que se le pasan (gramática cerrada) y funciona sin internet.
-    /// Los eventos llegan en otro hilo: la pantalla debe pasarlos a su propio hilo.
-    /// </summary>
+    // Envoltura del reconocedor de voz moderno de Windows 10/11 (Windows.Media.SpeechRecognition).
+    // Es el que se instala con "Reconocimiento de voz básico" en Configuración → Idioma.
+    // Solo reconoce las frases que se le pasan (gramática cerrada) y funciona sin internet.
+    // Los eventos llegan en otro hilo: la pantalla debe pasarlos a su propio hilo.
     public sealed class clsReconocedorVoz : IDisposable
     {
         private SpeechRecognizer reconocedor;
@@ -22,18 +20,14 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         // Windows no permite preparar/iniciar/detener a la vez: los pedidos se atienden de uno en uno.
         private readonly SemaphoreSlim turno = new SemaphoreSlim(1, 1);
 
-        /// <summary>Idioma en uso, por ejemplo "es-MX".</summary>
         public string Idioma { get; private set; }
 
         public bool Escuchando { get; private set; }
 
-        /// <summary>Texto reconocido (vacío si no se entendió) y confianza de 0 a 100.</summary>
         public event Action<string, decimal> FraseReconocida;
 
-        /// <summary>La sesión terminó sola (silencio, error...). Trae un mensaje si fue por un problema.</summary>
         public event Action<string> EscuchaTerminada;
 
-        /// <summary>Primer idioma español disponible para reconocimiento, o null si no hay.</summary>
         public static string BuscarIdiomaEspanol()
         {
             try

@@ -20,7 +20,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         private static readonly Color ColorCerrada = Color.Gray;
 
         private readonly clsAlertaNegocio alertaNegocio = new clsAlertaNegocio();
-        private readonly Timer actualizacion = new Timer { Interval = 15000 };
 
         public FrmAlertas()
         {
@@ -29,20 +28,33 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             lblConexionESP32.Text = clsMonitorArduino.TextoEstado;
             lblDetalleRechazosConfianza.Text = "Hoy";
 
-            // Texto de los botones de la tabla (en el diseñador estaban vacíos).
+            // Texto de los botones de la tabla (en el diseñador estan vacíos).
             colReconocerAlerta.Text = "Reconocer";
             colReconocerAlerta.UseColumnTextForButtonValue = true;
             colCerrarAlerta.Text = "Cerrar";
             colCerrarAlerta.UseColumnTextForButtonValue = true;
+        }
 
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => { Cargar(); actualizacion.Start(); };
-            // Se usa Disposed (no FormClosed): si se cierra la ventana principal con esta pantalla abierta,
-            // FormClosed no se dispara y el temporizador seguía llenando una tabla ya destruida (sin columnas).
-            Disposed += (s, e) => { actualizacion.Stop(); actualizacion.Dispose(); };
-            actualizacion.Tick += (s, e) => { if (!IsDisposed) Cargar(); };
-            dgvAlertas.CellContentClick += dgvAlertas_CellContentClick;
-            dgvAlertas.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) MostrarDetalle(AlertaDeFila(e.RowIndex)); };
+        private void FrmAlertas_Load(object sender, EventArgs e)
+        {
+            Cargar();
+            actualizacion.Start();
+        }
+
+        private void FrmAlertas_Disposed(object sender, EventArgs e)
+        {
+            actualizacion.Stop();
+            actualizacion.Dispose();
+        }
+
+        private void actualizacion_Tick(object sender, EventArgs e)
+        {
+            if (!IsDisposed) Cargar();
+        }
+
+        private void dgvAlertas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) MostrarDetalle(AlertaDeFila(e.RowIndex));
         }
 
         // ---------------- Cargar ----------------

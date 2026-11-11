@@ -850,6 +850,7 @@
             this.btnSimularRedSQLConfig.TabIndex = 27;
             this.btnSimularRedSQLConfig.Text = "Simular red SQL Server";
             this.btnSimularRedSQLConfig.UseVisualStyleBackColor = false;
+            this.btnSimularRedSQLConfig.Click += new System.EventHandler(this.btnSimularRedSQLConfig_Click);
             // 
             // lblTituloConfiguracionPersistencia
             // 
@@ -894,6 +895,7 @@
             this.btnGuardarConfiguracion.TabIndex = 28;
             this.btnGuardarConfiguracion.Text = "Guardar configuración";
             this.btnGuardarConfiguracion.UseVisualStyleBackColor = false;
+            this.btnGuardarConfiguracion.Click += new System.EventHandler(this.btnGuardarConfiguracion_Click);
             // 
             // chkRearmeExplicito
             // 
@@ -980,6 +982,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmConfiguracion";
             this.Text = "Configuración";
+            this.Load += new System.EventHandler(this.FrmConfiguracion_Load);
             this.flpMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMarca.ResumeLayout(false);

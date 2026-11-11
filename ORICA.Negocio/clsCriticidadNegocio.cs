@@ -7,11 +7,10 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    // Reglas de los niveles de criticidad. Solo se editan confirmaciones, timeout y descripción.
     public class clsCriticidadNegocio
     {
-        public const int MaxConfirmaciones = 2;   // CHECK de la BD: 0 a 2
-        public const int MinTimeout = 3;          // con menos de 3 s nadie alcanza a responder
+        public const int MaxConfirmaciones = 2;   
+        public const int MinTimeout = 3;          
         public const int MaxTimeout = 60;
         private const int MaxDescripcion = 250;
 

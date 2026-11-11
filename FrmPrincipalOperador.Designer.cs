@@ -1,4 +1,4 @@
-﻿namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
+namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
     partial class FrmPrincipalOperador
     {
@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.estadoConexion = new System.Windows.Forms.Timer(this.components);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipalOperador));
             this.pnlMenuOperador = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlMarca = new System.Windows.Forms.Panel();
@@ -90,7 +92,7 @@
             // 
             this.pnlMenuOperador.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlMenuOperador.AutoScroll = true;
-            this.pnlMenuOperador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(43)))), ((int)(((byte)(105)))));
+            this.pnlMenuOperador.BackColor = System.Drawing.Color.FromArgb(17, 24, 34);
             this.pnlMenuOperador.Controls.Add(this.pictureBox1);
             this.pnlMenuOperador.Controls.Add(this.pnlMarca);
             this.pnlMenuOperador.Controls.Add(this.btnInicioOperador);
@@ -143,6 +145,14 @@
             // btnInicioOperador
             // 
             this.btnInicioOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInicioOperador.BackColor = System.Drawing.Color.FromArgb(50, 43, 96);
+            this.btnInicioOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInicioOperador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(43, 40, 74);
+            this.btnInicioOperador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(65, 55, 110);
+            this.btnInicioOperador.Image = ((System.Drawing.Image)(resources.GetObject("btnInicioOperador.Image")));
+            this.btnInicioOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInicioOperador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInicioOperador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInicioOperador.FlatAppearance.BorderSize = 0;
             this.btnInicioOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInicioOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,11 +164,19 @@
             this.btnInicioOperador.TabIndex = 0;
             this.btnInicioOperador.Text = "Inicio";
             this.btnInicioOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInicioOperador.UseVisualStyleBackColor = true;
+            this.btnInicioOperador.UseVisualStyleBackColor = false;
             // 
             // btnHistorialOperador
             // 
             this.btnHistorialOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistorialOperador.BackColor = System.Drawing.Color.FromArgb(17, 24, 34);
+            this.btnHistorialOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistorialOperador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(43, 40, 74);
+            this.btnHistorialOperador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(65, 55, 110);
+            this.btnHistorialOperador.Image = ((System.Drawing.Image)(resources.GetObject("btnHistorialOperador.Image")));
+            this.btnHistorialOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHistorialOperador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnHistorialOperador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHistorialOperador.FlatAppearance.BorderSize = 0;
             this.btnHistorialOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistorialOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -170,10 +188,11 @@
             this.btnHistorialOperador.TabIndex = 4;
             this.btnHistorialOperador.Text = "Mi historial";
             this.btnHistorialOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistorialOperador.UseVisualStyleBackColor = true;
+            this.btnHistorialOperador.UseVisualStyleBackColor = false;
             // 
             // pnlSesionOperador
             // 
+            this.pnlSesionOperador.BackColor = System.Drawing.Color.FromArgb(17, 24, 34);
             this.pnlSesionOperador.Controls.Add(this.lblNombreOperador);
             this.pnlSesionOperador.Controls.Add(this.lblRolOperador);
             this.pnlSesionOperador.Controls.Add(this.btnCerrarSesionOperador);
@@ -197,6 +216,14 @@
             // btnCerrarSesionOperador
             // 
             this.btnCerrarSesionOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesionOperador.BackColor = System.Drawing.Color.FromArgb(32, 41, 56);
+            this.btnCerrarSesionOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesionOperador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(43, 40, 74);
+            this.btnCerrarSesionOperador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(65, 55, 110);
+            this.btnCerrarSesionOperador.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesionOperador.Image")));
+            this.btnCerrarSesionOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesionOperador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCerrarSesionOperador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCerrarSesionOperador.FlatAppearance.BorderSize = 0;
             this.btnCerrarSesionOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesionOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -208,11 +235,19 @@
             this.btnCerrarSesionOperador.TabIndex = 20;
             this.btnCerrarSesionOperador.Text = "Cerrar sesión";
             this.btnCerrarSesionOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesionOperador.UseVisualStyleBackColor = true;
+            this.btnCerrarSesionOperador.UseVisualStyleBackColor = false;
             // 
             // btnControlVozOperador
             // 
             this.btnControlVozOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControlVozOperador.BackColor = System.Drawing.Color.FromArgb(17, 24, 34);
+            this.btnControlVozOperador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControlVozOperador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(43, 40, 74);
+            this.btnControlVozOperador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(65, 55, 110);
+            this.btnControlVozOperador.Image = ((System.Drawing.Image)(resources.GetObject("btnControlVozOperador.Image")));
+            this.btnControlVozOperador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnControlVozOperador.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnControlVozOperador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnControlVozOperador.FlatAppearance.BorderSize = 0;
             this.btnControlVozOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnControlVozOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,7 +259,7 @@
             this.btnControlVozOperador.TabIndex = 19;
             this.btnControlVozOperador.Text = "Control por voz";
             this.btnControlVozOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnControlVozOperador.UseVisualStyleBackColor = true;
+            this.btnControlVozOperador.UseVisualStyleBackColor = false;
             // 
             // lblNombreOperador
             // 
@@ -645,15 +680,21 @@
             this.pnlPantallasOperador.Size = new System.Drawing.Size(1022, 885);
             this.pnlPantallasOperador.TabIndex = 20;
             this.pnlPantallasOperador.Visible = false;
-            // 
+            //
+            // estadoConexion
+            //
+            this.estadoConexion.Interval = 3000;
+            this.estadoConexion.Tick += new System.EventHandler(this.estadoConexion_Tick);
+            //
             // FrmPrincipalOperador
             // 
+            this.Disposed += new System.EventHandler(this.FrmPrincipalOperador_Disposed);
+            this.Load += new System.EventHandler(this.FrmPrincipalOperador_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(19)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(1252, 885);
             this.Controls.Add(this.pnlAyudaInicio);
-            this.Controls.Add(this.pnlPantallasOperador);
             this.Controls.Add(this.pnlResumenConfirmadas);
             this.Controls.Add(this.pnlResumenAcciones);
             this.Controls.Add(this.pnlResumenEquipos);
@@ -662,6 +703,7 @@
             this.Controls.Add(this.pnlMenuOperador);
             this.Controls.Add(this.lblRutaInicio);
             this.Controls.Add(this.lblTituloInicio);
+            this.Controls.Add(this.pnlPantallasOperador);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -736,5 +778,6 @@
         private System.Windows.Forms.Label lblTituloAyudaInicio;
         private System.Windows.Forms.Label lblDescripcionAyudaInicio;
         private System.Windows.Forms.Button btnVerComandosInicio;
+        private System.Windows.Forms.Timer estadoConexion;
     }
 }

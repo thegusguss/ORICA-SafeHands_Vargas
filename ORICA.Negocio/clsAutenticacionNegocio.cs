@@ -13,14 +13,11 @@ namespace ORICA.Negocio
     public class clsAutenticacionNegocio
     {
         private const int LongitudPin = 4;
-        internal const int MaxIntentosFallidos = 5;  // también lo usa clsCredencialNegocio
+        internal const int MaxIntentosFallidos = 5; 
         private const string MetodoPin = "PIN";
 
         private readonly clsAutenticacionDatos _datos = new clsAutenticacionDatos();
 
-        // ================= CONSULTAS =================
-
-        //Operadores que pueden iniciar sesión con PIN.
         public List<Usuario> mtdListarOperadores()
         {
             List<Usuario> lista = new List<Usuario>();
@@ -43,7 +40,6 @@ namespace ORICA.Negocio
             return lista;
         }
 
-        // ================= INICIO / CIERRE DE SESIÓN =================
 
         public Resultado mtdIniciarSesionConPin(Usuario usuario, string pin)
         {
@@ -92,8 +88,7 @@ namespace ORICA.Negocio
                 Guid idSesion = _datos.mtdRegistrarAccesoExitoso(idCredencial, usuario.IdUsuario,
                                                               MetodoPin, Environment.MachineName);
                 Sesion.Iniciar(usuario, idSesion);
-                // Sin conexión con Azure, solo el operador puede registrar cosas (las demás se perderían al sincronizar).
-                clsConexion.SoloLecturaSinConexion = usuario.RolCodigo != "OPE";
+                clsConexion.SoloLecturaSinConexion = usuario.RolCodigo != "OPE";// Sin conexión con Azure, solo el operador puede registrar cosas (las demás se perderían al sincronizar).
 
                 new clsEventoNegocio().mtdRegistrar(clsEventoNegocio.TipoInicioSesion, clsEventoNegocio.ResultadoInformativo,
                     "Ingreso con PIN desde " + Environment.MachineName + ".");

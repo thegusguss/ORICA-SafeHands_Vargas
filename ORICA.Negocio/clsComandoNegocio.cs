@@ -10,19 +10,17 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    // Reglas de los comandos de voz: gramática cerrada, criticidad, confianza y equipos asignados.
     public class clsComandoNegocio
     {
         private const int MaxCodigo = 20;
         private const int MaxNombre = 100;
         private const int MaxFrase = 180;
-        private const int MinPalabras = 2;            // frases de una palabra se confunden con facilidad
+        private const int MinPalabras = 2;            
         public const decimal MinConfianza = 50m;
         public const decimal MaxConfianza = 100m;
 
         private readonly clsComandoDatos _datos = new clsComandoDatos();
 
-        // ================= CONSULTAS =================
 
         public List<Comando> mtdListar()
         {

@@ -10,7 +10,6 @@ namespace ORICA.Negocio
 {
     public class clsUsuarioNegocio
     {
-        // Ajustar a las longitudes reales de la tabla dbo.Usuario
         private const int MaxCodigo = 15;
         private const int MaxNombres = 80;
         private const int MaxApellidos = 100;
@@ -24,7 +23,6 @@ namespace ORICA.Negocio
         private readonly clsUsuarioDatos _datos = new clsUsuarioDatos();
         private readonly clsRolNegocio _rolNegocio = new clsRolNegocio();
 
-        // ================= CONSULTAS =================
 
         public List<Usuario> mtdListarUsuarios()
         {

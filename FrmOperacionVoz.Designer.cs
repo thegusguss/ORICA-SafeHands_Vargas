@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.temporizador = new System.Windows.Forms.Timer(this.components);
             this.pnlCabeceraVoz = new System.Windows.Forms.Panel();
             this.btnDetenerEquipo = new System.Windows.Forms.Button();
             this.lblModoOperacion = new System.Windows.Forms.Label();
@@ -106,6 +108,7 @@
             this.btnDetenerEquipo.TabIndex = 6;
             this.btnDetenerEquipo.Text = "DETENER EQUIPO";
             this.btnDetenerEquipo.UseVisualStyleBackColor = false;
+            this.btnDetenerEquipo.Click += new System.EventHandler(this.btnDetenerEquipo_Click);
             // 
             // lblModoOperacion
             // 
@@ -193,6 +196,7 @@
             this.cbxEquipoVoz.Name = "cbxEquipoVoz";
             this.cbxEquipoVoz.Size = new System.Drawing.Size(221, 24);
             this.cbxEquipoVoz.TabIndex = 22;
+            this.cbxEquipoVoz.SelectedIndexChanged += new System.EventHandler(this.cbxEquipoVoz_SelectedIndexChanged);
             // 
             // lblEstadoEquipoVoz
             // 
@@ -300,6 +304,8 @@
             this.btnPTTVoz.TabIndex = 20;
             this.btnPTTVoz.Text = "Mantén para hablar";
             this.btnPTTVoz.UseVisualStyleBackColor = false;
+            this.btnPTTVoz.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPTTVoz_MouseDown);
+            this.btnPTTVoz.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnPTTVoz_MouseUp);
             // 
             // lblTituloEjemplosVoz
             // 
@@ -355,6 +361,7 @@
             this.btnCancelarComando.TabIndex = 28;
             this.btnCancelarComando.Text = "Cancelar";
             this.btnCancelarComando.UseVisualStyleBackColor = false;
+            this.btnCancelarComando.Click += new System.EventHandler(this.btnCancelarComando_Click);
             // 
             // btnConfirmarComando
             // 
@@ -370,6 +377,7 @@
             this.btnConfirmarComando.TabIndex = 27;
             this.btnConfirmarComando.Text = "Confirmar y enviar";
             this.btnConfirmarComando.UseVisualStyleBackColor = false;
+            this.btnConfirmarComando.Click += new System.EventHandler(this.btnConfirmarComando_Click);
             // 
             // lblEstadoComandoVoz
             // 
@@ -617,9 +625,17 @@
             this.btnCerrarSesionOperador.Text = "Cerrar sesión";
             this.btnCerrarSesionOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCerrarSesionOperador.UseVisualStyleBackColor = true;
-            // 
+            //
+            // temporizador
+            //
+            this.temporizador.Interval = 250;
+            this.temporizador.Tick += new System.EventHandler(this.temporizador_Tick);
+            //
             // FrmOperacionVoz
             // 
+            this.Load += new System.EventHandler(this.FrmOperacionVoz_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOperacionVoz_FormClosed);
+            this.Disposed += new System.EventHandler(this.FrmOperacionVoz_Disposed);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
@@ -698,5 +714,6 @@
         private System.Windows.Forms.Label lblNombreOperador;
         private System.Windows.Forms.Label lblRolOperador;
         private System.Windows.Forms.Button btnCerrarSesionOperador;
+        private System.Windows.Forms.Timer temporizador;
     }
 }

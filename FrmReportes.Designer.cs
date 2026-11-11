@@ -526,6 +526,7 @@
             this.btnActualizarReportes.TabIndex = 13;
             this.btnActualizarReportes.Text = "Actualizar";
             this.btnActualizarReportes.UseVisualStyleBackColor = false;
+            this.btnActualizarReportes.Click += new System.EventHandler(this.btnActualizarReportes_Click);
             // 
             // lblTituloFiltrosReporte
             // 
@@ -670,6 +671,7 @@
             this.btnImprimirReporte.TabIndex = 13;
             this.btnImprimirReporte.Text = "Imprimir / guardar PDF";
             this.btnImprimirReporte.UseVisualStyleBackColor = false;
+            this.btnImprimirReporte.Click += new System.EventHandler(this.btnImprimirReporte_Click);
             // 
             // lblTituloResumenAuditoria
             // 
@@ -907,6 +909,7 @@
             // 
             // FrmReportes
             // 
+            this.Load += new System.EventHandler(this.FrmReportes_Load);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(29)))), ((int)(((byte)(37)))));

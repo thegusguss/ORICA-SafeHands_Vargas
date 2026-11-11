@@ -24,13 +24,21 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             InitializeComponent();
 
             btnLimpiarDemoEventos.Text = "Actualizar";
+        }
 
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => CargarHistorial();
-            btnLimpiarDemoEventos.Click += (s, e) => CargarHistorial();
-            btnExportarEventosCSV.Click += btnExportarEventosCSV_Click;
-            dgvCriticidad.CellContentClick += dgvEventos_CellContentClick;
-            dgvCriticidad.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) MostrarDetalle(e.RowIndex); };
+        private void FrmEventos_Load(object sender, EventArgs e)
+        {
+            CargarHistorial();
+        }
+
+        private void btnLimpiarDemoEventos_Click(object sender, EventArgs e)
+        {
+            CargarHistorial();
+        }
+
+        private void dgvCriticidad_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) MostrarDetalle(e.RowIndex);
         }
 
         private void CargarHistorial()

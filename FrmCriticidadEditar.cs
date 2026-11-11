@@ -15,7 +15,11 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         {
             InitializeComponent();
             this.nivel = nivel;
-            numConfirmaciones.ValueChanged += (s, e) => AjustarTimeout();
+        }
+
+        private void numConfirmaciones_ValueChanged(object sender, EventArgs e)
+        {
+            AjustarTimeout();
         }
 
         private void FrmCriticidadEditar_Load(object sender, EventArgs e)

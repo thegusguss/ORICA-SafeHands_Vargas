@@ -6,10 +6,6 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>
-    /// Ventana para crear o editar un comando de voz y elegir en qué equipos se puede usar.
-    /// Si recibe null es "Nuevo"; si recibe un comando, es "Editar".
-    /// </summary>
     public partial class FrmComandoEditar : Form
     {
         private readonly clsComandoNegocio comandoNegocio = new clsComandoNegocio();

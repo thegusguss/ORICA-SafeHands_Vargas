@@ -55,11 +55,16 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
             lblDiagEstadoApp.ForeColor = Color.MediumAquamarine;
             lblConexionESP32.Text = clsMonitorArduino.TextoEstado;
             lblConexionESP32.ForeColor = clsMonitorArduino.Conectado ? Color.MediumAquamarine : Color.Silver;
+        }
 
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += (s, e) => { if (CargarFiltros()) Generar(); };
-            btnActualizarReportes.Click += (s, e) => Generar();
-            btnImprimirReporte.Click += btnImprimirReporte_Click;
+        private void FrmReportes_Load(object sender, EventArgs e)
+        {
+            if (CargarFiltros()) Generar();
+        }
+
+        private void btnActualizarReportes_Click(object sender, EventArgs e)
+        {
+            Generar();
         }
 
         // ---------------- Filtros ----------------

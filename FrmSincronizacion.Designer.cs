@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.actualizacion = new System.Windows.Forms.Timer(this.components);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSincronizacion));
@@ -678,6 +680,7 @@
             this.btnSimularRedSQL.TabIndex = 14;
             this.btnSimularRedSQL.Text = "Simular red SQL";
             this.btnSimularRedSQL.UseVisualStyleBackColor = false;
+            this.btnSimularRedSQL.Click += new System.EventHandler(this.btnSimularRedSQL_Click);
             // 
             // btnSincronizarAhora
             // 
@@ -693,6 +696,7 @@
             this.btnSincronizarAhora.TabIndex = 13;
             this.btnSincronizarAhora.Text = "Sincronizar ahora";
             this.btnSincronizarAhora.UseVisualStyleBackColor = false;
+            this.btnSincronizarAhora.Click += new System.EventHandler(this.btnSincronizarAhora_Click);
             // 
             // dgvColaSincronizacion
             // 
@@ -790,9 +794,16 @@
             this.lblTituloColaSincronizacion.Size = new System.Drawing.Size(181, 18);
             this.lblTituloColaSincronizacion.TabIndex = 10;
             this.lblTituloColaSincronizacion.Text = "Cola de sincronización";
-            // 
+            //
+            // actualizacion
+            //
+            this.actualizacion.Interval = 5000;
+            this.actualizacion.Tick += new System.EventHandler(this.actualizacion_Tick);
+            //
             // FrmSincronizacion
             // 
+            this.Load += new System.EventHandler(this.FrmSincronizacion_Load);
+            this.Disposed += new System.EventHandler(this.FrmSincronizacion_Disposed);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
@@ -886,5 +897,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdLocalSync;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIntentosSync;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstadoSync;
+        private System.Windows.Forms.Timer actualizacion;
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.actualizacion = new System.Windows.Forms.Timer(this.components);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAlertas));
@@ -669,6 +671,8 @@
             this.dgvAlertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAlertas.Size = new System.Drawing.Size(944, 200);
             this.dgvAlertas.TabIndex = 8;
+            this.dgvAlertas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlertas_CellContentClick);
+            this.dgvAlertas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlertas_CellDoubleClick);
             // 
             // colHoraAlerta
             // 
@@ -731,9 +735,16 @@
             this.colCerrarAlerta.ReadOnly = true;
             this.colCerrarAlerta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colCerrarAlerta.UseColumnTextForButtonValue = true;
-            // 
+            //
+            // actualizacion
+            //
+            this.actualizacion.Interval = 15000;
+            this.actualizacion.Tick += new System.EventHandler(this.actualizacion_Tick);
+            //
             // FrmAlertas
             // 
+            this.Load += new System.EventHandler(this.FrmAlertas_Load);
+            this.Disposed += new System.EventHandler(this.FrmAlertas_Disposed);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
@@ -822,5 +833,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstadoAlerta;
         private System.Windows.Forms.DataGridViewButtonColumn colReconocerAlerta;
         private System.Windows.Forms.DataGridViewButtonColumn colCerrarAlerta;
+        private System.Windows.Forms.Timer actualizacion;
     }
 }

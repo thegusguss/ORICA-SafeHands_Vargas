@@ -15,12 +15,6 @@ namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
         public FrmComandos()
         {
             InitializeComponent();
-
-            // Los eventos se conectan aquí para no tocar el diseñador.
-            Load += FrmComandos_Load;
-            btnNuevoComando.Click += btnNuevoComando_Click;
-            // CellClick (y no CellContentClick) porque la columna de estado es de texto, no de botón.
-            dgvComandos.CellClick += dgvComandos_CellClick;
         }
 
         private void FrmComandos_Load(object sender, EventArgs e)

@@ -4,36 +4,34 @@ using System.Data;
 
 namespace ORICA.Datos
 {
-    // Acceso a datos de los comandos de voz y su asignación a equipos (ComandoEquipo).
     public class clsComandoDatos
     {
         private const string SelectComandos = @"
-SELECT c.IdComando, c.Codigo, c.Nombre, c.Frase, c.IdNivelCriticidad,
-       nc.Nombre AS CriticidadNombre, nc.NumeroConfirmaciones, nc.TimeoutSegundos,
-       c.IdTipoAccion, ta.Nombre AS TipoAccionNombre, ta.Codigo AS TipoAccionCodigo,
-       c.ConfianzaMinima, c.RequierePTT, c.Estado, c.FechaRegistro, c.FechaModificacion, c.RowVersion
-FROM dbo.Comando c
-INNER JOIN dbo.NivelCriticidad nc ON nc.IdNivelCriticidad = c.IdNivelCriticidad
-INNER JOIN dbo.TipoAccion ta      ON ta.IdTipoAccion = c.IdTipoAccion";
+                                SELECT c.IdComando, c.Codigo, c.Nombre, c.Frase, c.IdNivelCriticidad,
+                                       nc.Nombre AS CriticidadNombre, nc.NumeroConfirmaciones, nc.TimeoutSegundos,
+                                       c.IdTipoAccion, ta.Nombre AS TipoAccionNombre, ta.Codigo AS TipoAccionCodigo,
+                                       c.ConfianzaMinima, c.RequierePTT, c.Estado, c.FechaRegistro, c.FechaModificacion, c.RowVersion
+                                FROM dbo.Comando c
+                                INNER JOIN dbo.NivelCriticidad nc ON nc.IdNivelCriticidad = c.IdNivelCriticidad
+                                INNER JOIN dbo.TipoAccion ta      ON ta.IdTipoAccion = c.IdTipoAccion";
 
-        // ---------------- Consultas ----------------
+        //Consultas 
 
         public DataTable mtdListar()
         {
             return clsBaseDatos.mtdConsultar(SelectComandos + " ORDER BY c.Codigo;");
         }
 
-        /// <summary>Comandos activos asignados (y activos) a un equipo activo.</summary>
         public DataTable mtdListarPorEquipo(int idEquipo)
         {
             string sql = SelectComandos + @"
-INNER JOIN dbo.ComandoEquipo ce ON ce.IdComando = c.IdComando
-INNER JOIN dbo.Equipo e         ON e.IdEquipo = ce.IdEquipo
-WHERE ce.IdEquipo = @IdEquipo
-  AND ce.Estado = 1
-  AND c.Estado = 1
-  AND e.Estado = 1
-ORDER BY c.IdNivelCriticidad, c.Frase;";
+                                INNER JOIN dbo.ComandoEquipo ce ON ce.IdComando = c.IdComando
+                                INNER JOIN dbo.Equipo e         ON e.IdEquipo = ce.IdEquipo
+                                WHERE ce.IdEquipo = @IdEquipo
+                                  AND ce.Estado = 1
+                                  AND c.Estado = 1
+                                  AND e.Estado = 1
+                                ORDER BY c.IdNivelCriticidad, c.Frase;";
 
             return clsBaseDatos.mtdConsultar(sql, clsBaseDatos.mtdParametro("@IdEquipo", idEquipo));
         }
@@ -42,8 +40,8 @@ ORDER BY c.IdNivelCriticidad, c.Frase;";
         public DataTable mtdListarEquiposAsignados(int idComando)
         {
             const string sql = @"
-SELECT IdEquipo FROM dbo.ComandoEquipo
-WHERE IdComando = @IdComando AND Estado = 1;";
+                                SELECT IdEquipo FROM dbo.ComandoEquipo
+                                WHERE IdComando = @IdComando AND Estado = 1;";
 
             return clsBaseDatos.mtdConsultar(sql, clsBaseDatos.mtdParametro("@IdComando", idComando));
         }
@@ -51,10 +49,10 @@ WHERE IdComando = @IdComando AND Estado = 1;";
         public DataTable mtdListarTiposAccion()
         {
             const string sql = @"
-SELECT IdTipoAccion, Codigo, Nombre, EsAccionSegura
-FROM dbo.TipoAccion
-WHERE Estado = 1
-ORDER BY IdTipoAccion;";
+                                SELECT IdTipoAccion, Codigo, Nombre, EsAccionSegura
+                                FROM dbo.TipoAccion
+                                WHERE Estado = 1
+                                ORDER BY IdTipoAccion;";
 
             return clsBaseDatos.mtdConsultar(sql);
         }
@@ -66,25 +64,25 @@ ORDER BY IdTipoAccion;";
                                 decimal confianza, bool requierePtt, IEnumerable<int> idsEquipos)
         {
             const string sql = @"
-SET XACT_ABORT ON;
-BEGIN TRANSACTION;
+                            SET XACT_ABORT ON;
+                            BEGIN TRANSACTION;
 
-DECLARE @Nuevo TABLE (IdComando INT);
+                            DECLARE @Nuevo TABLE (IdComando INT);
 
-INSERT INTO dbo.Comando (Codigo, Nombre, Frase, IdNivelCriticidad, IdTipoAccion, ConfianzaMinima, RequierePTT)
-OUTPUT INSERTED.IdComando INTO @Nuevo
-VALUES (@Codigo, @Nombre, @Frase, @IdNivel, @IdTipoAccion, @Confianza, @PTT);
+                            INSERT INTO dbo.Comando (Codigo, Nombre, Frase, IdNivelCriticidad, IdTipoAccion, ConfianzaMinima, RequierePTT)
+                            OUTPUT INSERTED.IdComando INTO @Nuevo
+                            VALUES (@Codigo, @Nombre, @Frase, @IdNivel, @IdTipoAccion, @Confianza, @PTT);
 
-DECLARE @IdComando INT = (SELECT IdComando FROM @Nuevo);
+                            DECLARE @IdComando INT = (SELECT IdComando FROM @Nuevo);
 
-INSERT INTO dbo.ComandoEquipo (IdComando, IdEquipo)
-SELECT @IdComando, CAST(value AS INT)
-FROM STRING_SPLIT(@Equipos, ',')
-WHERE LTRIM(RTRIM(value)) <> '';
+                            INSERT INTO dbo.ComandoEquipo (IdComando, IdEquipo)
+                            SELECT @IdComando, CAST(value AS INT)
+                            FROM STRING_SPLIT(@Equipos, ',')
+                            WHERE LTRIM(RTRIM(value)) <> '';
 
-COMMIT TRANSACTION;
+                            COMMIT TRANSACTION;
 
-SELECT @IdComando;";
+                            SELECT @IdComando;";
 
             object id = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@Codigo", codigo),
@@ -108,44 +106,44 @@ SELECT @IdComando;";
                                 IEnumerable<int> idsEquipos)
         {
             const string sql = @"
-SET XACT_ABORT ON;
-BEGIN TRANSACTION;
+                SET XACT_ABORT ON;
+                BEGIN TRANSACTION;
 
-UPDATE dbo.Comando
-SET Codigo = @Codigo,
-    Nombre = @Nombre,
-    Frase = @Frase,
-    IdNivelCriticidad = @IdNivel,
-    IdTipoAccion = @IdTipoAccion,
-    ConfianzaMinima = @Confianza,
-    RequierePTT = @PTT,
-    FechaModificacion = dbo.fnAhora()
-WHERE IdComando = @IdComando
-  AND RowVersion = @RowVersion;
+                UPDATE dbo.Comando
+                SET Codigo = @Codigo,
+                    Nombre = @Nombre,
+                    Frase = @Frase,
+                    IdNivelCriticidad = @IdNivel,
+                    IdTipoAccion = @IdTipoAccion,
+                    ConfianzaMinima = @Confianza,
+                    RequierePTT = @PTT,
+                    FechaModificacion = dbo.fnAhora()
+                WHERE IdComando = @IdComando
+                  AND RowVersion = @RowVersion;
 
-DECLARE @Filas INT = @@ROWCOUNT;
+                DECLARE @Filas INT = @@ROWCOUNT;
 
-IF @Filas > 0
-BEGIN
-    DECLARE @Sel TABLE (IdEquipo INT PRIMARY KEY);
-    INSERT INTO @Sel (IdEquipo)
-    SELECT DISTINCT CAST(value AS INT) FROM STRING_SPLIT(@Equipos, ',') WHERE LTRIM(RTRIM(value)) <> '';
+                IF @Filas > 0
+                BEGIN
+                    DECLARE @Sel TABLE (IdEquipo INT PRIMARY KEY);
+                    INSERT INTO @Sel (IdEquipo)
+                    SELECT DISTINCT CAST(value AS INT) FROM STRING_SPLIT(@Equipos, ',') WHERE LTRIM(RTRIM(value)) <> '';
 
-    -- Los que ya no están marcados se desactivan; los marcados se activan o se insertan.
-    UPDATE dbo.ComandoEquipo SET Estado = 0
-    WHERE IdComando = @IdComando AND IdEquipo NOT IN (SELECT IdEquipo FROM @Sel);
+                    -- Los que ya no están marcados se desactivan; los marcados se activan o se insertan.
+                    UPDATE dbo.ComandoEquipo SET Estado = 0
+                    WHERE IdComando = @IdComando AND IdEquipo NOT IN (SELECT IdEquipo FROM @Sel);
 
-    UPDATE dbo.ComandoEquipo SET Estado = 1
-    WHERE IdComando = @IdComando AND IdEquipo IN (SELECT IdEquipo FROM @Sel);
+                    UPDATE dbo.ComandoEquipo SET Estado = 1
+                    WHERE IdComando = @IdComando AND IdEquipo IN (SELECT IdEquipo FROM @Sel);
 
-    INSERT INTO dbo.ComandoEquipo (IdComando, IdEquipo)
-    SELECT @IdComando, s.IdEquipo FROM @Sel s
-    WHERE NOT EXISTS (SELECT 1 FROM dbo.ComandoEquipo ce WHERE ce.IdComando = @IdComando AND ce.IdEquipo = s.IdEquipo);
-END
+                    INSERT INTO dbo.ComandoEquipo (IdComando, IdEquipo)
+                    SELECT @IdComando, s.IdEquipo FROM @Sel s
+                    WHERE NOT EXISTS (SELECT 1 FROM dbo.ComandoEquipo ce WHERE ce.IdComando = @IdComando AND ce.IdEquipo = s.IdEquipo);
+                END
 
-COMMIT TRANSACTION;
+                COMMIT TRANSACTION;
 
-SELECT @Filas;";
+                SELECT @Filas;";
 
             object filas = clsBaseDatos.mtdConsultarValor(sql,
                 clsBaseDatos.mtdParametro("@IdComando", idComando),
@@ -165,9 +163,9 @@ SELECT @Filas;";
         public int mtdCambiarEstado(int idComando, bool estado)
         {
             const string sql = @"
-UPDATE dbo.Comando
-SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
-WHERE IdComando = @IdComando;";
+                                UPDATE dbo.Comando
+                                SET Estado = @Estado, FechaModificacion = dbo.fnAhora()
+                                WHERE IdComando = @IdComando;";
 
             return clsBaseDatos.mtdEjecutarComando(sql,
                 clsBaseDatos.mtdParametro("@IdComando", idComando),

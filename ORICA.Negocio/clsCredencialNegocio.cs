@@ -9,12 +9,10 @@ using ORICA.Negocio.Modelos;
 
 namespace ORICA.Negocio
 {
-    // Reglas para registrar, activar/desactivar y desbloquear credenciales.
     public class clsCredencialNegocio
     {
         private readonly clsCredencialDatos _datos = new clsCredencialDatos();
 
-        // ================= CONSULTAS =================
 
         public List<Credencial> mtdListar()
         {
@@ -59,7 +57,6 @@ namespace ORICA.Negocio
             return lista;
         }
 
-        // ================= ESCRITURA =================
 
         // valor: el PIN o el UID de la tarjeta. confirmacion: solo se revisa si es PIN.
         // Si el usuario ya tenía una credencial activa de ese tipo, la anterior se desactiva.

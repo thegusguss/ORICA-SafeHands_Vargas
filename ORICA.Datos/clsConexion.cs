@@ -5,30 +5,21 @@ using System.Text.RegularExpressions;
 
 namespace ORICA.Datos
 {
-    /// <summary>
-    /// Decide a qué base se conecta la aplicación:
-    /// - Azure SQL (principal, compartida): cadena "CadenaAzure" del archivo conexion.config (no se sube a git).
-    /// - LocalDB (copia local): cadena "ORICA_SafeHandsDB" del App.config. Se usa cuando no hay internet.
-    /// Si Azure no responde al abrir, se pasa solo a la base local y la sincronización vuelve después.
-    /// </summary>
+    
+
     public static class clsConexion
     {
-        // true = se trabaja con Azure; false = con la copia local.
         private static volatile bool _enLinea;
-        // Para pruebas: obliga a trabajar sin conexión aunque haya internet (botón en Sincronización).
         private static volatile bool _simularSinConexion;
 
-        /// <summary>Lo usan clsBaseDatos y la sincronización para no pisarse (una sola cosa a la vez).</summary>
         public static readonly object Candado = new object();
 
-        /// <summary>Sin conexión, los roles que no son operador solo pueden consultar (sus cambios se perderían).</summary>
         public static bool SoloLecturaSinConexion { get; set; }
 
         public static string UltimoError { get; private set; }
 
         public static bool EnLinea { get { return _enLinea; } }
 
-        /// <summary>true si hay una cadena de Azure configurada en conexion.config.</summary>
         public static bool TieneAzure
         {
             get { return !string.IsNullOrWhiteSpace(CadenaAzure); }
@@ -57,10 +48,6 @@ namespace ORICA.Datos
             }
         }
 
-        /// <summary>
-        /// Abre la conexión que toca (Azure o local). Si Azure falla al abrir, se pasa a modo local.
-        /// sql: la consulta que se va a ejecutar; sirve para bloquear cambios en modo solo lectura.
-        /// </summary>
         internal static SqlConnection mtdAbrirConexion(string sql)
         {
             if (_enLinea)
@@ -87,7 +74,6 @@ namespace ORICA.Datos
             return local;
         }
 
-        // ¿La consulta inserta, actualiza o borra algo?
         private static bool ModificaDatos(string sql)
         {
             return Regex.IsMatch(sql, @"\b(INSERT|UPDATE|DELETE|MERGE)\b", RegexOptions.IgnoreCase);
@@ -111,8 +97,6 @@ namespace ORICA.Datos
             if (!TieneAzure) throw new InvalidOperationException("No hay cadena de Azure en conexion.config.");
             if (_simularSinConexion) throw new InvalidOperationException("Desconexión simulada activa.");
 
-            // La base gratuita de Azure se pausa sola si nadie la usa y tarda en "despertar":
-            // para sincronizar se espera hasta 60 s y se intenta 2 veces.
             SqlConnectionStringBuilder cadena = new SqlConnectionStringBuilder(CadenaAzure) { ConnectTimeout = 60 };
 
             for (int intento = 1; ; intento++)
@@ -146,7 +130,6 @@ namespace ORICA.Datos
             }
         }
 
-        /// <summary>Abre y cierra una conexión (Azure o local). Si falla, lanza la excepción.</summary>
         public static bool mtdProbarConexion()
         {
             lock (Candado)

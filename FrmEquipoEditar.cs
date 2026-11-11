@@ -5,10 +5,6 @@ using System.Windows.Forms;
 
 namespace PROYECTO_ORICA_SAFEHANDS_VARGAS
 {
-    /// <summary>
-    /// Ventana para crear o editar un equipo.
-    /// Si recibe null es "Nuevo"; si recibe un equipo, es "Editar".
-    /// </summary>
     public partial class FrmEquipoEditar : Form
     {
         private readonly clsEquipoNegocio equipoNegocio = new clsEquipoNegocio();
